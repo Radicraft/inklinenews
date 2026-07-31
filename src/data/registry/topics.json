@@ -1,0 +1,15 @@
+{
+  "_sample": true,
+  "topics": [
+    {
+      "slug": "business-journalism", "name": "Business journalism",
+      "intro": "Business desks are where corporate reputations are made and unmade on deadline, and they are the core of any monitoring list built for comms work. The titles below are grouped by country because that is how coverage actually behaves: a story breaks in its home market's business press, then travels. Each entry links to a full page with verified section names, cadence and paywall status.",
+      "slugs": ["financial-times", "wall-street-journal", "handelsblatt", "the-economist", "reuters", "city-am"]
+    },
+    {
+      "slug": "media", "name": "Media and journalism",
+      "intro": "Monitoring the media about the media serves two jobs at once. The trade press tracks the moves, closures and launches that silently break media lists, and the media desks of the nationals are where coverage about coverage begins. Anyone maintaining monitors professionally should carry this cluster as infrastructure, not as reading.",
+      "slugs": ["press-gazette", "pr-week", "the-guardian", "bbc-news", "le-monde", "yorkshire-post"]
+    }
+  ]
+}

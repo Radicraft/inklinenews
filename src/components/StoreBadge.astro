@@ -1,0 +1,27 @@
+---
+// Official App Store badge (preferred black), per Apple's marketing guidelines:
+// one badge per layout, subordinate placement, minimum 40px height, clear
+// space of a quarter badge height, artwork used exactly as provided. The
+// artwork itself is licensed to Michael via developer.apple.com and is NOT
+// committed by tooling: drop Apple's file at
+// public/badges/download-on-the-app-store.svg and this component renders it
+// on the next build. Until then it renders the styled text link, so a missing
+// file can never ship as a broken image.
+import { existsSync } from 'node:fs';
+interface Props { href: string; class?: string }
+const { href, class: cls } = Astro.props;
+const hasBadge = existsSync(new URL('../../public/badges/download-on-the-app-store.svg', import.meta.url));
+---
+{hasBadge ? (
+  <a class:list={['storebadge', cls]} href={href}>
+    <img src="/badges/download-on-the-app-store.svg" alt="Download on the App Store" width="120" height="40" />
+  </a>
+) : (
+  <a class:list={['store', cls]} href={href}>Download on the App&nbsp;Store</a>
+)}
+
+<style>
+  .storebadge { display: inline-block; margin: 14px; } /* clear space >= badge height / 4 */
+  .storebadge img { height: 54px; width: auto; display: block; }
+  @media (max-width: 480px) { .storebadge img { height: 48px; } }
+</style>

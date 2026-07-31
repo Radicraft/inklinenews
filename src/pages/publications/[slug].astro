@@ -1,0 +1,77 @@
+---
+import Base from '../../layouts/Base.astro';
+import Stamp from '../../components/Stamp.astro';
+import Faq from '../../components/Faq.astro';
+import { described, bySlug, descriptionFor, relatedTo, accessLabel, formatDate, REGISTRY_UPDATED } from '../../lib/registry';
+import { publicationLd } from '../../lib/schema';
+import { appStoreUrl } from '../../lib/site';
+
+export function getStaticPaths() {
+  return described.map((p) => ({ params: { slug: p.slug } }));
+}
+const p = bySlug.get(Astro.params.slug)!;
+const description = descriptionFor(p.slug)!;
+const related = relatedTo(p);
+const access = accessLabel(p.paywall);
+const updated = formatDate(REGISTRY_UPDATED);
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Publications', url: '/publications/' },
+  { name: p.name, url: `/publications/${p.slug}/` },
+];
+const faq = [
+  { q: `Does ${p.name} have RSS feeds?`, a: p.paywall === 'metered'
+      ? `${p.name} is covered in Inkline's registry with metered access: some articles are free to read before the paywall applies. The registry entry was feed-verified in the pass of ${updated}.`
+      : p.paywall === 'hard'
+      ? `${p.name} is covered in Inkline's registry. Articles sit behind a paywall, so feeds are useful for monitoring headlines and deciding what merits a subscription click. Feed-verified in the pass of ${updated}.`
+      : `Yes. ${p.name} is covered in Inkline's registry with free access, feed-verified in the pass of ${updated}.` },
+  { q: `Is ${p.name} free to read?`, a: access === 'Free' ? `Yes, coverage is free to read.` : access === 'Some free articles' ? `Partly. Some articles are free before the meter applies.` : `No. Articles sit behind a paywall.` },
+  { q: `How do I follow ${p.name} in Inkline?`, a: `Open Search in the app, type the name, and add it in a tap. The registry ships inside Inkline, so the result is instant and works offline.` },
+];
+---
+<Base
+  title={`${p.name} RSS feeds, checked July 2026 | Inkline`}
+  description={`${p.name} in Inkline's source registry: coverage, language, access status and how to follow it. Registry updated ${updated}.`}
+  path={`/publications/${p.slug}/`}
+  crumbs={crumbs}
+  jsonld={[publicationLd(p)]}
+>
+  <p class="kicker">{p.market} · {access}</p>
+  <h1>{p.name} RSS feeds</h1>
+  <p class="answer">{p.name} is in Inkline's source registry, covering {p.topics.join(', ')} from {p.market}{p.global ? ' with international relevance' : ''}. Access is {access.toLowerCase()}. The entry was feed-verified in the registry pass of {updated}; entries that fail verification drop out before each release.</p>
+
+  <Stamp date={REGISTRY_UPDATED} />
+
+  <dl class="facts">
+    <dt>Market</dt><dd>{p.market}</dd>
+    <dt>Language</dt><dd>{p.language}</dd>
+    <dt>Coverage</dt><dd>{p.topics.map((t, i) => (<>{i > 0 && ', '}<a href={`/topics/${t}/`}>{t}</a></>))}</dd>
+    <dt>Access</dt><dd>{access}</dd>
+    <dt>Website</dt><dd>{p.domain}</dd>
+    <dt>Registry</dt><dd>v1, updated {updated}</dd>
+  </dl>
+
+  <div class="prose">
+    <p>{description}</p>
+    {p.paywall !== 'none' && (
+      <>
+        <h2>How the access model behaves</h2>
+        <p>{p.paywall === 'hard'
+          ? 'A paywall applies to articles. For monitoring, that still works: headlines arrive, and the decision to click carries a known cost. Inkline records the access status in the registry so a locked story is never a surprise.'
+          : 'A meter applies: some articles read free before the paywall arrives. Inkline records the access status in the registry so you know what to expect before you tap.'}</p>
+      </>
+    )}
+  </div>
+
+  <p><a class="btn" href={appStoreUrl(`web-pub-${p.slug}`)}>Open in Inkline</a></p>
+
+  <Faq items={faq} />
+
+  <aside class="related">
+    <h2>Related publications</h2>
+    <ul>
+      {related.map((r) => <li><a href={`/publications/${r.slug}/`}>{r.name}</a> <span class="small">{r.market}</span></li>)}
+    </ul>
+    <p class="small">More: <a href={`/feeds/${p.marketSlug}/`}>{p.market} sources</a> · <a href={`/topics/${p.topics[0]}/`}>{p.topics[0]} coverage</a> · <a href="/publications/">all 817 publications</a></p>
+  </aside>
+</Base>

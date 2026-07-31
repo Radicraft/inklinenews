@@ -1,0 +1,34 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE, appStoreUrl } from '../lib/site';
+const crumbs = [{ name: 'Home', url: '/' }, { name: 'Press', url: '/press/' }];
+---
+<Base
+  title="Inkline press kit: boilerplate, facts and assets | Inkline"
+  description="Press information for Inkline: boilerplate, dated factual claims, founder details and downloadable assets."
+  path="/press/"
+  crumbs={crumbs}
+>
+  <p class="kicker">Press</p>
+  <h1>Press kit</h1>
+  <div class="prose">
+    <h2>Boilerplate</h2>
+    <p>{SITE.boilerplate}</p>
+
+    <h2>Facts, with dates</h2>
+    <ul>
+      <li>Launched on the App Store in July 2026 as an iPhone and iPad app.</li>
+      <li>Source registry of 817 publications across 55 markets and 34 languages, hand-picked and feed-verified; registry v1, updated 17 July 2026.</li>
+      <li>Version 1.2, "The Editorial Update", added the publication directory, unified search, the Voices newsroom directory and coverage comparison.</li>
+      <li>Free to use; Inkline Pro from £2.99 a month or £14.99 a year in the UK, each with a week free. No accounts, no server-side component.</li>
+    </ul>
+
+    <h2>Founder</h2>
+    <p>{SITE.author.name}, {SITE.author.title} and Wikipedia editor. Contact for interviews: <a href="mailto:hello@inklinenews.com">hello@inklinenews.com</a>.</p>
+
+    <h2>Assets</h2>
+    <p>The downloadable zip of the Inkdrop mark, app icon and native-resolution screenshots is placed here from the §11.1 brand handover. Until the handover lands, asset requests to <a href="mailto:hello@inklinenews.com">hello@inklinenews.com</a> are answered by hand.</p>
+
+    <p class="small"><a href={appStoreUrl('web-press')}>Inkline on the App Store</a></p>
+  </div>
+</Base>

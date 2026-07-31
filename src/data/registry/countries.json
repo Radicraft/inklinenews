@@ -1,0 +1,37 @@
+{
+  "_sample": true,
+  "countries": [
+    {
+      "slug": "united-kingdom", "name": "United Kingdom", "adjective": "UK",
+      "landscape": "British news ownership is concentrated in a handful of groups, and that concentration is the first thing a monitoring list has to account for. A small number of publishers control most national circulation, the regional press has consolidated into two or three large owners, and the broadcaster remains the reach outlier by an order of magnitude. For corporate monitoring the practical hierarchy is settled: the business dailies and the wires move markets, the broadsheets set the day's framing, and the trade press is where stories are often true first. Feed provision varies more than newcomers expect. Some nationals still syndicate nearly every desk, while others retired public feeds years ago and never announced it, leaving stale directory listings across the web. Inkline's verification pass exists for exactly that gap, and each publication page below states when it was last checked.",
+      "groups": [
+        { "label": "National dailies and weeklies", "slugs": ["the-guardian", "the-economist"] },
+        { "label": "Business press", "slugs": ["financial-times", "city-am"] },
+        { "label": "Broadcasters and wires", "slugs": ["bbc-news", "reuters"] },
+        { "label": "Trade press", "slugs": ["press-gazette", "pr-week"] },
+        { "label": "Regional", "slugs": ["yorkshire-post"] }
+      ]
+    },
+    {
+      "slug": "united-states", "name": "United States", "adjective": "US",
+      "landscape": "American publishing runs on a different clock and a different scale. The national business titles publish most heavily during US market hours, which for a European team means their biggest stories break into the evening, and any serious monitoring setup has to bridge that gap automatically rather than by heroics. Paywalls are the default among the titles that matter for corporate work, and feed provision has narrowed accordingly, with several major publishers offering only partial section coverage compared with their full site maps. The sample registry currently carries one US title; the full directory covers the national business press, the wires' US desks and the major metropolitan dailies.",
+      "groups": [
+        { "label": "Business press", "slugs": ["wall-street-journal"] }
+      ]
+    },
+    {
+      "slug": "germany", "name": "Germany", "adjective": "German",
+      "landscape": "German business journalism is regionally headquartered in a way that surprises monitors used to a single capital-city press corps: the business dailies publish from Düsseldorf and Frankfurt, the quality nationals from Munich and Berlin, and each keeps a distinct beat. Publishing follows the working week sharply, with output thinning after Friday afternoon. Paywalls are typically metered rather than hard. For non-German-speaking teams the practical answer is on-device summarisation rather than skipping the market, because supervisory-board and works-council detail rarely survives translation into the international press intact.",
+      "groups": [
+        { "label": "Business press", "slugs": ["handelsblatt"] }
+      ]
+    },
+    {
+      "slug": "france", "name": "France", "adjective": "French",
+      "landscape": "French national titles keep publishing rhythms that reflect their print heritage, and the afternoon peak of the evening papers is the single most common cause of missed French coverage in morning-only monitoring sweeps. Ownership is a live editorial subject in France itself, with several major titles controlled by industrial or luxury-sector proprietors, which is context worth having when reading their business pages. Metered paywalls are the norm. English-language editions exist for some titles and are a reasonable starting point for teams without French, though they carry a subset of the desks.",
+      "groups": [
+        { "label": "National dailies", "slugs": ["le-monde"] }
+      ]
+    }
+  ]
+}

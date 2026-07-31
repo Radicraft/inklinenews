@@ -1,0 +1,7 @@
+# Cloudflare Pages redirects. The old GitHub Pages host needs its own
+# pointers here once DNS moves; these cover legacy path shapes on this domain.
+/Privacy-Policy   /privacy/   301
+/privacy-policy   /privacy/   301
+/Support          /support/   301
+/support.html     /support/   301
+/press-kit        /press/     301

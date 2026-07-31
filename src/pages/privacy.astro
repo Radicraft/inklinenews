@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+const crumbs = [{ name: 'Home', url: '/' }, { name: 'Privacy', url: '/privacy/' }];
+---
+<Base
+  title="Inkline privacy policy | Inkline"
+  description="Inkline runs on your device: no accounts, no server, no tracking. The policy is short because there is little to police."
+  path="/privacy/"
+  crumbs={crumbs}
+>
+  <p class="kicker">Privacy</p>
+  <h1>Privacy</h1>
+  <div class="prose">
+    <p style="font-size:1.12rem">Inkline has no accounts and no server. Feeds are fetched by your device, Apple Intelligence features run on your device, and your reading history, notes and settings exist only on your device and in your own iCloud backups.</p>
+    <h2>What the app connects to</h2>
+    <p>Inkline has no server of its own. Your device makes four kinds of outbound connection, all in your own name: the publications you follow (to fetch their feeds), a feed search index when you search for a new source, Google News when a monitor or watch runs, and article pages themselves to fetch images or full text for the reader. Nothing about you rides along: no identifiers, no analytics, no account.</p>
+    <p>Apple’s App Store privacy label for Inkline is “Data Not Collected”, and that label is meant literally.</p>
+    <h2>What Inkline collects</h2>
+    <p>Nothing, in the sense that matters: no analytics SDKs, no advertising identifiers, no reading data leaves the phone. Subscriptions are processed by Apple, so Inkline never sees payment details. This website sets no cookies, which is why it shows no consent banner.</p>
+    <h2>What your device does</h2>
+    <p>Fetching a feed necessarily contacts the publisher's servers from your device, exactly as a browser would, and publishers see those requests as they see any visit. Content used for daily briefs and summaries is processed by Apple Intelligence on the device.</p>
+    <p class="small">This page is migrated from the previous host with 301 redirects, and the App Store listing is updated the same day the redirects go live. Final legal wording is Michael's to confirm before launch; the architecture it describes is accurate today.</p>
+  </div>
+</Base>

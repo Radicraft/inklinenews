@@ -1,0 +1,48 @@
+{
+ "editorial": [
+  {
+   "slug": "financial-times",
+   "description": "The pink paper remains the single most-monitored title among the comms professionals Inkline is built for, and for a reason that has little to do with circulation: an FT story is what moves an IR phone line before the market opens. Lex and Alphaville carry disproportionate weight relative to their length, and Due Diligence frequently breaks M&A detail hours ahead of the wires. Feed access has quietly narrowed over the past few years, with several desk feeds no longer publicly listed, which is precisely the kind of gap hand-verification exists to close. If a client is listed in London, this is the first monitor to set up."
+  },
+  {
+   "slug": "the-guardian",
+   "description": "Ownership by trust rather than proprietor shapes this newsroom's behaviour in ways monitors learn to anticipate: investigations run long, follow-ups arrive in waves, and a story a client hopes has passed can resurface weeks later with new documents. Its feed provision is among the most generous of any British national, covering desks most rivals stopped syndicating years ago. For reputation work the Media desk deserves particular attention, as it is where coverage about coverage tends to start. The open-access model also means every link in a morning brief resolves for every reader, which matters more than it sounds."
+  },
+  {
+   "slug": "bbc-news",
+   "description": "Reach is the whole argument here. A story that makes the broadcaster's front page reaches an audience an order of magnitude beyond any national newspaper, so crisis teams treat its pickup as the threshold between a trade story and a public one. Less obvious to newcomers is how conservative the desk feeds are: syndicated output trails the website's live pages by several minutes during breaking news, which is worth knowing before promising anyone real-time alerts. Regional output is thinner in the feeds than on air, a gap Inkline flags rather than papers over."
+  },
+  {
+   "slug": "reuters",
+   "description": "Wire copy is upstream of everything else a monitor reads, which makes this agency's retreat from public syndication one of the more consequential quiet changes in the industry: the feeds most aggregators still list stopped updating when the website moved behind registration. Inkline resolves the desks through verified alternatives and says so plainly on the record for each. Speed remains the reason to monitor a wire at all, as corporate statements routinely appear here before the papers that will later analyse them. A headline here is a starting gun. The full story follows elsewhere, usually within the hour."
+  },
+  {
+   "slug": "the-economist",
+   "description": "A weekly rhythm makes this title easy to monitor badly. The print edition lands Thursday evening London time, and that is when a fortnight of quiet can turn into the definitive framing of an issue, unsigned and therefore speaking with the full weight of the institution. Bylines are absent by policy, which changes how a mention should be escalated: there is no correspondent relationship to manage, only an editorial line. Daily digital pieces between editions have grown steadily and now justify continuous monitoring rather than a Thursday check."
+  },
+  {
+   "slug": "the-wall-street-journal",
+   "description": "For a London comms team the practical question is timing, and the answer is awkward: the heaviest publishing window opens as the UK working day ends, so a Journal story about a European client often breaks into an unstaffed evening. Building it into an automated evening brief solves what a manual check cannot. Heard on the Street occupies roughly the position Lex does at its London rival, brief and market-moving, and Opinion operates with a noticeably freer hand than the news desks. Feed coverage is stable but narrower than the site's full section map."
+  },
+  {
+   "slug": "handelsblatt",
+   "description": "Anyone monitoring a DAX-listed client learns quickly that the German business conversation runs through Düsseldorf, not Frankfurt. Company coverage here regularly carries supervisory-board detail the international press picks up a day later, and often only partially. The weekday publishing pattern is pronounced, with output thinning sharply after Friday afternoon, so a weekend gap in mentions is normal rather than a monitoring fault. Inkline pairs it with on-device summarisation, which turns German-language desk output into something an English-speaking team can actually triage at speed."
+  },
+  {
+   "slug": "le-monde",
+   "description": "The afternoon matters here in a way that trips up monitors calibrated to London or New York rhythms. This paper's heritage as an evening title survives in its publishing curve, which peaks after lunch Paris time, so a morning-only sweep of French coverage will consistently miss its lead stories. An English-language edition now runs in parallel and is worth adding for teams without French, though it carries a subset of the desks. Économie coverage of French-listed companies tends toward the analytical rather than the incremental, which makes it better for context than for alerts."
+  },
+  {
+   "slug": "press-gazette",
+   "description": "Journalists read this to find out what is happening to journalism, which makes it the closest thing the industry has to a staffing wire: editor moves, desk closures and title sales appear here first, and each one changes who a comms team should be pitching. The audience-data series has become a reference in its own right, tracking which publishers are actually growing rather than which claim to be. For anyone maintaining a media list by hand, this title is the maintenance schedule."
+  },
+  {
+   "slug": "pr-week",
+   "description": "Account moves are the currency of this trade title, and its coverage of them doubles as a live map of who advises whom, which is intelligence in the plainest sense of the word. Agency league tables and the annual awards season generate predictable coverage spikes worth anticipating rather than discovering. Its analysis desk has sharpened noticeably on AI's effect on the profession, a beat with obvious relevance to anyone reading this directory. Monitoring it is less about client mentions than about watching the industry's plumbing."
+  },
+  {
+   "slug": "city-a-m",
+   "description": "Free at Tube stations and free online, which gives Square Mile stories a reach into general readership that its circulation figures understate. The desk moves fast on IPO and listings news and is often the first written coverage a mid-cap announcement receives. Since the ecommerce group's acquisition the opinion pages have grown livelier, and comms teams underrate them at their peril, because a sharp column here gets screenshotted into the City's group chats by mid-morning."
+  }
+ ]
+}

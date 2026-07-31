@@ -1,0 +1,36 @@
+/* Inkline brand tokens. Values from the supplied brand kit (README.txt +
+   mark_source.svg + sampled rules in header assets). Single source of truth:
+   the colour gate fails the build on any hex outside this file. */
+:root {
+  /* ink */
+  --ink: #1B2A4A;
+  --ink-deep: #131F3B;
+  --ink-ring: #1E2E52;
+  --ink-drop-hi: #324A78;
+  /* paper */
+  --paper: #F3EDDD;
+  --paper-2: #EAE0CB;
+  --paper-3: #DED0B4;
+  --cream: #EDE4CE;
+  /* brass accent (rule + tagline colour in the kit) */
+  --brass: #B9A98A;        /* on dark surfaces */
+  --brass-deep: #7A6A48;   /* on light surfaces */
+  /* sheen (drop highlight, sparing use on dark) */
+  --sheen: #BFD0F0;
+  /* derived neutrals for text on each surface */
+  --graphite: #4A5570;     /* secondary text on paper */
+  --sky: #A9B4CE;          /* secondary text on ink */
+  --dim: #77809B;
+  --hairline-dark: #2A3A60;
+  --rule: #D9CDB1;         /* hairlines on paper */
+  --rule-strong: #C4B48F;
+  /* type */
+  --font-serif: 'Literata Variable', 'Literata', Georgia, 'Times New Roman', serif;
+  --font-ui: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  /* aliases used throughout the stylesheet */
+  --serif: var(--font-serif);
+  --sans: var(--font-ui);
+  /* layout */
+  --measure: 68ch;
+  --radius: 4px;
+}

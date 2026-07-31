@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import Mark from '../components/Mark.astro';
+---
+<Base
+  title="Page not found | Inkline"
+  description="This page does not exist. The directory, guides and support pages are one click away."
+  path="/404/"
+  noindex={true}
+>
+  <div style="padding:4rem 0">
+    <Mark size={40} />
+    <h1 style="margin-top:1rem">A blot, not a page</h1>
+    <p class="prose">Nothing lives at this address. Publishers move things without notice; apparently so do we. Try the <a href="/publications/">publication directory</a>, the <a href="/guides/">guides</a> or <a href="/support/">support</a>.</p>
+  </div>
+</Base>

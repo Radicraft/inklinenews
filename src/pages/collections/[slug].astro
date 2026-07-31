@@ -1,0 +1,38 @@
+---
+import Base from '../../layouts/Base.astro';
+import { collections, pubsInCollection, formatDate } from '../../lib/registry';
+import { appStoreUrl } from '../../lib/site';
+
+export function getStaticPaths() {
+  return collections.map((collection) => ({ params: { slug: collection.slug }, props: { collection } }));
+}
+const { collection } = Astro.props;
+const pubs = pubsInCollection(collection.slug);
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Collections', url: '/publications/' },
+  { name: collection.name, url: `/collections/${collection.slug}/` },
+];
+---
+<Base
+  title={`RSS feeds for ${collection.audience}: ${pubs.length} verified sources | Inkline`}
+  description={`A verified starter pack of ${pubs.length} sources for ${collection.audience}. One tap adds the whole collection in Inkline.`}
+  path={`/collections/${collection.slug}/`}
+  crumbs={crumbs}
+>
+  <p class="kicker">Collection</p>
+  <h1>RSS feeds for {collection.audience}</h1>
+  <p class="prose" style="font-size:1.12rem">{collection.intro}</p>
+
+  <ul class="pub-list sr">
+    {pubs.map((p) => (
+      <li>
+        <span><a href={`/publications/${p.slug}/`}>{p.name}</a> <span class="small">{p.market} · {p.topics.join(", ")}</span></span>
+        <span class="country">{p.market}</span>
+      </li>
+    ))}
+  </ul>
+
+  <p style="margin-top:2rem"><a class="btn" href={appStoreUrl(`web-collection-${collection.slug}`)}>Add this pack in Inkline</a></p>
+  <p class="small">Adding the whole collection by link requires the app; the Universal Link opens Inkline when installed and the App Store when not.</p>
+</Base>

@@ -1,0 +1,19 @@
+# For the Cloudflare Pages route ONLY (delete deploy-siteground.yml if chosen).
+# Pages builds on every git push by itself; this tiny cron pings a Pages
+# Deploy Hook daily so Substack posts tagged Inkline appear on /news/ within
+# a day without a code change. Setup: Cloudflare dashboard -> your Pages
+# project -> Settings -> Builds & deployments -> Deploy hooks -> create one,
+# then add its URL as the CF_DEPLOY_HOOK secret in GitHub.
+name: Daily news rebuild (Cloudflare Pages)
+on:
+  schedule:
+    - cron: '10 6 * * *'
+  workflow_dispatch:
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          if [ -n "$HOOK" ]; then curl -sX POST "$HOOK"; else echo "CF_DEPLOY_HOOK not set yet; nothing to do"; fi
+        env:
+          HOOK: ${{ secrets.CF_DEPLOY_HOOK }}

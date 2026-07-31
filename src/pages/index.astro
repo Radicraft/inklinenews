@@ -1,0 +1,383 @@
+---
+import Base from '../layouts/Base.astro';
+import StoreBadge from '../components/StoreBadge.astro';
+import { getFeatured, accessLabel } from '../lib/registry';
+import { SITE, appStoreUrl } from '../lib/site';
+import { websiteLd, appLd } from '../lib/schema';
+import headlinesData from '../data/headlines.json';
+const featured = getFeatured(6);
+const headlines = headlinesData.items;
+const features = [
+  { href: '/app/features/daily-briefs/', name: 'The morning brief', shot: 'today', alt: 'The Today page with the Inkline Radio briefing card and lead stories', blurb: 'Written on your phone by Apple Intelligence from the publications you follow. Nothing you read leaves the device.' },
+  { href: '/app/features/topic-monitoring/', name: 'Monitors and watchwords', shot: 'watch', alt: 'The Watch tab gathering stories flagged by a watchword', blurb: 'Watch topics across the whole web and flag clients, competitors and spokespeople as stories arrive.' },
+  { href: '/app/features/inkline-radio/', name: 'Inkline Radio', shot: 'radio', alt: 'The Inkline Radio player with a two-story bulletin and its running order', blurb: 'The brief as a short spoken bulletin in a natural British voice, generated on the phone.' },
+  { href: '/app/features/coverage-timeline/', name: 'The coverage timeline', shot: 'coverage', alt: 'The Coverage sheet showing a framing read and one story across seven publications', blurb: 'Who ran a story first, who followed and when, and whether the framing is actually moving.' },
+  { href: '/app/features/voices/', name: 'Voices', shot: 'search', alt: 'Search with Voices at the top and publication results below', blurb: 'The journalists behind your feeds, grouped by where they publish. Follow anyone in a tap.' },
+  { href: '/app/features/offline-reading/', name: 'The reader', shot: 'reader', alt: 'The reader showing full article text with bookmark, note, listen and type controls', blurb: 'Four typefaces including OpenDyslexic, full article text, and offline reading kept for the train.' },
+];
+---
+<Base
+  title="Inkline: news and media monitoring for comms and newsrooms"
+  description="Track topics, publications and people. An RSS database of 817 hand-picked, feed-verified sources across 55 markets, private morning briefs written on your device, and a spoken bulletin. Built for comms and newsrooms."
+  path="/"
+  jsonld={[websiteLd(), appLd()]}
+  dark={true}
+>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="curtain" aria-hidden="true"></div>
+  <div class="bigdrop" aria-hidden="true"><svg viewBox="380 270 264 350" xmlns="http://www.w3.org/2000/svg"><defs>
+    <radialGradient id="dgA" cx="0.38" cy="0.30" r="0.9"><stop offset="0" stop-color="#324A78"/><stop offset="0.45" stop-color="#1E2E52"/><stop offset="1" stop-color="#131F3B"/></radialGradient>
+    <radialGradient id="sgA" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#BFD0F0" stop-opacity="0.9"/><stop offset="1" stop-color="#BFD0F0" stop-opacity="0"/></radialGradient>
+    <filter id="ringF" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="3" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="7" xChannelSelector="R" yChannelSelector="G"/></filter>
+  </defs><path d="M512 300 C 566 392, 606 452, 606 508 a 94 94 0 1 1 -188 0 C 418 452, 458 392, 512 300 Z" fill="url(#dgA)"/><ellipse cx="488" cy="470" rx="22" ry="52" fill="url(#sgA)" opacity="0.9" transform="rotate(-12 488 470)"/></svg></div>
+
+  <section class="hero" id="hero">
+    <svg class="wm" viewBox="0 0 1200 1200" aria-hidden="true"><g fill="none" stroke="var(--cream)" stroke-linecap="round" filter="url(#ringF)"><circle cx="600" cy="600" r="150" stroke-width="22" opacity="0.14"/><circle cx="600" cy="600" r="250" stroke-width="16" opacity="0.09"/><circle cx="600" cy="600" r="350" stroke-width="11" opacity="0.05"/></g></svg>
+    <canvas id="inkgl" aria-hidden="true"></canvas>
+    <div class="hero-content">
+      <h1>
+        <span class="hr0 hl1">Track topics,</span>
+        <span class="hr0 hl2 it">publications</span>
+        <span class="hr0 hl3">and people.</span>
+      </h1>
+      <p class="tagline hr0 hl4"><span class="tl-rule"></span>Built for comms and newsrooms.</p>
+      <div class="cta hr0 hl5">
+        <StoreBadge href={appStoreUrl('web-home')} />
+        <span class="trial">Free to use · Inkline Pro from £2.99 a month · iPhone and iPad</span>
+      </div>
+    </div>
+    <p class="stir hr0 hl5">Stir the ink</p>
+  </section>
+
+  <section class="landing" id="landing" aria-label="Stories landing now">
+    <canvas id="surfgl" aria-hidden="true"></canvas>
+    <div class="landing-head">
+      <p class="kick">The wire</p>
+      <h2>Stories land all day.<br>This is <span class="it">one minute</span> of it.</h2>
+    </div>
+    <p class="landing-foot">A sample. In the app the wire is yours: the publications, topics and people you chose. Tap the water.</p>
+  </section>
+
+  <section class="drained" id="database">
+    <div class="dwrap">
+      <p class="kick">The RSS database</p>
+      <h2>An RSS database of 817 publications, built by a person.</h2>
+      <p class="dbsub">Every source in Inkline was picked by a person against a written rubric, and every feed is machine-verified before each release, so dead feeds drop out before they reach you. The registry covers <b>55 markets</b> and <b>34 languages</b>, records the access status of every title (521 free, 227 metered, 69 paywalled), and still covers the 264 titles that publish no public feed at all. Version 1, updated <b>17 July 2026</b>.</p>
+      <div class="index">
+        {featured.map((p, i) => (
+          <a class="row sr" href={`/publications/${p.slug}/`}>
+            <span class="no">{String(i + 1).padStart(3, '0')}</span>
+            <span class="pubmark" aria-hidden="true" data-initial={p.name.charAt(0)}>
+              <img src={`/icons/${p.slug}.png`} alt="" width="28" height="28" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('mono');this.remove()" />
+            </span>
+            <span class="name">{p.name}</span>
+            <span class="meta">{p.topics.join(', ')} · {accessLabel(p.paywall)} · <b>in registry v1 · 17 Jul 2026</b></span>
+          </a>
+        ))}
+      </div>
+      <a class="allpubs" href="/publications/">Browse all 817 publications <span class="ln"></span></a>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="fwrap">
+      <p class="kick">The app</p>
+      <h2>Inside <span class="it">the app.</span></h2>
+      <div class="fgrid">
+        {features.map((f) => (
+          <a class="fcard sr" href={f.href}>
+            <img src={`/screens/${f.shot}.webp`} alt={f.alt} width="720" height="1564" loading="lazy" decoding="async" />
+            <h3>{f.name}</h3>
+            <p>{f.blurb}</p>
+            <span class="more">More<span class="ln"></span></span>
+          </a>
+        ))}
+      </div>
+      <p class="fsmall sr">There are no accounts, no ads and no tracking; <a href="/privacy/">the privacy policy</a> fits on one screen. How it compares with Feedly, Inoreader and NetNewsWire, including where they win: <a href="/app/compare/">the comparison page</a>.</p>
+    </div>
+  </section>
+
+  <section class="endcap">
+    <p class="p sr">Free to <span class="it">use.</span></p>
+    <div class="sr"><StoreBadge href={appStoreUrl('web-home-foot')} /></div>
+    <p class="sub sr">No account to create. Inkline Pro {SITE.price}, each plan with a week free; the App Store shows local pricing.</p>
+  </section>
+
+  <script is:inline define:vars={{ headlines }}>
+  (function(){
+  var isFile = location.protocol === 'file:';
+  function fail(where,msg){
+    if(isFile){var d=document.createElement('pre');d.style.cssText='position:fixed;bottom:0;left:0;right:0;z-index:99;background:var(--ink-deep);color:var(--paper);border-top:2px solid var(--brass);font:11px ui-monospace,monospace;padding:8px;white-space:pre-wrap;margin:0';d.textContent='Render error ('+where+'), screenshot this: '+msg;document.body.appendChild(d);}
+    else if(window.console)console.warn('inkline gl ('+where+'):',msg);
+  }
+  window.addEventListener('error',function(e){fail('js',e.message)});
+  var reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function makeGL(canvas,frag,where){
+    var gl=canvas.getContext('webgl',{antialias:false,alpha:false});
+    if(!gl){fail(where,'WebGL unavailable');canvas.remove();return null;}
+    function sh(t,s){var o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);
+      if(!gl.getShaderParameter(o,gl.COMPILE_STATUS)){fail(where,gl.getShaderInfoLog(o));return null;}return o;}
+    var v=sh(gl.VERTEX_SHADER,'attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}');
+    var f=sh(gl.FRAGMENT_SHADER,frag);
+    if(!v||!f){canvas.remove();return null;}
+    var pr=gl.createProgram();gl.attachShader(pr,v);gl.attachShader(pr,f);gl.linkProgram(pr);
+    if(!gl.getProgramParameter(pr,gl.LINK_STATUS)){fail(where,gl.getProgramInfoLog(pr));canvas.remove();return null;}
+    gl.useProgram(pr);
+    var b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);
+    gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+    var lp=gl.getAttribLocation(pr,'p');gl.enableVertexAttribArray(lp);gl.vertexAttribPointer(lp,2,gl.FLOAT,false,0,0);
+    return {gl:gl,pr:pr};
+  }
+  var DPR=Math.min(devicePixelRatio||1,1.6);
+  var NOISE=[
+  'float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}',
+  'float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);',
+  ' return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}',
+  'float fbm(vec2 p){float v=0.,a=.5;mat2 r=mat2(1.6,1.2,-1.2,1.6);',
+  ' for(int i=0;i<5;i++){v+=a*n(p);p=r*p;a*=.5;}return v;}'].join('\n');
+
+  /* ————— hero: marbled ink ————— */
+  (function(){
+    var canvas=document.getElementById('inkgl');
+    if(!canvas)return;
+    var frag=['precision highp float;','uniform vec2 R;uniform float T;uniform float T0;uniform vec2 SRC;uniform vec4 M[10];',NOISE,
+    'void main(){',
+    ' vec2 uv=(gl_FragCoord.xy-.5*R)/min(R.x,R.y);',
+    ' vec2 p=uv*2.0;',
+    ' float age=max(T-T0,0.);float t=age*.05;float stir=0.;',
+    ' for(int i=0;i<10;i++){',
+    '  vec2 mp=(M[i].xy-.5*R)/min(R.x,R.y)*2.0;',
+    '  vec2 d=p-mp;float ds=dot(d,d);',
+    '  float s=M[i].w*exp(-ds*7.)*exp(-M[i].z*1.4);',
+    '  float a=s*2.0;mat2 rot=mat2(cos(a),-sin(a),sin(a),cos(a));',
+    '  p=mp+rot*d;stir+=s;',
+    ' }',
+    ' vec2 sp=(SRC-.5*R)/min(R.x,R.y);',
+    ' vec2 q=vec2(fbm(p+vec2(0.,t)),fbm(p+vec2(5.2,1.3)-t*.7));',
+    ' vec2 r2=vec2(fbm(p+3.2*q+vec2(1.7,9.2)+.31*t),fbm(p+3.2*q+vec2(8.3,2.8)-.24*t));',
+    ' float f=fbm(p+3.0*r2);',
+    ' float grow=smoothstep(0.,6.,age);float dist=length(uv-sp);',
+    ' float mask=smoothstep(1.7*grow+.22,.02,dist);',
+    ' float core=exp(-dist*dist*26.)*min(age*2.,1.)*(1.-.5*grow);',
+    ' float ringp=exp(-pow((dist-age*.42)*7.,2.))*exp(-age*1.6);',
+    ' float d2=f*mask+core*.5+stir*.9;',
+    ' float ink=smoothstep(.36,.74,d2)+ringp*.7;',
+    ' float edge=smoothstep(.30,.38,d2)-smoothstep(.46,.6,d2);',
+    ' vec3 ground=mix(vec3(.075,.122,.231),vec3(.106,.165,.290),uv.y*.5+.5);',
+    ' ground*=1.-.22*length(uv);',
+    ' vec3 cream=vec3(.929,.894,.808);vec3 brass=vec3(.725,.663,.541);',
+    ' vec3 col=ground;',
+    ' col=mix(col,brass*.75,edge*.45);',
+    ' col=mix(col,cream,clamp(ink,0.,1.)*(.92-.22*fbm(p*3.+f)));',
+    ' col+=(h(gl_FragCoord.xy)-.5)*.035;',
+    ' gl_FragColor=vec4(col,1.);}'].join('\n');
+    var ctx=makeGL(canvas,frag,'hero');
+    if(!ctx)return;
+    var gl=ctx.gl,pr=ctx.pr;
+    var hero=document.getElementById('hero');
+    function fit(){canvas.width=canvas.clientWidth*DPR;canvas.height=canvas.clientHeight*DPR;gl.viewport(0,0,canvas.width,canvas.height);}
+    fit();addEventListener('resize',fit);
+    var uR=gl.getUniformLocation(pr,'R'),uT=gl.getUniformLocation(pr,'T'),uT0=gl.getUniformLocation(pr,'T0'),uS=gl.getUniformLocation(pr,'SRC'),uM=gl.getUniformLocation(pr,'M');
+    var trail=[],last=null;
+    function push(x,y){
+      var r=hero.getBoundingClientRect();
+      if(y>r.bottom)return;
+      var v=.6;
+      if(last){var dx=x-last[0],dy=y-last[1];v=Math.min(Math.sqrt(dx*dx+dy*dy)*.02,1.4)+.2;}
+      last=[x,y];trail.unshift([x*DPR,(r.height-(y-r.top))*DPR,0,v]);if(trail.length>10)trail.pop();
+    }
+    addEventListener('pointermove',function(e){push(e.clientX,e.clientY)},{passive:true});
+    var mArr=new Float32Array(40);
+    var t0=performance.now()/1000;
+    var impact=document.documentElement.classList.contains('go')?0.66:-20;
+    var running=true;
+    new IntersectionObserver(function(es){running=es[0].isIntersecting;if(running)requestAnimationFrame(frame);}).observe(hero);
+    function frame(){
+      if(!running)return;
+      var t=performance.now()/1000-t0;
+      for(var i=0;i<10;i++){var m=trail[i];
+        if(m){m[2]+=.016;mArr.set([m[0],m[1],m[2],m[3]],i*4);}else mArr.set([0,0,99,0],i*4);}
+      gl.uniform2f(uR,canvas.width,canvas.height);
+      gl.uniform1f(uT,reduced?20:t);gl.uniform1f(uT0,reduced?0:impact);
+      gl.uniform2f(uS,canvas.width*.62,canvas.height*.71);
+      gl.uniform4fv(uM,mArr);
+      gl.drawArrays(gl.TRIANGLES,0,3);
+      if(!reduced)requestAnimationFrame(frame);
+    }
+    frame();
+  })();
+
+  /* ————— landing: the surface, headlines ring out ————— */
+  (function(){
+    var canvas=document.getElementById('surfgl');
+    var sec=document.getElementById('landing');
+    if(!canvas||!sec)return;
+    var N=14;
+    var frag=['precision highp float;','uniform vec2 R;uniform float T;uniform vec4 G['+N+'];',NOISE,
+    'float H(vec2 uv,float t){',
+    ' float s=0.;',
+    ' for(int i=0;i<'+N+';i++){',
+    '  float age=t-G[i].z;if(age<0.||age>6.)continue;',
+    '  vec2 d=uv-G[i].xy;float dist=max(length(d),1e-3);',
+    '  float ang=atan(d.y,d.x);',
+    '  float wob=(n(vec2(ang*1.6+G[i].z*7.,G[i].z*13.))-.5)*.05;',
+    '  float rad=age*.22;',
+    '  float band=exp(-pow((dist+wob-rad)*12.,2.));',
+    '  s+=sin((dist-rad)*40.)*band*exp(-age*1.1)*G[i].w;',
+    ' }return s;}',
+    'void main(){',
+    ' vec2 uv=gl_FragCoord.xy/R;',
+    ' vec2 asp=vec2(R.x/R.y,1.);',
+    ' vec2 q=uv*asp;',
+    ' float e=.0025;',
+    ' float hc=H(q,T);',
+    ' vec2 grad=vec2(H(q+vec2(e,0.),T)-hc,H(q+vec2(0.,e),T)-hc)/e;',
+    ' vec2 ruv=uv-grad*.008;',
+    ' vec3 ground=mix(vec3(.075,.122,.231),vec3(.106,.165,.290),ruv.y);',
+    ' ground*=1.-.28*length(uv-.5);',
+    
+    ' vec3 col=ground;',
+    ' float crest=smoothstep(.08,.42,hc);float trough=smoothstep(.08,.42,-hc);',
+    ' col=mix(col,vec3(.929,.894,.808),crest*.6);',
+    ' col=mix(col,vec3(.482,.416,.282),trough*.3);',
+    ' col+=(h(gl_FragCoord.xy)-.5)*.03;',
+    ' gl_FragColor=vec4(col,1.);}'].join('\n');
+    var ctx=makeGL(canvas,frag,'landing');
+    if(!ctx)return;
+    var gl=ctx.gl,pr=ctx.pr;
+    var LDPR=Math.min(devicePixelRatio||1,2);
+    function fit(){canvas.width=sec.clientWidth*LDPR;canvas.height=sec.clientHeight*LDPR;gl.viewport(0,0,canvas.width,canvas.height);}
+    fit();addEventListener('resize',fit);
+    var uR=gl.getUniformLocation(pr,'R'),uT=gl.getUniformLocation(pr,'T'),uG=gl.getUniformLocation(pr,'G');
+    var rings=[],ri=0,t0=performance.now()/1000;
+    function drop(x,y,w){rings[ri%N]=[x,y,performance.now()/1000-t0,w];ri++;}
+    var hi=0,running=false,started=false,cell=0,order=null;
+    function anchors(){
+      var cols=sec.clientWidth>640?3:2;
+      var xs=[],i;
+      for(i=0;i<cols;i++)xs.push((i+.5)/cols);
+      var ys=[.62,.38];
+      var a=[];ys.forEach(function(y){xs.forEach(function(x){a.push([x,y])})});
+      return a;
+    }
+    function newsfall(){
+      if(!running||document.hidden||reduced)return;
+      var a=anchors();
+      if(!order||order.length!==a.length){order=a.map(function(_,i){return i}).sort(function(){return Math.random()-.5});cell=0;}
+      var base=a[order[cell++%order.length]];
+      var asp=sec.clientWidth/sec.clientHeight;
+      var x=base[0]+(Math.random()-.5)*.06,y=base[1]+(Math.random()-.5)*.08;
+      drop(x*asp,y,.95);
+      var head=headlines[hi++%headlines.length];
+      var c=document.createElement('p');c.className='chip';
+      c.style.left=(x*100)+'%';c.style.top=((1-y)*100)+'%';
+      c.innerHTML='<span class="csrc">'+head.src+'</span><span class="chd">'+head.hd+'</span>';
+      sec.appendChild(c);setTimeout(function(){c.remove()},4500);
+    }
+    setInterval(newsfall,2600);
+    sec.addEventListener('pointerdown',function(e){
+      var r=sec.getBoundingClientRect();var asp=r.width/r.height;
+      drop((e.clientX-r.left)/r.width*asp,1-(e.clientY-r.top)/r.height,1.2);
+    },{passive:true});
+    var gArr=new Float32Array(N*4);
+    function frame(){
+      if(!running)return;
+      var t=performance.now()/1000-t0;
+      for(var i=0;i<N;i++){var g=rings[i];
+        if(g)gArr.set(g,i*4);else gArr.set([0,0,-99,0],i*4);}
+      gl.uniform2f(uR,canvas.width,canvas.height);
+      gl.uniform1f(uT,t);
+      gl.uniform4fv(uG,gArr);
+      gl.drawArrays(gl.TRIANGLES,0,3);
+      requestAnimationFrame(frame);
+    }
+    new IntersectionObserver(function(es){
+      var vis=es[0].isIntersecting;
+      if(vis&&!started){started=true;
+        var asp=sec.clientWidth/sec.clientHeight;
+        drop(.6*asp,.55,1.1);setTimeout(newsfall,500);setTimeout(newsfall,1500);}
+      running=vis;if(vis)requestAnimationFrame(frame);
+    },{threshold:.2}).observe(sec);
+    if(reduced){var asp2=sec.clientWidth/sec.clientHeight;drop(.6*asp2,.5,.9);running=true;frame();running=false;}
+  })();
+  })();
+  </script>
+</Base>
+
+<style>
+  .hero{position:relative;z-index:2;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:0;width:100%}
+  #inkgl{position:absolute;inset:0 0 auto;width:100%;height:calc(100% + 16svh);-webkit-mask-image:linear-gradient(to bottom,black 78%,transparent 99%);mask-image:linear-gradient(to bottom,black 78%,transparent 99%);pointer-events:none}
+  .wm{position:absolute;right:-14vw;top:-10vh;width:min(70vw,760px);pointer-events:none}
+  .hero-content{position:relative;z-index:2;padding:0 clamp(1.3rem,4vw,3.4rem) clamp(2.2rem,5vh,4rem);pointer-events:none}
+  .hero h1{font-size:clamp(2.9rem,10.5vw,9.4rem);line-height:.98;letter-spacing:-.03em;font-weight:580;font-variation-settings:'opsz' 90;text-shadow:0 1px 34px rgba(19,31,59,.45)}
+  .hero h1 span{display:block}
+  .hero h1 .it{font-style:italic;font-weight:340;color:var(--cream)}
+  .tagline{margin-top:clamp(1.1rem,2.2vh,1.8rem);font-style:italic;font-weight:420;font-variation-settings:'opsz' 22;font-size:clamp(1.05rem,2vw,1.45rem);color:var(--brass);display:flex;align-items:center;gap:.9rem}
+  .tl-rule{width:2.2rem;height:2px;background:var(--brass);opacity:.8}
+  .cta{margin-top:clamp(1.4rem,3vh,2.4rem);display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap;pointer-events:auto}
+  .store{font-family:var(--sans);font-size:.98rem;font-weight:640;background:var(--paper);color:var(--ink);padding:1.05rem 1.9rem;border-radius:999px;transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+  .store:hover{transform:translateY(-2px)}
+  .trial{font-family:var(--sans);font-size:.8rem;color:var(--sky)}
+  .stir{position:absolute;z-index:2;top:5.4rem;right:clamp(1.3rem,4vw,3.4rem);font-family:var(--sans);font-size:.7rem;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
+  .hr0{opacity:0}
+  :global(html.done) .hr0{opacity:1}
+
+  .landing{position:relative;z-index:1;min-height:92svh;width:100%;overflow:hidden;border-bottom:1px solid var(--hairline-dark)}
+  #surfgl{position:absolute;inset:0;width:100%;height:100%}
+  .landing-head{position:relative;z-index:3;padding:clamp(4.5rem,12vh,7rem) clamp(1.3rem,4vw,3.4rem) 0;pointer-events:none}
+  .landing .kick{font-family:var(--sans);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);margin-bottom:1rem}
+  .landing h2{font-size:clamp(1.9rem,4.6vw,3.9rem);letter-spacing:-.024em;line-height:1.05;font-weight:560}
+  .landing .it{font-style:italic;font-weight:340;color:var(--cream)}
+  .landing-foot{position:absolute;z-index:2;bottom:1.6rem;left:clamp(1.3rem,4vw,3.4rem);font-family:var(--sans);font-size:.74rem;color:var(--dim);max-width:44ch;pointer-events:none}
+  :global(.chip){position:absolute;z-index:3;transform:translate(-50%,-130%);pointer-events:none;opacity:0;text-align:center;animation:chip 4.4s cubic-bezier(.2,.7,.3,1) forwards}
+  :global(.chip .csrc){display:block;font-family:var(--sans);font-size:.62rem;letter-spacing:.12em;color:var(--brass);text-transform:uppercase;margin-bottom:.2rem}
+  :global(.chip .chd){font-family:var(--serif);font-size:.95rem;font-weight:480;color:var(--cream);max-width:24ch;display:inline-block;text-shadow:0 1px 18px rgba(19,31,59,.7)}
+  @keyframes chip{0%{opacity:0;transform:translate(-50%,-110%)}12%{opacity:1}75%{opacity:1;transform:translate(-50%,-150%)}100%{opacity:0;transform:translate(-50%,-165%)}}
+  @media (prefers-reduced-motion:reduce){:global(.chip){animation:none;opacity:1}}
+
+  .drained{background:var(--paper);color:var(--ink)}
+  .dwrap{max-width:1280px;margin:0 auto;padding:clamp(4rem,10vh,7.5rem) clamp(1.3rem,4vw,3.4rem)}
+  .kick{font-family:var(--sans);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass-deep);margin-bottom:1.2rem}
+  .drained h2{font-size:clamp(2rem,5vw,4.2rem);letter-spacing:-.025em;line-height:1.02;font-weight:560;max-width:17ch}
+  .dbsub{margin-top:1.4rem;font-family:var(--sans);font-size:clamp(.92rem,1.5vw,1.05rem);line-height:1.6;color:var(--graphite);max-width:58ch}
+  .dbsub b{color:var(--ink);font-weight:620}
+  .index{margin-top:3rem;border-top:1px solid var(--ink)}
+  .row{display:grid;grid-template-columns:auto auto 1fr auto;align-items:baseline;gap:clamp(1rem,3vw,2.5rem);padding:1.1rem 0;border-bottom:1px solid var(--rule)}
+  .row .no{font-family:var(--sans);font-size:.68rem;color:var(--rule-strong);transition:color .25s}
+  .pubmark{width:28px;height:28px;border-radius:50%;overflow:hidden;align-self:center;background:var(--cream);border:1px solid var(--rule);display:grid;place-items:center}
+  .pubmark img{width:100%;height:100%;object-fit:contain;display:block}
+  .pubmark.mono::after{content:attr(data-initial);font-family:var(--serif);font-weight:600;font-size:.9rem;color:var(--brass-deep)}
+  .row .name{font-size:clamp(1.4rem,3.4vw,2.6rem);font-weight:420;letter-spacing:-.02em;transition:font-weight .35s,transform .35s cubic-bezier(.2,.8,.2,1)}
+  .row:hover .name{font-weight:700;transform:translateX(.3em)}
+  .row:hover .no{color:var(--brass-deep)}
+  .row .meta{font-family:var(--sans);font-size:.73rem;color:var(--graphite);text-align:right}
+  .row .meta b{color:var(--brass-deep);font-weight:600}
+  .allpubs{display:inline-flex;align-items:center;gap:.6rem;margin-top:2.4rem;font-family:var(--sans);font-size:.88rem;font-weight:560;color:var(--brass-deep)}
+  .allpubs .ln,.more .ln{width:44px;height:1px;background:currentColor;transition:width .3s cubic-bezier(.2,.8,.2,1);display:inline-block}
+  .allpubs:hover .ln{width:70px}
+
+  .features{padding:clamp(4rem,10vh,7.5rem) 0}
+  .fwrap{max-width:1280px;margin:0 auto;padding:0 clamp(1.3rem,4vw,3.4rem)}
+  .features .kick{color:var(--brass)}
+  .features h2{font-size:clamp(2rem,5vw,4.2rem);letter-spacing:-.025em;line-height:1.02;font-weight:560}
+  .features .it{font-style:italic;font-weight:340;color:var(--brass)}
+  .fgrid{margin-top:3rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+  @media(max-width:980px){.fgrid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:620px){.fgrid{grid-template-columns:1fr}}
+  .fcard{background:var(--cream);color:var(--ink);border-radius:16px;padding:1.1rem 1.1rem 1.2rem;display:flex;flex-direction:column;gap:.7rem;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+  .fcard img{width:100%;height:auto;border-radius:12px;border:1px solid var(--rule);margin-bottom:.3rem}
+  .fcard:hover{transform:translateY(-4px)}
+  .fcard h3{font-size:1.35rem;letter-spacing:-.015em;font-weight:600}
+  .fcard p{font-family:var(--sans);font-size:.86rem;line-height:1.55;color:var(--graphite);flex:1}
+  .fcard .more{font-family:var(--sans);font-size:.78rem;font-weight:600;color:var(--brass-deep);display:inline-flex;align-items:center;gap:.5rem}
+  .fcard:hover .more .ln{width:64px}
+  .fsmall{margin-top:2rem;font-family:var(--sans);font-size:.82rem;color:var(--sky)}
+  .fsmall a{color:var(--brass);border-bottom:1px solid var(--hairline-dark)}
+
+  .endcap{border-top:1px solid var(--hairline-dark);padding:clamp(4.5rem,12vh,9rem) clamp(1.3rem,4vw,3.4rem);text-align:center}
+  .endcap .p{font-size:clamp(2.6rem,9vw,7.5rem);font-weight:580;letter-spacing:-.032em;line-height:1}
+  .endcap .p .it{font-style:italic;font-weight:340;color:var(--brass)}
+  .endcap .store.big{display:inline-block;margin-top:2.6rem}
+  .endcap .sub{margin-top:1.1rem;font-family:var(--sans);font-size:.76rem;color:var(--dim)}
+</style>

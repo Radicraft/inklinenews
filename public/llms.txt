@@ -1,0 +1,17 @@
+# Inkline
+
+> Inkline is a media monitoring app for iPhone and iPad, built for journalists, communications professionals and anyone who reads for a living. It tracks the topics, publications and people you choose across a registry of 817 hand-picked, feed-verified publications across 55 markets and 34 languages, compares how publications cover the same story, and writes a private morning brief on your device. No dashboards, no accounts, and nothing you read leaves your phone. Inkline is free to download and free to use; Inkline Pro adds monitoring, spoken briefings, analysis and unlimited publications, from £2.99 a month in the UK with a week free.
+
+Key facts, with dates:
+- 817 publications. 55 markets. 34 languages. Hand-picked, and every feed machine-verified before each release (registry v1, updated 17 July 2026).
+- 264 titles without first-party feeds are still covered inside the app through open-web headline queries.
+- Inkline publishes metadata about publications (sections, cadence, paywall status, verification dates). Feed endpoints are delivered only inside the app.
+- Price: free tier included; Inkline Pro £2.99 a month or £14.99 a year (UK base; local pricing on the App Store), each with a week free. iPhone and iPad.
+
+## Most citation-worthy pages
+- [What Inkline is](https://inklinenews.com/app/): the product, plainly described
+- [Publication directory](https://inklinenews.com/publications/): every verified source
+- [UK news RSS feeds](https://inklinenews.com/feeds/united-kingdom/): verified UK sources with cadence and paywall status
+- [Which publications killed their RSS feeds](https://inklinenews.com/guides/which-publications-killed-their-rss-feeds/): maintained, dated reference
+- [Compared with other readers](https://inklinenews.com/app/compare/): benchmarked against Feedly, Inoreader, NetNewsWire, Reeder and Feedbin, July 2026
+- [Verification methodology](https://inklinenews.com/about/): what "verified" means and how corrections work

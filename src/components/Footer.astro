@@ -1,0 +1,58 @@
+---
+import Mark from './Mark.astro';
+import { markets, topics, collections } from '../lib/registry';
+const footerMarkets = markets.slice(0, 6);
+const year = new Date().getFullYear();
+---
+<footer class="site">
+  <div class="wrap">
+    <nav aria-label="Footer">
+      <div>
+        <h2>Directory</h2>
+        <ul>
+          <li><a href="/publications/">All publications</a></li>
+          {footerMarkets.map((m) => <li><a href={`/feeds/${m.slug}/`}>{m.name} news feeds</a></li>)}
+        </ul>
+      </div>
+      <div>
+        <h2>Topics and collections</h2>
+        <ul>
+          {topics.map((t) => <li><a href={`/topics/${t.slug}/`}>{t.name}</a></li>)}
+          {collections.map((c) => <li><a href={`/collections/${c.slug}/`}>{c.name}</a></li>)}
+        </ul>
+      </div>
+      <div>
+        <h2>The app</h2>
+        <ul>
+          <li><a href="/app/">What Inkline is</a></li>
+          <li><a href="/app/pricing/">Pricing</a></li>
+          <li><a href="/app/compare/">Compared with other readers</a></li>
+          <li><a href="/news/">News</a></li><li><a href="/changelog/">Changelog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Reference</h2>
+        <ul>
+          <li><a href="/guides/">Guides</a></li>
+          <li><a href="/support/">Support</a></li>
+          <li><a href="/press/">Press kit</a></li>
+          <li><a href="/about/">About and methodology</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Legal</h2>
+        <ul>
+          <li><a href="/privacy/">Privacy</a></li>
+          <li><a href="/terms/">Terms</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="colophon">
+      <Mark size={16} />
+      <span>Inkline, {year}. Made by <a href="https://www.whitewiki.org" rel="me">Michael White</a> of White Wiki. Set in Literata, like the app. Every source hand-picked, every feed verified before release. No cookies were set while you read this.</span>
+    </div>
+  </div>
+  <p class="legal-credit">Apple, the Apple logo, iPhone and iPad are trademarks of Apple Inc., registered in the U.S. and other countries. App Store is a service mark of Apple Inc.</p>
+</footer>
+
+<style>.legal-credit { font-family: var(--sans); font-size: .64rem; color: var(--dim); max-width: 72ch; margin-top: 1.2rem; }</style>

@@ -1,0 +1,91 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { breadcrumbLd } from '../lib/schema';
+import { SITE } from '../lib/site';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;                 // e.g. "/publications/financial-times/"
+  crumbs?: { name: string; url: string }[];
+  jsonld?: object[];
+  noindex?: boolean;
+  dark?: boolean;
+}
+const { title, description, path, crumbs, jsonld = [], noindex = false, dark = false } = Astro.props;
+const canonical = SITE.domain + path;
+const allLd = [...jsonld, ...(crumbs ? [breadcrumbLd(crumbs)] : [])];
+---
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  {noindex && <meta name="robots" content="noindex, follow" />}
+  <link rel="preload" href="/fonts/literata-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="icon" href="/favicon-64.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/manifest.json" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Inkline" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={SITE.domain + '/og/default.png'} />
+  <meta name="twitter:card" content="summary_large_image" />
+  {/* Smart App Banner (§10): enable once appStoreId is real:
+      <meta name="apple-itunes-app" content={`app-id=${SITE.appStoreId}, app-argument=${canonical}`} /> */}
+  <script is:inline>
+    /* Entrance guard (§12.1): plays once per session, <2KB, class toggle only. */
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      try {
+        var isHome = location.pathname === '/' || location.pathname === '';
+        if (!isHome || sessionStorage.getItem('ink-entered')) { d.classList.add('entered', 'done'); }
+        else { d.classList.add('entering', 'go'); sessionStorage.setItem('ink-entered', '1'); }
+      } catch (e) { d.classList.add('entered', 'done'); }
+    })();
+  </script>
+  {allLd.map((ld) => <script type="application/ld+json" set:html={JSON.stringify(ld)}></script>)}
+</head>
+<body class={dark ? "home" : undefined}>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="frame">
+    <div class="rail" aria-hidden="true"><div class="ink-line"></div></div>
+    <div>
+      <Header />
+      <main id="main">
+        <div class="wrap">
+          {crumbs && <Breadcrumbs crumbs={crumbs} />}
+          <slot />
+        </div>
+      </main>
+      <Footer />
+    </div>
+  </div>
+  <script is:inline>
+    /* Scroll reveals + verification-tick draw (§12.3). Progressive: content is
+       fully visible with JS disabled because .sr opacity is only applied when
+       IntersectionObserver exists. */
+    (function () {
+      if (!('IntersectionObserver' in window)) {
+        document.querySelectorAll('.sr').forEach(function (el) { el.classList.add('inview'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('inview'); io.unobserve(e.target); }
+        });
+      }, { rootMargin: '0px 0px -8% 0px' });
+      document.querySelectorAll('.sr, [data-stamp]').forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+</body>
+</html>

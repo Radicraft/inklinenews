@@ -1,0 +1,40 @@
+---
+import Base from '../../layouts/Base.astro';
+import Faq from '../../components/Faq.astro';
+const crumbs = [{ name: 'Home', url: '/' }, { name: 'Support', url: '/support/' }];
+const topics = [
+  { slug: 'adding-sources', name: 'Adding sources' },
+  { slug: 'daily-briefs', name: 'Daily briefs' },
+  { slug: 'offline-reading', name: 'Offline reading' },
+  { slug: 'ipad-and-pencil', name: 'iPad and Apple Pencil' },
+  { slug: 'inkline-radio', name: 'Inkline Radio' },
+  { slug: 'watchwords', name: 'Watchwords and the Watch tab' },
+  { slug: 'subscription-and-trial', name: 'Free tier, Pro and billing' },
+  { slug: 'restoring-purchases', name: 'Restoring purchases' },
+  { slug: 'troubleshooting-monitors', name: 'Troubleshooting monitors' },
+];
+const faq = [
+  { q: 'Does Inkline require an account?', a: 'No. Inkline has no accounts and no server; everything runs on your device. Your subscription belongs to your Apple Account, which is also how it restores on a new device.' },
+  { q: 'Which devices does Inkline support?', a: 'Inkline is a universal iPhone and iPad app. Apple Intelligence features, including daily briefs and summarisation, require a device that supports Apple Intelligence.' },
+  { q: 'Why can\u2019t I see feed URLs anywhere?', a: 'The verified feed endpoints are delivered inside the app rather than published on this site. Publication pages list section names, cadence and verification dates, which answer the question of what is covered without exposing the registry.' },
+  { q: 'How do I report a problem with a source?', a: 'Use the contact route below and name the publication. Sources are re-verified quarterly, but a report moves a title to the front of the queue and corrections are noted on its page.' },
+];
+---
+<Base
+  title="Inkline support and help centre | Inkline"
+  description="Help with adding sources, daily briefs, offline reading, iPad and Pencil, subscriptions and troubleshooting monitors, plus common questions."
+  path="/support/"
+  crumbs={crumbs}
+>
+  <p class="kicker">Support</p>
+  <h1>Help centre</h1>
+  <p class="prose">One page per topic, kept short and current. If a question isn't answered here, the contact route at the foot reaches a person.</p>
+  <ul class="pub-list">
+    {topics.map((t) => <li><a href={`/support/${t.slug}/`}>{t.name}</a></li>)}
+  </ul>
+  <Faq items={faq} heading="Frequently asked" />
+  <div class="prose sr">
+    <h2>Contact</h2>
+    <p>Email <a href="mailto:hello@inklinenews.com">hello@inklinenews.com</a> and a person answers. Naming the app version and your device helps; Settings inside the app shows both.</p>
+  </div>
+</Base>

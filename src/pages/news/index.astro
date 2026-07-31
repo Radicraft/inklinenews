@@ -1,0 +1,36 @@
+---
+import Base from '../../layouts/Base.astro';
+import news from '../../data/news.json';
+const crumbs = [{ name: 'Home', url: '/' }, { name: 'News', url: '/news/' }];
+const fmt = (iso) => new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<Base
+  title="Inkline news and app updates | Inkline"
+  description="Release notes, app updates and writing about Inkline, published on White Wiki and gathered here."
+  path="/news/"
+  crumbs={crumbs}
+>
+  <p class="kicker">News</p>
+  <h1>Inkline news</h1>
+  <p class="answer">Updates about the app: releases, features and the thinking behind them. Posts are published on White Wiki, Michael White's publication on communications and reputation, and everything tagged Inkline lands here.</p>
+
+  <ul class="newslist">
+    {news.items.map((n) => (
+      <li>
+        <p class="dateline">{fmt(n.published)}</p>
+        <h2><a href={n.url} rel="noopener">{n.title}</a></h2>
+        <p>{n.excerpt}</p>
+      </li>
+    ))}
+  </ul>
+
+  <p class="small">Read everything, including the communications writing, at <a href="https://www.whitewiki.org" rel="noopener">whitewiki.org</a>. For version-by-version detail, the <a href="/changelog/">changelog</a> stays on this site.</p>
+</Base>
+
+<style>
+  .newslist { list-style: none; padding: 0; margin: 2.5rem 0; }
+  .newslist li { border-top: 1px solid var(--rule); padding: 1.4rem 0; }
+  .newslist .dateline { font-family: var(--sans); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--brass-deep); margin-bottom: .3rem; }
+  .newslist h2 { font-size: clamp(1.3rem, 3vw, 1.8rem); letter-spacing: -.015em; margin: 0 0 .4rem; }
+  .newslist p { font-family: var(--sans); font-size: .9rem; line-height: 1.6; color: var(--graphite); max-width: 62ch; }
+</style>

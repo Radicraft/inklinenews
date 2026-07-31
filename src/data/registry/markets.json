@@ -1,0 +1,855 @@
+{
+ "markets": [
+  {
+   "name": "United States",
+   "slug": "united-states",
+   "code": "US",
+   "count": 182,
+   "languages": [
+    "en",
+    "es"
+   ],
+   "topics": [
+    "business",
+    "capital",
+    "culture",
+    "energy",
+    "finance",
+    "health",
+    "media",
+    "news",
+    "politics",
+    "science",
+    "sport",
+    "tech",
+    "world"
+   ]
+  },
+  {
+   "name": "United Kingdom",
+   "slug": "united-kingdom",
+   "code": "GB",
+   "count": 125,
+   "languages": [
+    "en"
+   ],
+   "topics": [
+    "business",
+    "capital",
+    "culture",
+    "energy",
+    "finance",
+    "health",
+    "media",
+    "news",
+    "politics",
+    "science",
+    "sport",
+    "tech",
+    "world"
+   ]
+  },
+  {
+   "name": "China",
+   "slug": "china",
+   "code": "CN",
+   "count": 43,
+   "languages": [
+    "ar",
+    "de",
+    "en",
+    "es",
+    "fr",
+    "ja",
+    "ko",
+    "pt",
+    "ru",
+    "zh"
+   ],
+   "topics": [
+    "business",
+    "culture",
+    "energy",
+    "finance",
+    "news",
+    "politics",
+    "world"
+   ]
+  },
+  {
+   "name": "Poland",
+   "slug": "poland",
+   "code": "PL",
+   "count": 38,
+   "languages": [
+    "pl"
+   ],
+   "topics": [
+    "business",
+    "capital",
+    "culture",
+    "energy",
+    "finance",
+    "health",
+    "media",
+    "news",
+    "politics",
+    "science",
+    "sport",
+    "tech"
+   ]
+  },
+  {
+   "name": "Brazil",
+   "slug": "brazil",
+   "code": "BR",
+   "count": 33,
+   "languages": [
+    "en",
+    "pt"
+   ],
+   "topics": [
+    "business",
+    "culture",
+    "finance",
+    "news",
+    "politics",
+    "science",
+    "sport"
+   ]
+  },
+  {
+   "name": "Germany",
+   "slug": "germany",
+   "code": "DE",
+   "count": 31,
+   "languages": [
+    "de",
+    "en"
+   ],
+   "topics": [
+    "business",
+    "culture",
+    "energy",
+    "finance",
+    "news",
+    "politics",
+    "science",
+    "tech",
+    "world"
+   ]
+  },
+  {
+   "name": "India",
+   "slug": "india",
+   "code": "IN",
+   "count": 25,
+   "languages": [
+    "bn",
+    "en",
+    "hi",
+    "kn",
+    "ml",
+    "mr"
+   ],
+   "topics": [
+    "business",
+    "finance",
+    "media",
+    "news",
+    "politics"
+   ]
+  },
+  {
+   "name": "France",
+   "slug": "france",
+   "code": "FR",
+   "count": 23,
+   "languages": [
+    "en",
+    "fr"
+   ],
+   "topics": [
+    "business",
+    "finance",
+    "news",
+    "politics",
+    "tech",
+    "world"
+   ]
+  },
+  {
+   "name": "Italy",
+   "slug": "italy",
+   "code": "IT",
+   "count": 18,
+   "languages": [
+    "it"
+   ],
+   "topics": [
+    "business",
+    "finance",
+    "news",
+    "politics"
+   ]
+  },
+  {
+   "name": "Australia",
+   "slug": "australia",
+   "code": "AU",
+   "count": 15,
+   "languages": [
+    "en"
+   ],
+   "topics": [
+    "business",
+    "culture",
+    "finance",
+    "media",
+    "news",
+    "politics",
+    "science"
+   ]
+  },
+  {
+   "name": "Belgium",
+   "slug": "belgium",
+   "code": "BE",
+   "count": 15,
+   "languages": [
+    "en",
+    "fr",
+    "nl"
+   ],
+   "topics": [
+    "business",
+    "finance",
+    "news",
+    "politics",
+    "tech"
+   ]
+  },
+  {
+   "name": "Canada",
+   "slug": "canada",
+   "code": "CA",
+   "count": 13,
+   "languages": [
+    "en",
+    "fr"
+   ],
+   "topics": [
+    "business",
+    "finance",
+    "news"
+   ]
+  },
+  {
+   "name": "Spain",
+   "slug": "spain",
+   "code": "ES",
+   "count": 13,
+   "languages": [
+    "es"
+   ],
+   "topics": [
+    "business",
+    "finance",
+    "news",
+    "politics"
+   ]
+  },
+  {
+   "name": "Netherlands",
+   "slug": "netherlands",
+   "code": "NL",
+   "count": 13,
+   "languages": [
+    "en",
+    "nl"
+   ],
+   "topics": [
+    "business",
+    "finance",
+    "news",
+    "tech"
+   ]
+  },
+  {
+   "name": "Norway",
+   "slug": "norway",
+   "code": "NO",
+   "count": 11,
+   "languages": [
+    "en",
+    "no"
+   ],
+   "topics": [
+    "business",
+    "energy",
+    "finance",
+    "news"
+   ]
+  },
+  {
+   "name": "Russia",
+   "slug": "russia",
+   "code": "RU",
+   "count": 11,
+   "languages": [
+    "en",
+    "ru"
+   ],
+   "topics": [
+    "business",
+    "finance",
+    "news",
+    "politics",
+    "world"
+   ]
+  },
+  {
+   "name": "Switzerland",
+   "slug": "switzerland",
+   "code": "CH",
+   "count": 10,
+   "languages": [
+    "de",
+    "en",
+    "fr"
+   ],
+   "topics": [
+    "business",
+    "finance",
+    "news",
+    "world"
+   ]
+  },
+  {
+   "name": "Mexico",
+   "slug": "mexico",
+   "code": "MX",
+   "count": 10,
+   "languages": [
+    "es"
+   ],
+   "topics": [
+    "business",
+    "finance",
+    "news",
+    "politics"
+   ]
+  },
+  {
+   "name": "Sweden",
+   "slug": "sweden",
+   "code": "SE",
+   "count": 10,
+   "languages": [
+    "sv"
+   ],
+   "topics": [
+    "business",
+    "finance",
+    "news",
+    "tech"
+   ]
+  },
+  {
+   "name": "Czechia",
+   "slug": "czechia",
+   "code": "CZ",
+   "count": 9,
+   "languages": [
+    "cs"
+   ],
+   "topics": [
+    "business",
+    "finance",
+    "news",
+    "politics"
+   ]
+  },
+  {
+   "name": "Denmark",
+   "slug": "denmark",
+   "code": "DK",
+   "count": 9,
+   "languages": [
+    "da"
+   ],
+   "topics": [
+    "business",
+    "finance",
+    "news"
+   ]
+  },
+  {
+   "name": "Türkiye",
+   "slug": "turkiye",
+   "code": "TR",
+   "count": 9,
+   "languages": [
+    "en",
+    "tr"
+   ],
+   "topics": [
+    "news",
+    "politics",
+    "world"
+   ]
+  },
+  {
+   "name": "Japan",
+   "slug": "japan",
+   "code": "JP",
+   "count": 8,
+   "languages": [
+    "en",
+    "ja"
+   ],
+   "topics": [
+    "business",
+    "news",
+    "world"
+   ]
+  },
+  {
+   "name": "South Korea",
+   "slug": "south-korea",
+   "code": "KR",
+   "count": 8,
+   "languages": [
+    "en",
+    "ko"
+   ],
+   "topics": [
+    "business",
+    "finance",
+    "news",
+    "politics"
+   ]
+  },
+  {
+   "name": "Portugal",
+   "slug": "portugal",
+   "code": "PT",
+   "count": 8,
+   "languages": [
+    "pt"
+   ],
+   "topics": [
+    "business",
+    "finance",
+    "news"
+   ]
+  },
+  {
+   "name": "Singapore",
+   "slug": "singapore",
+   "code": "SG",
+   "count": 8,
+   "languages": [
+    "en"
+   ],
+   "topics": [
+    "business",
+    "finance",
+    "news",
+    "tech"
+   ]
+  },
+  {
+   "name": "South Africa",
+   "slug": "south-africa",
+   "code": "ZA",
+   "count": 8,
+   "languages": [
+    "en"
+   ],
+   "topics": [
+    "business",
+    "finance",
+    "news",
+    "politics"
+   ]
+  },
+  {
+   "name": "Finland",
+   "slug": "finland",
+   "code": "FI",
+   "count": 7,
+   "languages": [
+    "fi"
+   ],
+   "topics": [
+    "business",
+    "finance",
+    "news"
+   ]
+  },
+  {
+   "name": "Ireland",
+   "slug": "ireland",
+   "code": "IE",
+   "count": 7,
+   "languages": [
+    "en"
+   ],
+   "topics": [
+    "business",
+    "finance",
+    "news",
+    "tech"
+   ]
+  },
+  {
+   "name": "Malaysia",
+   "slug": "malaysia",
+   "code": "MY",
+   "count": 7,
+   "languages": [
+    "en"
+   ],
+   "topics": [
+    "business",
+    "finance",
+    "news",
+    "politics"
+   ]
+  },
+  {
+   "name": "Argentina",
+   "slug": "argentina",
+   "code": "AR",
+   "count": 6,
+   "languages": [
+    "es"
+   ],
+   "topics": [
+    "business",
+    "finance",
+    "news",
+    "politics"
+   ]
+  },
+  {
+   "name": "Austria",
+   "slug": "austria",
+   "code": "AT",
+   "count": 6,
+   "languages": [
+    "de"
+   ],
+   "topics": [
+    "business",
+    "news"
+   ]
+  },
+  {
+   "name": "Chile",
+   "slug": "chile",
+   "code": "CL",
+   "count": 6,
+   "languages": [
+    "es"
+   ],
+   "topics": [
+    "business",
+    "finance",
+    "news",
+    "politics"
+   ]
+  },
+  {
+   "name": "Greece",
+   "slug": "greece",
+   "code": "GR",
+   "count": 6,
+   "languages": [
+    "el",
+    "en"
+   ],
+   "topics": [
+    "business",
+    "finance",
+    "news"
+   ]
+  },
+  {
+   "name": "Hungary",
+   "slug": "hungary",
+   "code": "HU",
+   "count": 6,
+   "languages": [
+    "hu"
+   ],
+   "topics": [
+    "business",
+    "finance",
+    "news"
+   ]
+  },
+  {
+   "name": "New Zealand",
+   "slug": "new-zealand",
+   "code": "NZ",
+   "count": 6,
+   "languages": [
+    "en"
+   ],
+   "topics": [
+    "business",
+    "finance",
+    "news"
+   ]
+  },
+  {
+   "name": "Romania",
+   "slug": "romania",
+   "code": "RO",
+   "count": 6,
+   "languages": [
+    "ro"
+   ],
+   "topics": [
+    "business",
+    "finance",
+    "news",
+    "politics"
+   ]
+  },
+  {
+   "name": "Ukraine",
+   "slug": "ukraine",
+   "code": "UA",
+   "count": 6,
+   "languages": [
+    "en",
+    "uk"
+   ],
+   "topics": [
+    "business",
+    "news",
+    "politics",
+    "world"
+   ]
+  },
+  {
+   "name": "Vietnam",
+   "slug": "vietnam",
+   "code": "VN",
+   "count": 6,
+   "languages": [
+    "en",
+    "vi"
+   ],
+   "topics": [
+    "news"
+   ]
+  },
+  {
+   "name": "Serbia",
+   "slug": "serbia",
+   "code": "RS",
+   "count": 5,
+   "languages": [
+    "sr"
+   ],
+   "topics": [
+    "news"
+   ]
+  },
+  {
+   "name": "Indonesia",
+   "slug": "indonesia",
+   "code": "ID",
+   "count": 4,
+   "languages": [
+    "en",
+    "id"
+   ],
+   "topics": [
+    "news"
+   ]
+  },
+  {
+   "name": "Israel",
+   "slug": "israel",
+   "code": "IL",
+   "count": 4,
+   "languages": [
+    "en"
+   ],
+   "topics": [
+    "finance",
+    "news",
+    "politics"
+   ]
+  },
+  {
+   "name": "Slovakia",
+   "slug": "slovakia",
+   "code": "SK",
+   "count": 4,
+   "languages": [
+    "sk"
+   ],
+   "topics": [
+    "news",
+    "politics"
+   ]
+  },
+  {
+   "name": "Slovenia",
+   "slug": "slovenia",
+   "code": "SI",
+   "count": 3,
+   "languages": [
+    "sl"
+   ],
+   "topics": [
+    "news"
+   ]
+  },
+  {
+   "name": "Taiwan",
+   "slug": "taiwan",
+   "code": "TW",
+   "count": 3,
+   "languages": [
+    "en",
+    "zh"
+   ],
+   "topics": [
+    "news"
+   ]
+  },
+  {
+   "name": "Bosnia and Herzegovina",
+   "slug": "bosnia-and-herzegovina",
+   "code": "BA",
+   "count": 2,
+   "languages": [
+    "bs"
+   ],
+   "topics": [
+    "news"
+   ]
+  },
+  {
+   "name": "Kazakhstan",
+   "slug": "kazakhstan",
+   "code": "KZ",
+   "count": 2,
+   "languages": [
+    "en",
+    "ru"
+   ],
+   "topics": [
+    "news"
+   ]
+  },
+  {
+   "name": "Nigeria",
+   "slug": "nigeria",
+   "code": "NG",
+   "count": 2,
+   "languages": [
+    "en"
+   ],
+   "topics": [
+    "news",
+    "politics"
+   ]
+  },
+  {
+   "name": "United Arab Emirates",
+   "slug": "united-arab-emirates",
+   "code": "AE",
+   "count": 1,
+   "languages": [
+    "en"
+   ],
+   "topics": [
+    "news"
+   ]
+  },
+  {
+   "name": "Egypt",
+   "slug": "egypt",
+   "code": "EG",
+   "count": 1,
+   "languages": [
+    "en"
+   ],
+   "topics": [
+    "news",
+    "politics"
+   ]
+  },
+  {
+   "name": "Hong Kong",
+   "slug": "hong-kong",
+   "code": "HK",
+   "count": 1,
+   "languages": [
+    "en"
+   ],
+   "topics": [
+    "business",
+    "news",
+    "world"
+   ]
+  },
+  {
+   "name": "Kenya",
+   "slug": "kenya",
+   "code": "KE",
+   "count": 1,
+   "languages": [
+    "en"
+   ],
+   "topics": [
+    "news"
+   ]
+  },
+  {
+   "name": "Lithuania",
+   "slug": "lithuania",
+   "code": "LT",
+   "count": 1,
+   "languages": [
+    "en"
+   ],
+   "topics": [
+    "business"
+   ]
+  },
+  {
+   "name": "Qatar",
+   "slug": "qatar",
+   "code": "QA",
+   "count": 1,
+   "languages": [
+    "en"
+   ],
+   "topics": [
+    "news",
+    "world"
+   ]
+  },
+  {
+   "name": "Saudi Arabia",
+   "slug": "saudi-arabia",
+   "code": "SA",
+   "count": 1,
+   "languages": [
+    "en"
+   ],
+   "topics": [
+    "news"
+   ]
+  }
+ ]
+}

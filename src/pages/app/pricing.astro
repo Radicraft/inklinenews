@@ -1,0 +1,43 @@
+---
+import Base from '../../layouts/Base.astro';
+import StoreBadge from '../../components/StoreBadge.astro';
+import Faq from '../../components/Faq.astro';
+import { appStoreUrl } from '../../lib/site';
+const crumbs = [{ name: 'Home', url: '/' }, { name: 'The app', url: '/app/' }, { name: 'Pricing', url: '/app/pricing/' }];
+const faq = [
+  { q: 'What does the free tier include?', a: 'Reading and the offline reader for up to 50 publications, bookmarks, highlights and notes, search, widgets, Voices, and reading any single article aloud. No time limit and no account.' },
+  { q: 'What does Inkline Pro add?', a: 'Monitoring (topic monitors and watchwords, with notifications), spoken briefings, the written AI Brief and Compare Coverage analysis, and unlimited publications.' },
+  { q: 'Is there a trial?', a: 'Both Pro plans start with a week free through the App Store. Cancel during the week and you pay nothing.' },
+  { q: 'How do I cancel?', a: 'Through your Apple account subscription settings, any time. Access runs to the end of the paid period, and your reading, notes and publications stay on your device on the free tier.' },
+];
+---
+<Base
+  title="Inkline pricing: free to use, Pro from £2.99 a month | Inkline"
+  description="Inkline is free to download and use. Inkline Pro adds monitoring, spoken briefings, analysis and unlimited publications. UK pricing shown; the App Store shows local prices."
+  path="/app/pricing/"
+  crumbs={crumbs}
+>
+  <p class="kicker">Pricing</p>
+  <h1>Free to use. Pro when the job demands it.</h1>
+  <p class="answer">Inkline is free to download and free to use, with no account and no time limit. Inkline Pro adds the monitoring toolkit, from £2.99 a month or £14.99 a year in the UK, each with a week free. The App Store shows local pricing for your country.</p>
+
+  <table>
+    <caption>What each tier includes</caption>
+    <thead><tr><th scope="col">Feature</th><th scope="col">Free</th><th scope="col">Pro</th></tr></thead>
+    <tbody>
+      <tr><td>Reading and the offline reader</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+      <tr><td>Publications</td><td>Up to 50</td><td>Unlimited</td></tr>
+      <tr><td>Bookmarks, highlights and notes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+      <tr><td>Search, widgets and Voices</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+      <tr><td>Read a single article aloud</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+      <tr><td>Topic monitors and watchwords, with notifications</td><td>No</td><td class="yes">Yes</td></tr>
+      <tr><td>Spoken briefings (Inkline Radio)</td><td>No</td><td class="yes">Yes</td></tr>
+      <tr><td>The written AI Brief and Compare Coverage analysis</td><td>No</td><td class="yes">Yes</td></tr>
+    </tbody>
+  </table>
+
+  <p class="small">Prices are the UK base. Subscriptions are billed and managed by Apple; the paywall in the app always shows the live local price.</p>
+  <p><StoreBadge href={appStoreUrl('web-pricing')} /></p>
+
+  <Faq items={faq} />
+</Base>

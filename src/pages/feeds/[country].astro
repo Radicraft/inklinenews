@@ -1,0 +1,48 @@
+---
+import Base from '../../layouts/Base.astro';
+import Faq from '../../components/Faq.astro';
+import { markets, pubsInMarket, proseForMarket, accessLabel, REGISTRY_UPDATED, formatDate } from '../../lib/registry';
+
+export function getStaticPaths() {
+  return markets.map((m) => ({ params: { country: m.slug } }));
+}
+const m = markets.find((x) => x.slug === Astro.params.country)!;
+const pubs = pubsInMarket(m.slug);
+const prose = proseForMarket(m.slug);
+const updated = formatDate(REGISTRY_UPDATED);
+const free = pubs.filter((p) => p.paywall === 'none').length;
+const crumbs = [{ name: 'Home', url: '/' }, { name: 'Publications', url: '/publications/' }, { name: m.name, url: `/feeds/${m.slug}/` }];
+const faq = [
+  { q: `How many ${m.name} publications does Inkline cover?`, a: `${pubs.length} at the registry pass of ${updated}, in ${m.languages.join(', ')}. ${free} are free to read.` },
+  { q: `Are these feeds verified?`, a: `Yes. The registry is chosen by hand and every entry is feed-verified before each app release; entries that fail drop out. The pass shown here finished on ${updated}.` },
+];
+---
+<Base
+  title={`${m.name} news RSS feeds: ${pubs.length} verified sources | Inkline`}
+  description={`Every ${m.name} publication in Inkline's registry: ${pubs.length} sources with coverage and access status, feed-verified ${updated}.`}
+  path={`/feeds/${m.slug}/`}
+  crumbs={crumbs}
+>
+  <p class="kicker">{m.code} · {pubs.length} sources</p>
+  <h1>{m.name} news RSS feeds</h1>
+  <p class="answer">Inkline's registry covers {pubs.length} {m.name} publications in {m.languages.length === 1 ? m.languages[0] : m.languages.join(' and ')}, spanning {m.topics.slice(0, 5).join(', ')}. {free} are free to read. Every entry was feed-verified in the pass of {updated}.</p>
+
+  {prose && <div class="prose"><h2>{prose.heading}</h2><p>{prose.body}</p></div>}
+
+  <table>
+    <caption>Registry entries for {m.name}, updated {updated}</caption>
+    <thead><tr><th scope="col">Publication</th><th scope="col">Coverage</th><th scope="col">Access</th></tr></thead>
+    <tbody>
+      {pubs.map((p) => (
+        <tr>
+          <td>{p.hasPage ? <a href={`/publications/${p.slug}/`}>{p.name}</a> : p.name}{p.global && <span class="small"> · global</span>}</td>
+          <td>{p.topics.join(', ')}</td>
+          <td>{accessLabel(p.paywall)}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+
+  <Faq items={faq} />
+  <p class="small"><a href="/publications/">All 817 publications</a></p>
+</Base>

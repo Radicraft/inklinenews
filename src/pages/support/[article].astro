@@ -1,0 +1,63 @@
+---
+import Base from '../../layouts/Base.astro';
+
+export function getStaticPaths() {
+  const articles = [
+    { slug: 'adding-sources', name: 'Adding sources', body: [
+      'Search by publication name and Inkline resolves the verified feeds for you; there are no URLs to find or paste. The registry covers 817 publications, and unified search also finds desks and journalists.',
+      'For a site outside the directory, use "capture any website" from the share sheet in Safari: Inkline detects available feeds on the page and, where a publication offers none, tells you so rather than silently failing. Starter collections add a whole verified pack in one tap.',
+    ]},
+    { slug: 'daily-briefs', name: 'Daily briefs', body: [
+      'Briefs are written by Apple Intelligence on your device from the sources you follow, grouped by the interests set during onboarding. They appear on the Front Page each morning and require a device that supports Apple Intelligence.',
+      'If briefs are missing, check that Apple Intelligence is enabled in Settings and that Inkline has had a chance to sync overnight. Briefs are written from synced content, so a device that has been offline for days will produce a thinner brief until it catches up.',
+    ]},
+    { slug: 'offline-reading', name: 'Offline reading', body: [
+      'Inkline caches full article text while you have a connection, so your feeds remain readable underground or in the air. Sync happens automatically when the app opens and periodically in the background as iOS allows.',
+      'Background refresh is best-effort by design: iOS decides when background work runs, so the freshest sync always comes from opening the app briefly before going offline.',
+    ]},
+    { slug: 'ipad-and-pencil', name: 'iPad and Apple Pencil', body: [
+      'On iPad, Inkline runs as a full workspace: a Today front page, a landscape reading layout, keyboard shortcuts, pointer support and drag and drop. Your subscription covers iPhone and iPad together.',
+      'Apple Pencil notes are handwritten in the margin of an article and stay attached to it. Find them again from the article itself or from your notes list.',
+    ]},
+    { slug: 'inkline-radio', name: 'Inkline Radio', body: [
+      'Inkline Radio reads a short spoken briefing generated on your phone. Find it on the Today page; playback controls appear in the player bar and work with your car and headphones like any audio app.',
+      'The voice model ships inside the app, so briefings work offline and nothing you follow leaves the device. If playback will not start, check the mute switch and volume first, then force-quit and reopen the app. Reading a single article aloud from the reader is free for everyone; the full spoken briefing is part of Inkline Pro.',
+    ] },
+    { slug: 'watchwords', name: 'Watchwords and the Watch tab', body: [
+      'A watchword flags arriving stories that mention a term you care about: a client, a competitor, a spokesperson. Add and manage watchwords from the Watch tab; matched stories gather there and can send a notification.',
+      'Watchwords check stories once, when they arrive, so a new watchword applies from now on rather than searching backwards. Whole-word matching is on by default to keep short terms from over-matching. Watchwords are part of Inkline Pro, alongside monitors.',
+    ] },
+    { slug: 'subscription-and-trial', name: 'Free tier, Pro and billing', body: [
+      'Inkline is free to use: reading, the offline reader for up to 50 publications, notes, search, widgets and Voices, with no time limit. Inkline Pro adds monitors, watchwords, spoken briefings, analysis and unlimited publications, at £2.99 a month or £14.99 a year in the UK, each starting with a week free through the App Store. Billing is handled entirely by Apple; Inkline never sees payment details.',
+      'To cancel, open Settings on your iPhone, tap your name, then Subscriptions, then Inkline. Cancelling during the trial means you are not charged; cancelling later keeps access until the period ends.',
+    ]},
+    { slug: 'restoring-purchases', name: 'Restoring purchases', body: [
+      'On a new device, or after reinstalling, open Inkline settings and tap Restore Purchases. Because subscriptions belong to your Apple Account rather than to the app, signing in with the same account is all that is required.',
+      'If restore fails, confirm the device is signed into the Apple Account that made the purchase, then try again after a few minutes. App Store receipts occasionally lag a reinstall.',
+    ]},
+    { slug: 'troubleshooting-monitors', name: 'Troubleshooting monitors', body: [
+      'A monitor that goes quiet usually reflects the source, not the app: publications publish unevenly, and weekend gaps in weekday-weighted titles are normal. Each publication page on this site lists typical cadence so you can tell silence from failure.',
+      'If a specific source has genuinely stopped, check its page here for verification status. Publishers move and retire feeds without notice; the quarterly verification pass exists to catch exactly this, and the in-app directory updates when it does.',
+    ]},
+  ];
+  return articles.map((a) => ({ params: { article: a.slug }, props: { a } }));
+}
+const { a } = Astro.props;
+const crumbs = [
+  { name: 'Home', url: '/' }, { name: 'Support', url: '/support/' },
+  { name: a.name, url: `/support/${a.slug}/` },
+];
+---
+<Base
+  title={`${a.name}: Inkline support | Inkline`}
+  description={a.body[0]}
+  path={`/support/${a.slug}/`}
+  crumbs={crumbs}
+>
+  <p class="kicker">Support</p>
+  <h1>{a.name}</h1>
+  <div class="prose">
+    {a.body.map((p) => <p>{p}</p>)}
+  </div>
+  <p class="small" style="margin-top:2rem">Still stuck? <a href="/support/">Back to the help centre</a> or use the contact route there.</p>
+</Base>

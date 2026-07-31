@@ -1,0 +1,17 @@
+---
+import Mark from './Mark.astro';
+import { appStoreUrl } from '../lib/site';
+---
+<header class="site">
+  <a class="lockup" href="/">
+    <Mark />
+    <span class="word">Inkline</span>
+  </a>
+  <nav class="primary" aria-label="Primary">
+    <a href="/publications/">Publications</a>
+    <a href="/guides/">Guides</a><a href="/news/">News</a>
+    <a href="/app/">The app</a>
+    <a href="/support/">Support</a>
+  </nav>
+  <a class="btn" href={appStoreUrl('web-header')}>Open in Inkline</a>
+</header>

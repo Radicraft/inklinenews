@@ -1,0 +1,32 @@
+{
+ "_sample": true,
+ "collections": [
+  {
+   "slug": "pr-and-comms",
+   "name": "PR and communications",
+   "audience": "PR and communications professionals",
+   "intro": "The starter pack Inkline's own users reach for first. It pairs the reach titles every comms plan has to account for with the trade press that tracks the industry itself. One tap in Inkline adds the whole pack; each title below links to its verified detail page.",
+   "slugs": [
+    "financial-times",
+    "the-guardian",
+    "bbc-news",
+    "press-gazette",
+    "pr-week"
+   ]
+  },
+  {
+   "slug": "financial-journalism",
+   "name": "Financial journalism",
+   "audience": "IR teams and financial communications specialists",
+   "intro": "Built for anyone whose morning starts with what the market read overnight. Wires first, then the business dailies across the three markets that set the European day, with cadence notes on each page because timing is most of the job.",
+   "slugs": [
+    "reuters",
+    "financial-times",
+    "the-wall-street-journal",
+    "handelsblatt",
+    "the-economist",
+    "city-a-m"
+   ]
+  }
+ ]
+}

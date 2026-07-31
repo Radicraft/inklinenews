@@ -1,0 +1,63 @@
+---
+import Base from '../../layouts/Base.astro';
+import StoreBadge from '../../components/StoreBadge.astro';
+import { appLd } from '../../lib/schema';
+import { appStoreUrl, SITE } from '../../lib/site';
+const crumbs = [{ name: 'Home', url: '/' }, { name: 'The app', url: '/app/' }];
+const features = [
+  { slug: 'daily-briefs', name: 'Apple Intelligence daily briefs', line: 'A morning brief written from your own feeds, on the device.' },
+  { slug: 'verified-directory', name: 'The verified directory', line: '817 hand-picked publications across 55 markets, feed-verified before every release.' },
+  { slug: 'coverage-timeline', name: 'the coverage timeline', line: 'One story, every publication that ran it, side by side.' },
+  { slug: 'offline-reading', name: 'Offline reading', line: 'Full articles cached for the Tube, the flight, the dead spot.' },
+  { slug: 'ipad-and-pencil', name: 'iPad and Apple Pencil', line: 'A landscape reading workspace with handwritten notes.' },
+  { slug: 'voices', name: 'Voices', line: 'A newsroom directory. Follow individual journalists by name.' },
+  { slug: 'inkline-radio', name: 'Inkline Radio', line: 'Your briefing as a short spoken bulletin, generated on the phone.' },
+  { slug: 'watchwords', name: 'Watchwords', line: 'Flag clients, competitors and spokespeople as stories arrive.' },
+];
+---
+<Base
+  title="Inkline for iPhone and iPad: what it is and how it works | Inkline"
+  description={SITE.boilerplate}
+  path="/app/"
+  crumbs={crumbs}
+  jsonld={[appLd()]}
+>
+  <p class="kicker">The app</p>
+  <h1>A news reader with a fact-checked address book</h1>
+  <div class="prose">
+    <p style="font-size:1.12rem">{SITE.boilerplate}</p>
+
+  <div class="gallery" aria-label="Screenshots of Inkline on iPhone">
+    <figure><img src="/screens/today.webp" alt="The Today page with the morning briefing card and lead stories" width="720" height="1564" loading="lazy" decoding="async" /><figcaption>Today</figcaption></figure>
+    <figure><img src="/screens/feed.webp" alt="The Front Page with Watching and Trending rows" width="720" height="1564" loading="lazy" decoding="async" /><figcaption>The Front Page</figcaption></figure>
+    <figure><img src="/screens/watch.webp" alt="The Watch tab gathering stories flagged by a watchword" width="720" height="1564" loading="lazy" decoding="async" /><figcaption>Watch</figcaption></figure>
+  </div>
+    <p>The difference is the directory. Feed readers assume you already know where the good feeds are; Inkline ships the answer, checked by a person, dated, and kept current when publishers quietly move or retire their feeds. Everything else in the app is built to make professional monitoring faster: briefs before your commute, comparison across publications, notes in the margin.</p>
+  </div>
+  <p><StoreBadge href={appStoreUrl('web-app')} /> <span class="small" style="margin-left:.8rem">Free to use; Inkline Pro {SITE.price}, {SITE.trial}</span></p>
+
+  <h2>Features</h2>
+  <ul class="pub-list">
+    {features.map((f) => (
+      <li><a href={`/app/features/${f.slug}/`}>{f.name}</a><span class="country">{f.line}</span></li>
+    ))}
+    <li>Monitor any topic across the whole web, not just your subscriptions, with alerts when new coverage appears.</li>
+      <li>A typography-first reader: four typefaces including OpenDyslexic, with light, sepia, dark and high-contrast modes.</li>
+      <li>Home Screen and Lock Screen widgets (Latest, Coverage and Trending), Spotlight, Siri Shortcuts and a Safari share extension.</li>
+      <li>Import your feeds from another reader with OPML.</li>
+    </ul>
+
+  <div class="prose sr">
+    <h2>Private by architecture, not by policy</h2>
+    <p>Inkline has no accounts and no server. Feeds are fetched by your phone, briefs are written by Apple Intelligence on your phone, and your reading history exists in exactly one place, which is your phone. A privacy policy this short is only possible because there is so little to police. <a href="/privacy/">Read it anyway.</a></p>
+  </div>
+
+  <p class="small sr">Comparing readers? <a href="/app/compare/">Inkline benchmarked against Feedly, Inoreader, NetNewsWire, Reeder and Feedbin.</a></p>
+</Base>
+
+<style>
+  .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin: 2.8rem 0; }
+  @media (max-width: 680px) { .gallery { grid-template-columns: 1fr; max-width: 320px; margin-inline: auto; } }
+  .gallery img { width: 100%; height: auto; border-radius: 20px; border: 1px solid var(--rule); box-shadow: 0 18px 44px rgba(19, 31, 59, 0.16); }
+  .gallery figcaption { font-family: var(--sans); font-size: .74rem; color: var(--graphite); text-align: center; margin-top: .6rem; }
+</style>

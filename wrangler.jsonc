@@ -1,0 +1,12 @@
+// Cloudflare Workers static-assets config. Only used if the project was
+// created as a Worker (dashboard default when importing a repo). It serves
+// the built dist/ folder as a static site; _headers and _redirects in dist
+// are honoured. A classic Pages project ignores this file entirely.
+{
+  "name": "inklinenews",
+  "compatibility_date": "2026-07-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  }
+}

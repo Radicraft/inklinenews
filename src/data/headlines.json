@@ -1,0 +1,15 @@
+{
+  "_note": "SAMPLE headlines for the home landing section. Replace before deploy, or wire to a build-time source. Feed URLs must never appear here.",
+  "items": [
+    { "src": "FINANCIAL TIMES", "hd": "Nordic software group confirms London float" },
+    { "src": "REUTERS", "hd": "Bookrunners guide pricing towards top of range" },
+    { "src": "HANDELSBLATT", "hd": "Frankfurt considered before London won out" },
+    { "src": "BBC NEWS", "hd": "Chief executive to face committee questions" },
+    { "src": "LE MONDE", "hd": "Quarterly figures land as expected" },
+    { "src": "THE ECONOMIST", "hd": "What one listing says about exchanges" },
+    { "src": "PRESS GAZETTE", "hd": "Newsroom hires point to a quieter summer" },
+    { "src": "PR WEEK", "hd": "Agencies briefed as statement lands flat" },
+    { "src": "CITY A.M.", "hd": "LSE set for biggest tech debut of the year" },
+    { "src": "THE GUARDIAN", "hd": "Analysis: the stories that did not happen" }
+  ]
+}

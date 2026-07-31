@@ -1,0 +1,39 @@
+---
+import Base from '../../layouts/Base.astro';
+import { topics, pubsInTopic, proseForTopic, accessLabel, REGISTRY_UPDATED, formatDate } from '../../lib/registry';
+
+export function getStaticPaths() {
+  return topics.map((t) => ({ params: { topic: t.slug } }));
+}
+const t = topics.find((x) => x.slug === Astro.params.topic)!;
+const pubs = pubsInTopic(t.name);
+const prose = proseForTopic(t.slug);
+const updated = formatDate(REGISTRY_UPDATED);
+const marketsHere = [...new Set(pubs.map((p) => p.market))];
+const crumbs = [{ name: 'Home', url: '/' }, { name: 'Publications', url: '/publications/' }, { name: t.name, url: `/topics/${t.slug}/` }];
+---
+<Base
+  title={`${t.name.charAt(0).toUpperCase() + t.name.slice(1)} news RSS feeds: ${pubs.length} sources | Inkline`}
+  description={`${pubs.length} ${t.name} publications in Inkline's registry across ${marketsHere.length} markets, feed-verified ${updated}.`}
+  path={`/topics/${t.slug}/`}
+  crumbs={crumbs}
+>
+  <p class="kicker">{pubs.length} sources · {marketsHere.length} markets</p>
+  <h1>{t.name.charAt(0).toUpperCase() + t.name.slice(1)} coverage</h1>
+  <p class="answer">Inkline's registry carries {pubs.length} publications covering {t.name}, from {marketsHere.length} markets. Coverage tags come from the registry itself, the same data the app's topic browse uses. Feed-verified {updated}.</p>
+  {prose && <div class="prose"><p>{prose.body}</p></div>}
+  <table>
+    <caption>{t.name} sources, registry pass of {updated}</caption>
+    <thead><tr><th scope="col">Publication</th><th scope="col">Market</th><th scope="col">Access</th></tr></thead>
+    <tbody>
+      {pubs.map((p) => (
+        <tr>
+          <td>{p.hasPage ? <a href={`/publications/${p.slug}/`}>{p.name}</a> : p.name}</td>
+          <td>{p.market}</td>
+          <td>{accessLabel(p.paywall)}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+  <p class="small"><a href="/publications/">All 817 publications</a></p>
+</Base>
