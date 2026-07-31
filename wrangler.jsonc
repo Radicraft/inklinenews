@@ -3,7 +3,7 @@
 // the built dist/ folder as a static site; _headers and _redirects in dist
 // are honoured. A classic Pages project ignores this file entirely.
 {
-  "name": "inklinenews",
+  "name": "inklinenews-site",
   "compatibility_date": "2026-07-01",
   "assets": {
     "directory": "./dist",
