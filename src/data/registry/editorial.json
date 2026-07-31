@@ -43,6 +43,114 @@
   {
    "slug": "city-a-m",
    "description": "Free at Tube stations and free online, which gives Square Mile stories a reach into general readership that its circulation figures understate. The desk moves fast on IPO and listings news and is often the first written coverage a mid-cap announcement receives. Since the ecommerce group's acquisition the opinion pages have grown livelier, and comms teams underrate them at their peril, because a sharp column here gets screenshotted into the City's group chats by mid-morning."
+  },
+  {
+   "slug": "the-new-york-times",
+   "description": "The New York Times is the largest newsroom in American journalism and the paper most likely to set the day's agenda across politics, world affairs and culture. Its investigations travel: a Times scoop is routinely the story every other publication spends the week matching. For monitoring purposes that makes it a leading indicator rather than just a record. Articles sit behind a meter, and the free allowance is modest, so treat headlines as the alert and budget clicks for what matters."
+  },
+  {
+   "slug": "the-washington-post",
+   "description": "The Washington Post remains the essential read on the American federal government. Its reporting strength is proximity: the White House, Congress, the agencies and the security establishment are covered with a depth no outsider matches. Business and technology desks have grown sharply in recent years. A meter applies to articles. If your work touches US policy or regulation, the Post belongs in the monitor list even when the client is not American, because Washington decisions rarely stay domestic."
+  },
+  {
+   "slug": "bloomberg",
+   "description": "Bloomberg is the wire the markets actually move on. Speed and precision on companies, deals, central banks and commodities are the core product, funded by the terminal business rather than advertising, which shows in the discipline of the copy. The paywall is hard and the subscription is priced for professionals. For a comms team, Bloomberg headlines are often the first public signal that a story about your client has broken into the financial press."
+  },
+  {
+   "slug": "ap-news",
+   "description": "The Associated Press is the news cooperative underneath much of what you read elsewhere; thousands of publications reprint its copy verbatim. Following AP directly means seeing the wire version of events before local rewrites add their angles, which is precisely what you want when tracking how a story spreads. Coverage is free to read, sober in register, and global in reach, with particular authority on US state-level news that national titles skip."
+  },
+  {
+   "slug": "cnbc",
+   "description": "CNBC covers business as live events: markets, earnings, deals and the executives behind them, with the broadcast newsroom's instinct for the moment something changes. Its digital coverage is free to read and quick, making it a practical early-warning layer for anything with a share price attached. Interviews matter here; a chief executive's unguarded phrase on CNBC air frequently becomes the day's corporate story."
+  },
+  {
+   "slug": "cnn",
+   "description": "CNN is the American broadcaster with the largest international news operation, and its digital output reflects that reach: breaking news at pace, US politics in volume, and correspondents in places most outlets cover from a desk. Its digital coverage is free to read in full. In a monitoring stack it serves as the mass-audience barometer; when a corporate or policy story crosses onto CNN's front page, it has left the trade press and entered the public conversation."
+  },
+  {
+   "slug": "politico",
+   "description": "Politico covers the machinery of politics: who is deciding what, which way the votes lean, and what the lobbying looks like from inside the room. The Brussels edition gives it unusual strength on European regulation as well as Washington. Core coverage is free, with the deepest material reserved for its professional subscriptions. Communications teams read it because policy risk usually surfaces here first, in the newsletters, before it becomes a mainstream headline."
+  },
+  {
+   "slug": "axios",
+   "description": "Axios built its newsroom around brevity: short items, bolded takeaways, and a promise not to waste the reader's morning. That format makes it dense with signal for a monitoring workflow, since each item is effectively a pre-written summary. Coverage spans US politics, business, technology and local city editions, free to read. Its scoops tend to be small and early rather than long and definitive, which is exactly what a watchword catches best."
+  },
+  {
+   "slug": "the-times",
+   "description": "The Times of London carries an authority in British public life that outlasts news cycles: its reporting and its leader column are read in Westminster as a signal of where establishment opinion sits. Politics, law, business and sport are all covered with depth. The paywall is hard, with essentially nothing free beyond headlines. For UK reputation work it is one of the titles a story must be judged by, clicks budgeted accordingly."
+  },
+  {
+   "slug": "the-telegraph",
+   "description": "The Telegraph is the house paper of the British centre-right, strongest on politics, business and its long tradition of foreign reporting. Its front page choices reliably indicate which stories will run inside the Conservative political world. A meter applies, with a small free allowance. Monitor it alongside The Guardian for the fastest read on how a UK story is polarising, since the two often frame the same facts in opposite directions."
+  },
+  {
+   "slug": "sky-news",
+   "description": "Sky News is Britain's rolling news channel, and its digital operation carries the same virtue: speed. Breaking UK stories frequently appear here minutes before the newspaper sites, and its political journalists break stories of their own. The coverage costs nothing to read. In a monitoring stack Sky functions as the tripwire; the considered analysis arrives elsewhere later, but the first alert that something is happening in Britain very often carries this masthead."
+  },
+  {
+   "slug": "nikkei-asia",
+   "description": "Nikkei Asia is the English-language window into Asia's business press, produced by Japan's dominant financial news group. Corporate Japan, Chinese technology, supply chains and regional politics are covered with sourcing Western outlets rarely match. The paywall is hard. For any client with Asian operations, suppliers or competitors, it is the difference between reading about the region and reading from it."
+  },
+  {
+   "slug": "le-figaro",
+   "description": "Le Figaro is France's newspaper of the centre-right and one of its two agenda-setting dailies. National politics, business and culture are core strengths, and its opinion pages carry weight in French corporate and political life. A meter applies to articles. Paired with Le Monde, it gives a monitoring list stereo coverage of any French story, with the two papers' framings mapping the political spectrum between them."
+  },
+  {
+   "slug": "el-pais",
+   "description": "El País is Spain's paper of record and the most-read Spanish-language newspaper in the world, with an edition serving Latin America that extends its reach far beyond Madrid. Politics, international affairs and culture are its traditional strengths. Articles are metered. For monitoring, its position matters: a Spanish or Latin American story that reaches El País has reached the region's boardrooms."
+  },
+  {
+   "slug": "der-spiegel",
+   "description": "Der Spiegel is Germany's investigative institution, a weekly magazine whose newsroom breaks the stories German politics then spends months answering. Its digital edition publishes daily across politics, business and society. A meter applies, with the deepest investigations reserved for subscribers. If a German-speaking market matters to your work, Spiegel is the title whose interest in a subject you least want to discover late."
+  },
+  {
+   "slug": "frankfurter-allgemeine",
+   "description": "Frankfurter Allgemeine Zeitung speaks for and to the German establishment: precise, conservative in temperament, and unusually strong on economics, law and finance from the country's financial capital. Articles are metered. Its business pages are required reading for anyone whose clients touch German industry, and its judgements travel into Brussels policy debates with more weight than most national papers manage."
+  },
+  {
+   "slug": "suddeutsche-zeitung",
+   "description": "Süddeutsche Zeitung, published from Munich, is Germany's great liberal daily and one half of the duopoly, with the FAZ, that frames serious German debate. It has a strong investigative record, including its central role in the Panama Papers. A meter applies to articles, with investigations often held for subscribers. Monitoring German coverage without it means seeing only half the country's argument."
+  },
+  {
+   "slug": "neue-zurcher-zeitung",
+   "description": "Neue Zürcher Zeitung is the Swiss German-language daily with a reputation for rigour that extends well beyond Switzerland; its economics and international coverage are read across the German-speaking world. Articles are metered. For financial services and commodities work, where Switzerland is never incidental, NZZ coverage is a signal worth treating separately from the German papers it superficially resembles."
+  },
+  {
+   "slug": "al-jazeera-english",
+   "description": "Al Jazeera English covers the Middle East, Africa and South Asia with correspondent depth that Western newsrooms have largely retreated from, and its live coverage of unfolding crises in those regions is frequently the fullest available. All of it is free to read. Its state funding from Qatar is context worth holding; its field reporting remains indispensable for stories where it is often the only English-language outlet present."
+  },
+  {
+   "slug": "south-china-morning-post",
+   "description": "The South China Morning Post is Hong Kong's English-language daily and the most-read English source on China. Its position is unique and delicate: close enough to report mainland business and politics with real sourcing, scrutinised precisely because of that closeness. A meter applies. For China-exposed clients it is essential, best read alongside a mainland-sceptical source for parallax."
+  },
+  {
+   "slug": "the-globe-and-mail",
+   "description": "The Globe and Mail is Canada's national newspaper, with its Report on Business section standing as the country's financial press of record. Ottawa politics, energy and mining are natural strengths given the economy it covers. A meter applies to articles. Any client with Canadian operations, listings or regulators should have it monitored; Canadian stories often stay in Canadian media longer than teams abroad expect."
+  },
+  {
+   "slug": "the-sydney-morning-herald",
+   "description": "The Sydney Morning Herald is one of Australia's two agenda-setting metropolitan dailies, strong on national politics, business and the investigations it shares across its newspaper group. A meter applies. Australian coverage runs on Sydney time, which for European teams means stories break overnight; a monitor here surfaces them with the morning brief rather than at the point a client calls."
+  },
+  {
+   "slug": "the-times-of-india",
+   "description": "The Times of India is the world's largest-circulation English-language newspaper and the broadest single window into Indian news. National politics, business and city coverage arrive at volume, free to read. The sheer output argues for following it through monitors and watchwords rather than as a raw feed, letting the terms you care about surface from the flow."
+  },
+  {
+   "slug": "npr",
+   "description": "NPR is American public radio's news organisation, and its written coverage carries the qualities of its broadcasting: measured, well sourced, and strong on explanation over heat. Politics, science and culture are particular strengths. Its journalism is free to read, as public media should be. In a monitoring stack it earns a place as a calibration source, useful for judging how a story reads when told without a proprietor's angle."
+  },
+  {
+   "slug": "techcrunch",
+   "description": "TechCrunch is the news desk of the startup economy: funding rounds, launches, shutdowns and the venture capital behind them. Coverage is free to read, fast, and unashamedly inside the industry it reports on. For communications work it matters twice over: once because clients raise money, and again because it is where technology-sector reputations are often first made and first tested."
+  },
+  {
+   "slug": "the-verge",
+   "description": "The Verge covers consumer technology as an industry and a culture: products, platforms and the policy fights around them, written for readers who follow the sector closely. A meter applies to some of its work. Product-launch coverage here shapes wider reporting, and its reviews carry commercial consequence, which for technology clients makes it monitoring rather than optional reading."
+  },
+  {
+   "slug": "semafor",
+   "description": "Semafor is the newest name on this list, a digital newsroom built by senior editors from Bloomberg and BuzzFeed News around a format that separates reported fact from the reporter's view. Its Washington, business and Africa coverage have established themselves quickly, largely through newsletters. Free to read. Worth monitoring because its scoops increasingly seed the day's coverage elsewhere."
   }
  ]
 }

@@ -26,8 +26,10 @@ const faq = [
   path="/support/"
   crumbs={crumbs}
 >
+  <div slot="masthead">
   <p class="kicker">Support</p>
   <h1>Help centre</h1>
+  </div>
   <p class="prose">One page per topic, kept short and current. If a question isn't answered here, the contact route at the foot reaches a person.</p>
   <ul class="pub-list">
     {topics.map((t) => <li><a href={`/support/${t.slug}/`}>{t.name}</a></li>)}

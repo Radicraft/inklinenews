@@ -20,8 +20,10 @@ const crumbs = [
   path={`/collections/${collection.slug}/`}
   crumbs={crumbs}
 >
+  <div slot="masthead">
   <p class="kicker">Collection</p>
   <h1>RSS feeds for {collection.audience}</h1>
+  </div>
   <p class="prose" style="font-size:1.12rem">{collection.intro}</p>
 
   <ul class="pub-list sr">

@@ -15,6 +15,7 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   background: var(--paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.08 0 0 0 0 0.12 0 0 0 0 0.23 0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23g)'/%3E%3C/svg%3E");
   color: var(--ink);
   font-family: var(--serif);
   font-size: 1.0625rem;
@@ -36,6 +37,8 @@ img { max-width: 100%; height: auto; display: block; }
   padding: .6rem 1rem; z-index: 100; font-family: var(--sans);
 }
 .skip-link:focus { left: 8px; top: 8px; }
+
+:root { --rail: 56px; }
 
 /* ---------- page frame: rail + content ---------- */
 .frame {
@@ -317,3 +320,87 @@ body.home main { padding-top: 0; }
   header.site nav a:not(.cta) { display: none; }
   body.home header.site { padding-right: 1rem; }
 }
+
+/* ---------- the ink masthead: every page opens in the brand ---------- */
+.masthead { position: relative; overflow: hidden; background: var(--ink-deep);
+  background-image: radial-gradient(120% 90% at 82% -10%, var(--ink) 0%, var(--ink-deep) 55%),
+                    radial-gradient(60% 50% at 12% 110%, var(--ink) 0%, var(--ink-deep) 60%); }
+.masthead .mh-rings { position: absolute; right: -16vw; top: 50%; transform: translateY(-50%); width: min(64vw, 680px); pointer-events: none; }
+.mh-wrap { position: relative; padding-top: 2.4rem; padding-bottom: clamp(2rem, 5vh, 3.2rem); }
+.masthead .crumbs, .masthead .crumbs a { color: var(--sky); }
+.masthead .kicker { display: inline-block; font-family: var(--sans); font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--brass); border: 1px solid color-mix(in srgb, var(--brass) 55%, transparent); border-radius: 999px; padding: .34rem .8rem; margin-bottom: 1.1rem; }
+.masthead h1 { color: var(--paper); margin-bottom: .5em; }
+.masthead .answer { color: var(--sky); font-size: 1.08rem; max-width: 62ch; margin-bottom: 0; }
+.masthead .answer b { color: var(--paper); }
+body:not(.home) header.site { border-bottom: 0; }
+.masthead + main { padding-top: clamp(1.8rem, 4vh, 3rem); }
+
+/* app-echo: the facts table as a card, access values as pills */
+.facts { background: var(--cream); border: 1px solid var(--rule); border-radius: 16px; padding: 1.2rem 1.4rem; }
+
+/* ---------- brand micro-elements (§identity pass) ---------- */
+/* selection + focus carry the ink */
+::selection { background: var(--ink); color: var(--paper); }
+body.home ::selection { background: var(--cream); color: var(--ink); }
+:focus-visible { outline: 2px solid var(--brass-deep); outline-offset: 2px; }
+
+/* rules fade like ink drying; token colours only */
+hr { border: 0; height: 1px; margin: 2.4rem 0;
+  background: linear-gradient(to right, var(--rule-strong), var(--rule) 55%, transparent); }
+
+/* prose lists carry the drop, not the default disc.
+   Encoded fills below are the brand tokens #7A6A48 / #B9A98A. */
+.prose ul { list-style: none; padding-left: 1.3rem; }
+.prose ul li { position: relative; margin-bottom: .45em; }
+.prose ul li::before { content: ''; position: absolute; left: -1.25rem; top: .42em;
+  width: .55em; height: .75em; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 32'%3E%3Cpath d='M12 1 C 17 10, 21 15, 21 21 a 9 9 0 1 1 -18 0 C 3 15, 7 10, 12 1 Z' fill='%237A6A48'/%3E%3C/svg%3E") no-repeat center / contain; }
+
+/* prose h2s open with a short brass stroke, echoing the tagline rule */
+.prose h2 { position: relative; padding-top: .9rem; margin-top: 2.2rem; }
+.prose h2::before { content: ''; position: absolute; top: 0; left: 0; width: 2.1rem; height: 2px; background: var(--brass-deep); }
+
+/* quotes sit on an ink bar */
+blockquote { margin: 1.8rem 0; padding: .2rem 0 .2rem 1.1rem; border-left: 3px solid var(--ink); font-style: italic; color: var(--graphite); }
+
+/* tables: captions set like the app's section labels, brass-ruled */
+table caption { text-align: left; font-family: var(--sans); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--brass-deep); padding-bottom: .7rem; border-bottom: 2px solid var(--brass-deep); margin-bottom: .4rem; }
+
+/* access pills: the app's chip vocabulary */
+.pill { display: inline-block; font-family: var(--sans); font-size: .7rem; font-weight: 560; padding: .22rem .6rem; border-radius: 999px; border: 1px solid var(--rule-strong); background: var(--cream); color: var(--graphite); white-space: nowrap; }
+.pill-metered { border-color: var(--brass-deep); color: var(--brass-deep); }
+.pill-hard { border-color: var(--ink); color: var(--ink); }
+
+/* the end mark: a small drop closes long-form pages, like a printer's mark */
+.endmark { display: block; width: 14px; margin: 3rem auto 0; opacity: .75; }
+
+/* publication monogram disc, shared (home rows + mastheads) */
+.pubmark { width: 30px; height: 30px; border-radius: 50%; overflow: hidden; background: var(--cream); border: 1px solid var(--rule); display: inline-grid; place-items: center; vertical-align: middle; }
+.pubmark img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.pubmark.mono::after { content: attr(data-initial); font-family: var(--serif); font-weight: 600; font-size: .95rem; color: var(--brass-deep); }
+.masthead .pubmark { width: 40px; height: 40px; border-color: color-mix(in srgb, var(--paper) 30%, transparent); background: color-mix(in srgb, var(--paper) 12%, transparent); margin-right: .7rem; }
+.masthead .pubmark.mono::after { color: var(--brass); font-size: 1.15rem; }
+
+/* ---------- Option 2: Sheets (approved). White working sheet, paper
+   secondary sheet, brass seams; the dark home is untouched. ---------- */
+body:not(.home) main {
+  background: var(--white);
+  box-shadow: inset 0 2px 0 var(--brass-deep);
+  padding-bottom: 0;
+}
+/* the paper sheet: FAQ and related span main's full width, brass seam on top */
+body:not(.home) main .faq,
+body:not(.home) main .related {
+  background: var(--paper);
+  margin: 2.6rem calc(-1 * clamp(1rem, 4vw, 3rem)) 0;
+  padding: 2.4rem clamp(1rem, 4vw, 3rem) 2.6rem;
+  border-top: 2px solid var(--brass-deep);
+}
+body:not(.home) main .faq + .related,
+body:not(:where(.home)) main .related + .faq {
+  border-top: 1px solid var(--rule);
+  margin-top: 0;
+}
+/* cards read app-true on the white sheet */
+body:not(.home) .facts { background: var(--cream); }
+/* the sheet runs to the footer cleanly */
+body:not(.home) main .wrap > :last-child { padding-bottom: 3rem; margin-bottom: 0; }

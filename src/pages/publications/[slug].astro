@@ -2,17 +2,21 @@
 import Base from '../../layouts/Base.astro';
 import Stamp from '../../components/Stamp.astro';
 import Faq from '../../components/Faq.astro';
-import { described, bySlug, descriptionFor, relatedTo, accessLabel, formatDate, REGISTRY_UPDATED } from '../../lib/registry';
+import EndMark from '../../components/EndMark.astro';
+import { publications, bySlug, descriptionFor, relatedTo, accessLabel, langName, formatDate, REGISTRY_UPDATED, pubsInMarket } from '../../lib/registry';
 import { publicationLd } from '../../lib/schema';
 import { appStoreUrl } from '../../lib/site';
 
 export function getStaticPaths() {
-  return described.map((p) => ({ params: { slug: p.slug } }));
+  return publications.map((p) => ({ params: { slug: p.slug } }));
 }
 const p = bySlug.get(Astro.params.slug)!;
-const description = descriptionFor(p.slug)!;
+const description = descriptionFor(p.slug);
 const related = relatedTo(p);
 const access = accessLabel(p.paywall);
+const marketPubs = pubsInMarket(p.marketSlug);
+const sameLang = marketPubs.filter((x) => x.language === p.language).length;
+const sameTopic = marketPubs.filter((x) => x.slug !== p.slug && x.topics.some((t) => p.topics.includes(t))).length;
 const updated = formatDate(REGISTRY_UPDATED);
 const crumbs = [
   { name: 'Home', url: '/' },
@@ -34,25 +38,32 @@ const faq = [
   description={`${p.name} in Inkline's source registry: coverage, language, access status and how to follow it. Registry updated ${updated}.`}
   path={`/publications/${p.slug}/`}
   crumbs={crumbs}
-  jsonld={[publicationLd(p)]}
+  jsonld={[publicationLd(p, langName(p.language))]}
 >
-  <p class="kicker">{p.market} · {access}</p>
-  <h1>{p.name} RSS feeds</h1>
-  <p class="answer">{p.name} is in Inkline's source registry, covering {p.topics.join(', ')} from {p.market}{p.global ? ' with international relevance' : ''}. Access is {access.toLowerCase()}. The entry was feed-verified in the registry pass of {updated}; entries that fail verification drop out before each release.</p>
+  <div slot="masthead">
+    <p class="kicker">{p.market} · {access}</p>
+    <h1><span class="pubmark" aria-hidden="true" data-initial={p.name.charAt(0)}><img src={`/icons/${p.slug}.png`} alt="" width="30" height="30" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('mono');this.remove()" /></span>{p.name} RSS feeds</h1>
+    <p class="answer">{p.name} is in Inkline's source registry, covering {p.topics.join(', ')} from {p.market}{p.global ? ' with international relevance' : ''}. Access is {access.toLowerCase()}. The entry was feed-verified in the registry pass of {updated}; entries that fail verification drop out before each release.</p>
+  </div>
 
   <Stamp date={REGISTRY_UPDATED} />
 
   <dl class="facts">
     <dt>Market</dt><dd>{p.market}</dd>
-    <dt>Language</dt><dd>{p.language}</dd>
+    <dt>Language</dt><dd>{langName(p.language)}</dd>
     <dt>Coverage</dt><dd>{p.topics.map((t, i) => (<>{i > 0 && ', '}<a href={`/topics/${t}/`}>{t}</a></>))}</dd>
-    <dt>Access</dt><dd>{access}</dd>
+    <dt>Access</dt><dd><span class={`pill pill-${p.paywall}`}>{access}</span></dd>
     <dt>Website</dt><dd>{p.domain}</dd>
     <dt>Registry</dt><dd>v1, updated {updated}</dd>
   </dl>
 
   <div class="prose">
-    <p>{description}</p>
+    {description ? <p>{description}</p> : (
+      <>
+        <p>{p.name} publishes in {langName(p.language)} from {p.market}, covering {p.topics.join(', ')}{p.global ? ', with coverage that travels well beyond its home market' : ''}. The registry records its access status as {accessLabel(p.paywall).toLowerCase()}, and its feed passed verification in the pass of {updated}; entries that fail that check drop out of the app before each release.</p>
+        <p>Within the registry it sits among {marketPubs.length} {p.market} sources{sameLang < marketPubs.length ? `, ${sameLang} of them publishing in ${langName(p.language)}` : ''}. {sameTopic > 0 ? `${sameTopic} other ${p.market} ${sameTopic === 1 ? 'title covers' : 'titles cover'} overlapping ground, so a topic monitor here can be cross-read against neighbours rather than trusted alone.` : `No other ${p.market} title in the registry covers the same ground, which makes it the registry's sole window on this beat in its market.`} Follow it in Inkline by typing the name into Search; the registry ships inside the app, so the result is instant and works offline.</p>
+      </>
+    )}
     {p.paywall !== 'none' && (
       <>
         <h2>How the access model behaves</h2>
@@ -64,6 +75,8 @@ const faq = [
   </div>
 
   <p><a class="btn" href={appStoreUrl(`web-pub-${p.slug}`)}>Open in Inkline</a></p>
+
+  <EndMark />
 
   <Faq items={faq} />
 

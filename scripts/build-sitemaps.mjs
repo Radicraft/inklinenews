@@ -1,11 +1,10 @@
 // Sitemaps split by depth tier (§6.4, §8): sitemap-core, sitemap-publications-1/2/3,
-// sitemap-guides, plus an index. Submit Tier 1 first in Search Console.
 import { readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import { join, relative } from 'node:path';
 
 const SITE = 'https://inklinenews.com';
 const DIST = new URL('../dist/', import.meta.url).pathname;
-const publications = JSON.parse(readFileSync(new URL('../src/data/registry/editorial.json', import.meta.url), 'utf8')).editorial;
+const publications = JSON.parse(readFileSync(new URL('../src/data/registry/publications-full.json', import.meta.url), 'utf8')).publications;
 const pubSlugs = new Set(publications.map((p) => p.slug));
 
 
@@ -21,13 +20,13 @@ const urls = [];
   }
 })(DIST);
 
-const buckets = { core: [], publications: [], guides: [] };
+const buckets = { core: [], publications: [] };
 for (const u of urls) {
   if (u === '/404/') continue;
   const pubMatch = u.match(/^\/publications\/([^/]+)\/$/);
   if (pubMatch && pubSlugs.has(pubMatch[1])) {
     buckets.publications.push(u);
-  } else if (u.startsWith('/guides/')) buckets.guides.push(u);
+  }
   else buckets.core.push(u);
 }
 

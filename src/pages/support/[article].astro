@@ -54,8 +54,10 @@ const crumbs = [
   path={`/support/${a.slug}/`}
   crumbs={crumbs}
 >
+  <div slot="masthead">
   <p class="kicker">Support</p>
   <h1>{a.name}</h1>
+  </div>
   <div class="prose">
     {a.body.map((p) => <p>{p}</p>)}
   </div>

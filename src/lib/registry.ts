@@ -17,7 +17,7 @@ export const REGISTRY_UPDATED = fullRaw.updated as string; // '2026-07-17'
 const editorialBySlug = new Map(editorialRaw.editorial.map((e) => [e.slug, e.description]));
 export const bySlug = new Map(publications.map((p) => [p.slug, p]));
 export const described = publications.filter((p) => editorialBySlug.has(p.slug));
-for (const p of publications as any[]) p.hasPage = editorialBySlug.has(p.slug);
+for (const p of publications as any[]) p.hasPage = true; // every publication has a detail page
 export function descriptionFor(slug: string): string | undefined { return editorialBySlug.get(slug); }
 
 export const markets = marketsRaw.markets;
@@ -41,7 +41,7 @@ export function pubsInCollection(slug: string) {
   return (c?.slugs ?? []).map((s: string) => bySlug.get(s)).filter(Boolean) as Publication[];
 }
 export function relatedTo(pub: Publication): Publication[] {
-  return described
+  return publications
     .filter((p) => p.slug !== pub.slug)
     .map((p) => ({ p, s: (p.marketSlug === pub.marketSlug ? 2 : 0) + p.topics.filter((t) => pub.topics.includes(t)).length }))
     .sort((a, b) => b.s - a.s)
@@ -51,6 +51,8 @@ export function relatedTo(pub: Publication): Publication[] {
 export function getFeatured(n = 6): Publication[] {
   return described.slice(0, n);
 }
+const LANGS: Record<string, string> = { ar: 'Arabic', bn: 'Bengali', bs: 'Bosnian', cs: 'Czech', da: 'Danish', de: 'German', el: 'Greek', en: 'English', es: 'Spanish', fi: 'Finnish', fr: 'French', hi: 'Hindi', hu: 'Hungarian', id: 'Indonesian', it: 'Italian', ja: 'Japanese', kn: 'Kannada', ko: 'Korean', ml: 'Malayalam', mr: 'Marathi', nl: 'Dutch', no: 'Norwegian', pl: 'Polish', pt: 'Portuguese', ro: 'Romanian', ru: 'Russian', sk: 'Slovak', sl: 'Slovenian', sr: 'Serbian', sv: 'Swedish', tr: 'Turkish', uk: 'Ukrainian', vi: 'Vietnamese', zh: 'Chinese' };
+export const langName = (code: string) => LANGS[code] ?? code;
 export const accessLabel = (paywall: string) =>
   paywall === 'hard' ? 'Paywall' : paywall === 'metered' ? 'Some free articles' : 'Free';
 export function formatDate(iso: string) {

@@ -18,9 +18,11 @@ const crumbs = [{ name: 'Home', url: '/' }, { name: 'Publications', url: '/publi
   path={`/topics/${t.slug}/`}
   crumbs={crumbs}
 >
-  <p class="kicker">{pubs.length} sources · {marketsHere.length} markets</p>
-  <h1>{t.name.charAt(0).toUpperCase() + t.name.slice(1)} coverage</h1>
-  <p class="answer">Inkline's registry carries {pubs.length} publications covering {t.name}, from {marketsHere.length} markets. Coverage tags come from the registry itself, the same data the app's topic browse uses. Feed-verified {updated}.</p>
+  <div slot="masthead">
+    <p class="kicker">{pubs.length} sources · {marketsHere.length} markets</p>
+    <h1>{t.name.charAt(0).toUpperCase() + t.name.slice(1)} coverage</h1>
+    <p class="answer">Inkline's registry carries {pubs.length} publications covering {t.name}, from {marketsHere.length} markets. Coverage tags come from the registry itself, the same data the app's topic browse uses. Feed-verified {updated}.</p>
+  </div>
   {prose && <div class="prose"><p>{prose.body}</p></div>}
   <table>
     <caption>{t.name} sources, registry pass of {updated}</caption>
@@ -30,7 +32,7 @@ const crumbs = [{ name: 'Home', url: '/' }, { name: 'Publications', url: '/publi
         <tr>
           <td>{p.hasPage ? <a href={`/publications/${p.slug}/`}>{p.name}</a> : p.name}</td>
           <td>{p.market}</td>
-          <td>{accessLabel(p.paywall)}</td>
+          <td><span class={`pill pill-${p.paywall}`}>{accessLabel(p.paywall)}</span></td>
         </tr>
       ))}
     </tbody>

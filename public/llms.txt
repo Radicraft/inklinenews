@@ -12,6 +12,5 @@ Key facts, with dates:
 - [What Inkline is](https://inklinenews.com/app/): the product, plainly described
 - [Publication directory](https://inklinenews.com/publications/): every verified source
 - [UK news RSS feeds](https://inklinenews.com/feeds/united-kingdom/): verified UK sources with cadence and paywall status
-- [Which publications killed their RSS feeds](https://inklinenews.com/guides/which-publications-killed-their-rss-feeds/): maintained, dated reference
 - [Compared with other readers](https://inklinenews.com/app/compare/): benchmarked against Feedly, Inoreader, NetNewsWire, Reeder and Feedbin, July 2026
 - [Verification methodology](https://inklinenews.com/about/): what "verified" means and how corrections work

@@ -36,17 +36,37 @@ export function faqLd(items: { q: string; a: string }[]) {
   };
 }
 
-export function publicationLd(p: { name: string; slug: string; topics: string[]; domain: string }) {
+export function publicationLd(p: { name: string; slug: string; topics: string[]; domain: string; market: string; language: string; paywall: string; global: boolean }, langNameStr: string) {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     url: `${SITE.domain}/publications/${p.slug}/`,
-    about: { '@type': 'NewsMediaOrganization', name: p.name, url: `https://${p.domain}` },
+    dateModified: '2026-07-17',
     mainEntity: {
-      '@type': 'ItemList',
-      name: `${p.name} coverage in Inkline's registry`,
-      itemListElement: p.topics.map((t, i) => ({ '@type': 'ListItem', position: i + 1, name: t })),
+      '@type': 'NewsMediaOrganization',
+      name: p.name,
+      url: `https://${p.domain}`,
+      inLanguage: p.language,
+      knowsLanguage: langNameStr,
+      knowsAbout: p.topics,
+      areaServed: p.global ? [p.market, 'Worldwide'] : p.market,
+      isAccessibleForFree: p.paywall === 'none',
     },
+  };
+}
+
+export function registryDatasetLd(totals: { sources: number; markets: number; languages: number }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Dataset',
+    name: "Inkline source registry",
+    description: `A hand-picked, feed-verified registry of ${totals.sources} news publications across ${totals.markets} markets and ${totals.languages} languages, maintained for the Inkline app. Every entry records market, language, coverage topics and access status, and every feed is machine-verified before each app release.`,
+    url: `${SITE.domain}/publications/`,
+    version: '1',
+    dateModified: '2026-07-17',
+    creator: { '@type': 'Person', name: 'Michael White', url: 'https://www.whitewiki.org' },
+    isAccessibleForFree: true,
+    keywords: ['RSS feeds', 'news publications', 'media monitoring', 'feed directory'],
   };
 }
 
@@ -57,17 +77,6 @@ export function appLd() {
     name: 'Inkline', operatingSystem: 'iOS', applicationCategory: 'NewsApplication',
     offers: { '@type': 'Offer', price: '14.99', priceCurrency: 'GBP' },
     // aggregateRating intentionally omitted until pulled from real App Store values (§8).
-  };
-}
-
-export function articleLd(a: { title: string; description: string; slug: string; published: string; modified: string }) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: a.title, description: a.description,
-    url: `${SITE.domain}/guides/${a.slug}/`,
-    datePublished: a.published, dateModified: a.modified,
-    author: { '@type': 'Person', name: SITE.author.name, url: SITE.domain + '/about/' },
   };
 }
 

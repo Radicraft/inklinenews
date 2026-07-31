@@ -10,9 +10,11 @@ const fmt = (iso) => new Date(iso).toLocaleDateString('en-GB', { day: 'numeric',
   path="/news/"
   crumbs={crumbs}
 >
-  <p class="kicker">News</p>
-  <h1>Inkline news</h1>
-  <p class="answer">Updates about the app: releases, features and the thinking behind them. Posts are published on White Wiki, Michael White's publication on communications and reputation, and everything tagged Inkline lands here.</p>
+  <div slot="masthead">
+    <p class="kicker">News</p>
+    <h1>Inkline news</h1>
+    <p class="answer">Updates about the app: releases, features and the thinking behind them. Posts are published on White Wiki, Michael White's publication on communications and reputation, and everything tagged Inkline lands here.</p>
+  </div>
 
   <ul class="newslist">
     {news.items.map((n) => (

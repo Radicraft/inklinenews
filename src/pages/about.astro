@@ -11,8 +11,10 @@ const crumbs = [{ name: 'Home', url: '/' }, { name: 'About', url: '/about/' }];
   crumbs={crumbs}
   jsonld={[personLd()]}
 >
+  <div slot="masthead">
   <p class="kicker">About</p>
   <h1>About Inkline</h1>
+  </div>
   <div class="prose">
     <p style="font-size:1.12rem">{SITE.boilerplate}</p>
 

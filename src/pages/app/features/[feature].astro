@@ -92,8 +92,10 @@ const crumbs = [
   path={`/app/features/${f.slug}/`}
   crumbs={crumbs}
 >
+  <div slot="masthead">
   <p class="kicker">Feature</p>
   <h1>{f.name}</h1>
+  </div>
   <div class="prose">
     <p style="font-size:1.12rem">{f.answer}</p>
 

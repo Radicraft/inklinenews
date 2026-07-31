@@ -1,0 +1,72 @@
+---
+import Base from '../../layouts/Base.astro';
+import { publications, REGISTRY, accessLabel, langName, formatDate, REGISTRY_UPDATED } from '../../lib/registry';
+import { registryDatasetLd } from '../../lib/schema';
+const sorted = [...publications].sort((a, b) => a.name.localeCompare(b.name));
+const updated = formatDate(REGISTRY_UPDATED);
+const crumbs = [{ name: 'Home', url: '/' }, { name: 'Publications', url: '/publications/' }];
+---
+<Base
+  title={`All ${REGISTRY.sources} publications in Inkline's registry, searchable | Inkline`}
+  description={`Search Inkline's source registry: ${REGISTRY.sources} publications across ${REGISTRY.markets} markets and ${REGISTRY.languages} languages, updated ${updated}. Every title has its own page.`}
+  path="/publications/"
+  jsonld={[registryDatasetLd(REGISTRY)]}
+  crumbs={crumbs}
+>
+  <div slot="masthead">
+    <p class="kicker">The registry</p>
+    <h1>All {REGISTRY.sources} publications</h1>
+    <p class="answer">Inkline's source registry covers {REGISTRY.sources} publications across {REGISTRY.markets} markets and {REGISTRY.languages} languages, chosen by hand and feed-verified before every release. Updated {updated}. Search by name, market, language or coverage; every title links to its own page.</p>
+  </div>
+
+  <div class="searchbar">
+    <input id="q" type="search" placeholder="Search 817 publications: try Reuters, Germany, finance, Japanese" autocomplete="off" aria-label="Search publications" />
+    <p class="count" id="count" aria-live="polite">{REGISTRY.sources} publications</p>
+  </div>
+
+  <ul class="pubindex" id="pubindex">
+    {sorted.map((p) => (
+      <li data-s={`${p.name} ${p.market} ${langName(p.language)} ${p.topics.join(' ')} ${accessLabel(p.paywall)}`.toLowerCase()}>
+        <a href={`/publications/${p.slug}/`}>{p.name}</a>
+        <span class="meta">{p.market} · {p.topics.join(', ')} <span class={`pill pill-${p.paywall}`}>{accessLabel(p.paywall)}</span></span>
+      </li>
+    ))}
+  </ul>
+  <p class="small" id="noresults" hidden>Nothing matches. Try a market (Germany), a topic (finance) or part of a name.</p>
+
+  <script is:inline>
+  (function(){
+    var q = document.getElementById('q');
+    var items = Array.prototype.slice.call(document.querySelectorAll('#pubindex li'));
+    var count = document.getElementById('count');
+    var none = document.getElementById('noresults');
+    var t;
+    q.addEventListener('input', function(){
+      clearTimeout(t);
+      t = setTimeout(function(){
+        var v = q.value.trim().toLowerCase();
+        var shown = 0;
+        items.forEach(function(li){
+          var hit = !v || li.getAttribute('data-s').indexOf(v) !== -1;
+          li.hidden = !hit; if (hit) shown++;
+        });
+        count.textContent = shown + (shown === 1 ? ' publication' : ' publications');
+        none.hidden = shown !== 0;
+      }, 60);
+    });
+  })();
+  </script>
+</Base>
+
+<style>
+  .searchbar { margin: 2rem 0 1rem; }
+  #q { width: 100%; max-width: 34rem; font-family: var(--sans); font-size: 1rem; padding: .85rem 1.1rem; border: 1px solid var(--rule-strong); border-radius: 999px; background: var(--cream); color: var(--ink); }
+  #q:focus { outline: 2px solid var(--brass-deep); outline-offset: 1px; }
+  .count { font-family: var(--sans); font-size: .78rem; color: var(--graphite); margin-top: .7rem; }
+  .pubindex { list-style: none; padding: 0; margin: 1rem 0 2rem; border-top: 1px solid var(--ink); }
+  .pubindex li { display: flex; align-items: baseline; justify-content: space-between; gap: 1.2rem; padding: .72rem 0; border-bottom: 1px solid var(--rule); flex-wrap: wrap; }
+  .pubindex a { font-family: var(--serif); font-size: 1.18rem; font-weight: 520; letter-spacing: -.01em; text-decoration: none; color: var(--ink); }
+  .pubindex a:hover { color: var(--brass-deep); }
+  .pubindex .meta { font-family: var(--sans); font-size: .74rem; color: var(--graphite); text-align: right; }
+  @media (max-width: 680px) { .pubindex li { flex-direction: column; gap: .15rem; } .pubindex .meta { text-align: left; } }
+</style>
