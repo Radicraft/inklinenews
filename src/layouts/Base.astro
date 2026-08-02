@@ -39,8 +39,7 @@ const allLd = [...jsonld, ...(crumbs ? [breadcrumbLd(crumbs)] : [])];
   <meta property="og:url" content={canonical} />
   <meta property="og:image" content={SITE.domain + '/og/default.png'} />
   <meta name="twitter:card" content="summary_large_image" />
-  {/* Smart App Banner (§10): enable once appStoreId is real:
-      <meta name="apple-itunes-app" content={`app-id=${SITE.appStoreId}, app-argument=${canonical}`} /> */}
+  <meta name="apple-itunes-app" content={`app-id=${SITE.appStoreId}, app-argument=${canonical}`} />
   <script is:inline>
     /* Entrance guard (§12.1): plays once per session, <2KB, class toggle only. */
     (function () {
@@ -63,7 +62,7 @@ const allLd = [...jsonld, ...(crumbs ? [breadcrumbLd(crumbs)] : [])];
       <Header />
       {Astro.slots.has('masthead') && (
         <div class="masthead">
-          <svg class="mh-rings" viewBox="0 0 1200 1200" aria-hidden="true" preserveAspectRatio="xMaxYMid slice"><defs><filter id="mhF" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="8" xChannelSelector="R" yChannelSelector="G"/></filter></defs><g fill="none" stroke="#EDE4CE" stroke-linecap="round" filter="url(#mhF)"><circle cx="600" cy="600" r="170" stroke-width="20" opacity=".10"/><circle cx="600" cy="600" r="280" stroke-width="13" opacity=".06"/><circle cx="600" cy="600" r="390" stroke-width="9" opacity=".035"/></g></svg>
+          <svg class="mh-rings" viewBox="0 0 1200 1200" aria-hidden="true" preserveAspectRatio="xMaxYMid slice"><defs><filter id="mhF" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="8" xChannelSelector="R" yChannelSelector="G"/></filter></defs><g fill="none" stroke="#EDE4CE" stroke-linecap="round" filter="url(#mhF)"><circle cx="600" cy="600" r="170" stroke-width="20" opacity=".10"/><circle cx="600" cy="600" r="280" stroke-width="13" opacity=".06"/><circle cx="600" cy="600" r="390" stroke-width="9" opacity=".035"/></g></svg>
           <div class="wrap mh-wrap">
             {crumbs && <Breadcrumbs crumbs={crumbs} />}
             <slot name="masthead" />

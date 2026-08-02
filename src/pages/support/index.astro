@@ -8,7 +8,7 @@ const topics = [
   { slug: 'offline-reading', name: 'Offline reading' },
   { slug: 'ipad-and-pencil', name: 'iPad and Apple Pencil' },
   { slug: 'inkline-radio', name: 'Inkline Radio' },
-  { slug: 'watchwords', name: 'Watchwords and the Watch tab' },
+  { slug: 'keywords', name: 'Keywords and the Watch tab' },
   { slug: 'subscription-and-trial', name: 'Free tier, Pro and billing' },
   { slug: 'restoring-purchases', name: 'Restoring purchases' },
   { slug: 'troubleshooting-monitors', name: 'Troubleshooting monitors' },
@@ -16,8 +16,13 @@ const topics = [
 const faq = [
   { q: 'Does Inkline require an account?', a: 'No. Inkline has no accounts and no server; everything runs on your device. Your subscription belongs to your Apple Account, which is also how it restores on a new device.' },
   { q: 'Which devices does Inkline support?', a: 'Inkline is a universal iPhone and iPad app. Apple Intelligence features, including daily briefs and summarisation, require a device that supports Apple Intelligence.' },
-  { q: 'Why can\u2019t I see feed URLs anywhere?', a: 'The verified feed endpoints are delivered inside the app rather than published on this site. Publication pages list section names, cadence and verification dates, which answer the question of what is covered without exposing the registry.' },
-  { q: 'How do I report a problem with a source?', a: 'Use the contact route below and name the publication. Sources are re-verified quarterly, but a report moves a title to the front of the queue and corrections are noted on its page.' },
+  { q: 'Why can\u2019t I see feed URLs anywhere?', a: 'The verified feed endpoints are delivered inside the app rather than published on this site. Publication pages list market, language, coverage and access status, which answer the question of what is covered without exposing the registry.' },
+  { q: 'How do I report a problem with a source?', a: 'Email the address below and name the publication. Every feed is machine-verified before each release, but a report moves a title to the front of the queue.' },
+  { q: 'How do I manage or cancel Inkline Pro?', a: 'Subscriptions belong to your Apple Account, not to us. On your device: Settings, then your name, then Subscriptions, then Inkline. You can switch between monthly and annual, or cancel, and Pro keeps working until the end of the paid period. Cancelling during the free week means you are never charged.' },
+  { q: 'How do I get a refund?', a: 'Apple handles all payments, so refunds come from Apple: sign in at reportaproblem.apple.com, find the Inkline charge and choose Request a refund. We never see your payment details, so we cannot issue refunds directly.' },
+  { q: 'I subscribed but Pro features are locked. What do I do?', a: 'Open Inkline settings and tap Restore Purchases; the subscription is read back from your Apple Account. This is also the fix on a new device. If it still fails, check you are signed in with the same Apple Account that bought the subscription.' },
+  { q: 'Can I import my subscriptions from another reader?', a: 'Yes. Export an OPML file from your current reader and open it with Inkline, or use the import option in settings. Your publications arrive as a set; the free tier reads up to 50 of them.' },
+  { q: 'What does Inkline require?', a: 'iOS 18 or later on iPhone or iPad. Apple Intelligence features (Today’s Brief, Compare Coverage, Inkline Radio) additionally need a device that supports Apple Intelligence.' },
 ];
 ---
 <Base

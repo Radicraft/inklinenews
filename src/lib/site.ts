@@ -3,8 +3,8 @@ export const SITE = {
   domain: 'https://inklinenews.com',
   // TODO(Michael): real App Store ID before launch. All install links and the
   // Smart App Banner read from here. Campaign token scheme per brief §10.
-  appStoreId: 'APP_STORE_ID_TODO', bundleId: 'com.whitewiki.Inkline',
-  appStoreBase: 'https://apps.apple.com/gb/app/id',
+  appStoreId: '6788323715', bundleId: 'com.whitewiki.Inkline',
+  appStoreBase: 'https://apps.apple.com/app/inkline-news-media-monitor/id',
   price: 'from £2.99 a month or £14.99 a year in the UK',
   trial: 'week free on Pro plans',
   // One boilerplate paragraph, used verbatim on /about/, /press/, llms.txt and

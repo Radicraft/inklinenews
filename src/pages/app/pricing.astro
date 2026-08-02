@@ -5,8 +5,8 @@ import Faq from '../../components/Faq.astro';
 import { appStoreUrl } from '../../lib/site';
 const crumbs = [{ name: 'Home', url: '/' }, { name: 'The app', url: '/app/' }, { name: 'Pricing', url: '/app/pricing/' }];
 const faq = [
-  { q: 'What does the free tier include?', a: 'Reading and the offline reader for up to 50 publications, bookmarks, highlights and notes, search, widgets, Voices, and reading any single article aloud. No time limit and no account.' },
-  { q: 'What does Inkline Pro add?', a: 'Monitoring (topic monitors and watchwords, with notifications), spoken briefings, the written AI Brief and Compare Coverage analysis, and unlimited publications.' },
+  { q: 'What does the free tier include?', a: 'Reading and the offline reader for up to 50 publications, bookmarks, highlights and notes, search, widgets, Siri Shortcuts and a Safari share extension, and having any single article read aloud. No time limit and no account.' },
+  { q: 'What does Inkline Pro add?', a: 'Monitoring (topic monitors and keywords across the whole web, with notifications), the Watch tab, Voices for following individual journalists, full Inkline Radio bulletins, Today’s Brief and Compare Coverage analysis, and publications beyond the free fifty. Inkline Radio, Today’s Brief and Compare Coverage are written on the device by Apple Intelligence, so they need a device that supports it.' },
   { q: 'Is there a trial?', a: 'Both Pro plans start with a week free through the App Store. Cancel during the week and you pay nothing.' },
   { q: 'How do I cancel?', a: 'Through your Apple account subscription settings, any time. Access runs to the end of the paid period, and your reading, notes and publications stay on your device on the free tier.' },
 ];
@@ -30,11 +30,12 @@ const faq = [
       <tr><td>Reading and the offline reader</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
       <tr><td>Publications</td><td>Up to 50</td><td>Unlimited</td></tr>
       <tr><td>Bookmarks, highlights and notes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
-      <tr><td>Search, widgets and Voices</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+      <tr><td>Search, widgets, Shortcuts and share extension</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
       <tr><td>Read a single article aloud</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
-      <tr><td>Topic monitors and watchwords, with notifications</td><td>No</td><td class="yes">Yes</td></tr>
+      <tr><td>Topic monitors and keywords, with notifications</td><td>No</td><td class="yes">Yes</td></tr>
+      <tr><td>Voices: follow individual journalists</td><td>No</td><td class="yes">Yes</td></tr>
       <tr><td>Spoken briefings (Inkline Radio)</td><td>No</td><td class="yes">Yes</td></tr>
-      <tr><td>The written AI Brief and Compare Coverage analysis</td><td>No</td><td class="yes">Yes</td></tr>
+      <tr><td>Today’s Brief and Compare Coverage analysis</td><td>No</td><td class="yes">Yes</td></tr>
     </tbody>
   </table>
 

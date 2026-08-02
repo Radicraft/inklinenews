@@ -12,7 +12,7 @@ const features = [
   { slug: 'ipad-and-pencil', name: 'iPad and Apple Pencil', line: 'A landscape reading workspace with handwritten notes.' },
   { slug: 'voices', name: 'Voices', line: 'A newsroom directory. Follow individual journalists by name.' },
   { slug: 'inkline-radio', name: 'Inkline Radio', line: 'Your briefing as a short spoken bulletin, generated on the phone.' },
-  { slug: 'watchwords', name: 'Watchwords', line: 'Flag clients, competitors and spokespeople as stories arrive.' },
+  { slug: 'keywords', name: 'Keywords', line: 'Flag clients, competitors and spokespeople as stories arrive.' },
 ];
 ---
 <Base
@@ -29,10 +29,24 @@ const features = [
   <div class="prose">
     <p style="font-size:1.12rem">{SITE.boilerplate}</p>
 
+  <figure class="appvid">
+    <video src="/media/app-preview.mp4" poster="/media/app-preview-poster.webp" muted loop playsinline autoplay controls preload="metadata" width="720" height="1560" aria-label="A 23-second preview of Inkline 1.4 in use on iPhone"></video>
+    <figcaption>Twenty-three seconds of Inkline 1.4, as recorded on an iPhone.</figcaption>
+  </figure>
+
+  <script is:inline>
+    (function () {
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        var v = document.querySelector('.appvid video');
+        if (v) { v.removeAttribute('autoplay'); v.pause(); }
+      }
+    })();
+  </script>
+
   <div class="gallery" aria-label="Screenshots of Inkline on iPhone">
     <figure><img src="/screens/today.webp" alt="The Today page with the morning briefing card and lead stories" width="720" height="1564" loading="lazy" decoding="async" /><figcaption>Today</figcaption></figure>
     <figure><img src="/screens/feed.webp" alt="The Front Page with Watching and Trending rows" width="720" height="1564" loading="lazy" decoding="async" /><figcaption>The Front Page</figcaption></figure>
-    <figure><img src="/screens/watch.webp" alt="The Watch tab gathering stories flagged by a watchword" width="720" height="1564" loading="lazy" decoding="async" /><figcaption>Watch</figcaption></figure>
+    <figure><img src="/screens/watch.webp" alt="The Watch tab gathering stories flagged by a keyword" width="720" height="1564" loading="lazy" decoding="async" /><figcaption>Watch</figcaption></figure>
   </div>
     <p>The difference is the directory. Feed readers assume you already know where the good feeds are; Inkline ships the answer, checked by a person, dated, and kept current when publishers quietly move or retire their feeds. Everything else in the app is built to make professional monitoring faster: briefs before your commute, comparison across publications, notes in the margin.</p>
   </div>
@@ -62,4 +76,7 @@ const features = [
   @media (max-width: 680px) { .gallery { grid-template-columns: 1fr; max-width: 320px; margin-inline: auto; } }
   .gallery img { width: 100%; height: auto; border-radius: 20px; border: 1px solid var(--rule); box-shadow: 0 18px 44px rgba(19, 31, 59, 0.16); }
   .gallery figcaption { font-family: var(--sans); font-size: .74rem; color: var(--graphite); text-align: center; margin-top: .6rem; }
+  .appvid { margin: 2.6rem auto; max-width: 340px; }
+  .appvid video { width: 100%; height: auto; border-radius: 24px; border: 1px solid var(--rule); box-shadow: 0 24px 60px rgba(19, 31, 59, 0.18); display: block; background: var(--ink-deep); }
+  .appvid figcaption { font-family: var(--sans); font-size: .74rem; color: var(--graphite); text-align: center; margin-top: .7rem; }
 </style>

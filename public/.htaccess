@@ -12,6 +12,7 @@ Redirect 301 /privacy-policy /privacy/
 Redirect 301 /Support /support/
 Redirect 301 /support.html /support/
 Redirect 301 /press-kit /press/
+Redirect 301 /app/features/watchwords /app/features/keywords/
 
 # Hashed assets are immutable; HTML revalidates
 <IfModule mod_headers.c>

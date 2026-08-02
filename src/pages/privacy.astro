@@ -4,23 +4,44 @@ const crumbs = [{ name: 'Home', url: '/' }, { name: 'Privacy', url: '/privacy/' 
 ---
 <Base
   title="Inkline privacy policy | Inkline"
-  description="Inkline runs on your device: no accounts, no server, no tracking. The policy is short because there is little to police."
+  description="Inkline's full privacy policy: no accounts, no analytics, no tracking, data on your device, subscriptions handled by Apple. Effective 31 July 2026."
   path="/privacy/"
   crumbs={crumbs}
 >
   <div slot="masthead">
-  <p class="kicker">Privacy</p>
-  <h1>Privacy</h1>
+  <p class="kicker">Privacy policy</p>
+  <h1>Inkline privacy policy</h1>
+  <p class="answer">Inkline has no accounts and no server of its own. Your reading, notes and settings live on your device. This page is the app’s full privacy policy. Effective 31 July 2026.</p>
   </div>
   <div class="prose">
-    <p style="font-size:1.12rem">Inkline has no accounts and no server. Feeds are fetched by your device, Apple Intelligence features run on your device, and your reading history, notes and settings exist only on your device and in your own iCloud backups.</p>
-    <h2>What the app connects to</h2>
-    <p>Inkline has no server of its own. Your device makes four kinds of outbound connection, all in your own name: the publications you follow (to fetch their feeds), a feed search index when you search for a new source, Google News when a monitor or watch runs, and article pages themselves to fetch images or full text for the reader. Nothing about you rides along: no identifiers, no analytics, no account.</p>
-    <p>Apple’s App Store privacy label for Inkline is “Data Not Collected”, and that label is meant literally.</p>
+    <h2>Who we are</h2>
+    <p>Inkline is made by Michael White, publishing as White Wiki, in the United Kingdom. For anything in this policy, email <a href="mailto:hello@inklinenews.com">hello@inklinenews.com</a>.</p>
+
     <h2>What Inkline collects</h2>
-    <p>Nothing, in the sense that matters: no analytics SDKs, no advertising identifiers, no reading data leaves the phone. Subscriptions are processed by Apple, so Inkline never sees payment details. This website sets no cookies, which is why it shows no consent banner.</p>
-    <h2>What your device does</h2>
-    <p>Fetching a feed necessarily contacts the publisher's servers from your device, exactly as a browser would, and publishers see those requests as they see any visit. Content used for daily briefs and summaries is processed by Apple Intelligence on the device.</p>
-    <p class="small">This page is migrated from the previous host with 301 redirects, and the App Store listing is updated the same day the redirects go live. Final legal wording is Michael's to confirm before launch; the architecture it describes is accurate today.</p>
+    <p>Nothing. The app has no user accounts, no analytics or advertising SDKs, no advertising identifiers, and no server that receives your data. Your subscriptions list, reading history, bookmarks, highlights, notes, keywords, monitors and settings are stored on your device and, if you use iCloud device backups, in your own Apple backup. We cannot see any of it. Apple’s App Store privacy label for Inkline is “Data Not Collected”, and it is meant literally.</p>
+
+    <h2>Connections your device makes</h2>
+    <p>Inkline fetches content directly from the internet, in your name, the way a browser does. Those connections are: the publications you follow, to collect their articles; a feed search index, when you search for a new publication to add; Google News, when a monitor or a keyword searches the whole web; and article pages themselves, to fetch images or the full text of a story for the reader. The operators of those services see the requests your device makes, as they would see any visit, under their own privacy policies. Inkline attaches no account, identifier or tracking information to any of these requests.</p>
+
+    <h2>Apple Intelligence, on the device</h2>
+    <p>Today’s Brief, Compare Coverage and Inkline Radio are generated with Apple Intelligence on your iPhone or iPad. The articles being summarised, compared or read aloud are processed on the device and are not sent to us or to any third party by Inkline.</p>
+
+    <h2>Subscriptions and payments</h2>
+    <p>Inkline Pro is an auto-renewing subscription sold through Apple. Payment is handled entirely by Apple through your Apple Account; Inkline never sees your payment details, billing address or Apple ID. Apple provides us with aggregated, anonymised sales figures only. You can manage or cancel the subscription in your device settings under your Apple Account, and request refunds from Apple at reportaproblem.apple.com.</p>
+
+    <h2>Notifications</h2>
+    <p>If you turn on alerts for monitors or keywords, notifications are scheduled and delivered locally by iOS. There is no push server: the checking happens on your device.</p>
+
+    <h2>Children</h2>
+    <p>Inkline is a news reader and is not directed at children. It collects no data from anyone, children included.</p>
+
+    <h2>Your rights</h2>
+    <p>Under UK and EU data protection law you have rights over personal data an organisation holds about you. Inkline holds none, so there is nothing for us to access, correct, export or erase: your data is on your device, and deleting the app deletes it. If you believe we hold any personal data about you (for example, an email you sent to support), write to <a href="mailto:hello@inklinenews.com">hello@inklinenews.com</a> and we will answer within a month.</p>
+
+    <h2>This website</h2>
+    <p>inklinenews.com is a static site. It sets no cookies, runs no analytics and hosts no advertising, which is why no consent banner appears. Fonts and images are served from this site, not from third-party services.</p>
+
+    <h2>Changes</h2>
+    <p>If the app’s behaviour ever changes in a way that affects this policy, the policy changes first and the effective date above moves. Material changes are noted in the app’s release notes and on the <a href="/changelog/">changelog</a>.</p>
   </div>
 </Base>

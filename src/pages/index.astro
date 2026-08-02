@@ -9,7 +9,7 @@ const featured = getFeatured(6);
 const headlines = headlinesData.items;
 const features = [
   { href: '/app/features/daily-briefs/', name: 'The morning brief', shot: 'today', alt: 'The Today page with the Inkline Radio briefing card and lead stories', blurb: 'Written on your phone by Apple Intelligence from the publications you follow. Nothing you read leaves the device.' },
-  { href: '/app/features/topic-monitoring/', name: 'Monitors and watchwords', shot: 'watch', alt: 'The Watch tab gathering stories flagged by a watchword', blurb: 'Watch topics across the whole web and flag clients, competitors and spokespeople as stories arrive.' },
+  { href: '/app/features/topic-monitoring/', name: 'Monitors and keywords', shot: 'watch', alt: 'The Watch tab: journalists and tracked keywords in one place', blurb: 'Track topics across the whole web and flag clients, competitors and spokespeople as stories arrive.' },
   { href: '/app/features/inkline-radio/', name: 'Inkline Radio', shot: 'radio', alt: 'The Inkline Radio player with a two-story bulletin and its running order', blurb: 'The brief as a short spoken bulletin in a natural British voice, generated on the phone.' },
   { href: '/app/features/coverage-timeline/', name: 'The coverage timeline', shot: 'coverage', alt: 'The Coverage sheet showing a framing read and one story across seven publications', blurb: 'Who ran a story first, who followed and when, and whether the framing is actually moving.' },
   { href: '/app/features/voices/', name: 'Voices', shot: 'search', alt: 'Search with Voices at the top and publication results below', blurb: 'The journalists behind your feeds, grouped by where they publish. Follow anyone in a tap.' },
@@ -28,7 +28,7 @@ const features = [
   <div class="bigdrop" aria-hidden="true"><svg viewBox="380 270 264 350" xmlns="http://www.w3.org/2000/svg"><defs>
     <radialGradient id="dgA" cx="0.38" cy="0.30" r="0.9"><stop offset="0" stop-color="#324A78"/><stop offset="0.45" stop-color="#1E2E52"/><stop offset="1" stop-color="#131F3B"/></radialGradient>
     <radialGradient id="sgA" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#BFD0F0" stop-opacity="0.9"/><stop offset="1" stop-color="#BFD0F0" stop-opacity="0"/></radialGradient>
-    <filter id="ringF" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="3" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="7" xChannelSelector="R" yChannelSelector="G"/></filter>
+    <filter id="ringF" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="3" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="7" xChannelSelector="R" yChannelSelector="G"/></filter>
   </defs><path d="M512 300 C 566 392, 606 452, 606 508 a 94 94 0 1 1 -188 0 C 418 452, 458 392, 512 300 Z" fill="url(#dgA)"/><ellipse cx="488" cy="470" rx="22" ry="52" fill="url(#sgA)" opacity="0.9" transform="rotate(-12 488 470)"/></svg></div>
 
   <section class="hero" id="hero">
@@ -261,17 +261,35 @@ const features = [
       var a=[];ys.forEach(function(y){xs.forEach(function(x){a.push([x,y])})});
       return a;
     }
+    var headEl=sec.querySelector('.landing-head');
+    var live=[]; /* rectangles of chips currently on screen */
     function newsfall(){
       if(!running||document.hidden||reduced)return;
       var a=anchors();
       if(!order||order.length!==a.length){order=a.map(function(_,i){return i}).sort(function(){return Math.random()-.5});cell=0;}
-      var base=a[order[cell++%order.length]];
-      var asp=sec.clientWidth/sec.clientHeight;
-      var x=base[0]+(Math.random()-.5)*.06,y=base[1]+(Math.random()-.5)*.08;
-      drop(x*asp,y,.95);
+      var W=sec.clientWidth,H=sec.clientHeight;
+      var headBottom=headEl?(headEl.offsetTop+headEl.offsetHeight):0;
+      var yMax=1-((headBottom+120)/H); /* chip block + upward drift stays clear of the heading */
+      var now=performance.now();
+      live=live.filter(function(r){return now-r.t<4600});
+      /* try each anchor in rotation; take the first whose chip footprint is free */
+      var placed=null,tries;
+      for(tries=0;tries<a.length;tries++){
+        var base=a[order[cell++%order.length]];
+        var x=base[0]+(Math.random()-.5)*.06,y=base[1]+(Math.random()-.5)*.08;
+        if(y>yMax)y=yMax; if(y<.14)y=.14;
+        var cx=x*W,topPx=(1-y)*H;
+        var rect={l:cx-160,r:cx+160,tp:topPx-130,b:topPx+16,t:now};
+        var clash=live.some(function(o){return rect.l<o.r&&rect.r>o.l&&rect.tp<o.b&&rect.b>o.tp});
+        if(!clash){placed={x:x,y:y,rect:rect};break;}
+      }
+      if(!placed)return; /* the surface is busy; skip this wave rather than stack chips */
+      live.push(placed.rect);
+      var asp=W/H;
+      drop(placed.x*asp,placed.y,.95);
       var head=headlines[hi++%headlines.length];
       var c=document.createElement('p');c.className='chip';
-      c.style.left=(x*100)+'%';c.style.top=((1-y)*100)+'%';
+      c.style.left=(placed.x*100)+'%';c.style.top=((1-placed.y)*100)+'%';
       c.innerHTML='<span class="csrc">'+head.src+'</span><span class="chd">'+head.hd+'</span>';
       sec.appendChild(c);setTimeout(function(){c.remove()},4500);
     }
@@ -325,7 +343,7 @@ const features = [
 
   .landing{position:relative;z-index:1;min-height:92svh;width:100%;overflow:hidden;border-bottom:1px solid var(--hairline-dark)}
   #surfgl{position:absolute;inset:0;width:100%;height:100%}
-  .landing-head{position:relative;z-index:3;padding:clamp(4.5rem,12vh,7rem) clamp(1.3rem,4vw,3.4rem) 0;pointer-events:none}
+  .landing-head{position:relative;z-index:4;padding:clamp(4.5rem,12vh,7rem) clamp(1.3rem,4vw,3.4rem) 0;pointer-events:none}
   .landing .kick{font-family:var(--sans);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);margin-bottom:1rem}
   .landing h2{font-size:clamp(1.9rem,4.6vw,3.9rem);letter-spacing:-.024em;line-height:1.05;font-weight:560}
   .landing .it{font-style:italic;font-weight:340;color:var(--cream)}

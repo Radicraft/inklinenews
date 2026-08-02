@@ -74,7 +74,7 @@
   },
   {
    "slug": "axios",
-   "description": "Axios built its newsroom around brevity: short items, bolded takeaways, and a promise not to waste the reader's morning. That format makes it dense with signal for a monitoring workflow, since each item is effectively a pre-written summary. Coverage spans US politics, business, technology and local city editions, free to read. Its scoops tend to be small and early rather than long and definitive, which is exactly what a watchword catches best."
+   "description": "Axios built its newsroom around brevity: short items, bolded takeaways, and a promise not to waste the reader's morning. That format makes it dense with signal for a monitoring workflow, since each item is effectively a pre-written summary. Coverage spans US politics, business, technology and local city editions, free to read. Its scoops tend to be small and early rather than long and definitive, which is exactly what a keyword catches best."
   },
   {
    "slug": "the-times",
@@ -134,7 +134,7 @@
   },
   {
    "slug": "the-times-of-india",
-   "description": "The Times of India is the world's largest-circulation English-language newspaper and the broadest single window into Indian news. National politics, business and city coverage arrive at volume, free to read. The sheer output argues for following it through monitors and watchwords rather than as a raw feed, letting the terms you care about surface from the flow."
+   "description": "The Times of India is the world's largest-circulation English-language newspaper and the broadest single window into Indian news. National politics, business and city coverage arrive at volume, free to read. The sheer output argues for following it through monitors and keywords rather than as a raw feed, letting the terms you care about surface from the flow."
   },
   {
    "slug": "npr",
