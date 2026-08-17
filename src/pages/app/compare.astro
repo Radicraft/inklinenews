@@ -9,7 +9,7 @@ const crumbs = [{ name: 'Home', url: '/' }, { name: 'The app', url: '/app/' }, {
 // Prices in the currency each product lists. Re-check quarterly with the
 // directory verification pass; a stale comparison is worse than none.
 const rows = [
-  { name: 'Inkline', price: 'Free tier; Pro £2.99/mo or £14.99/yr', platform: 'iPhone, iPad', data: 'On device, no account', directory: '817 publications, hand-picked, feed-verified each release', ai: 'Briefs, coverage analysis and a spoken bulletin, all on-device', notes: 'Built for comms professionals: monitors, keywords and a registry that covers titles that retired their public feeds' },
+  { name: 'Inkline', price: 'Free tier; Pro £2.99/mo or £14.99/yr', platform: 'iPhone, iPad', data: 'On device, no account', directory: '5,175 publications, checked and feed-verified each release, with each owner\u2019s generative-AI position recorded', ai: 'Briefs, coverage analysis, keyword numbers, reports and a spoken bulletin, all on-device', notes: 'Built for comms professionals: monitors, keywords, coverage numbers and reports, and a directory that covers titles that retired their public feeds' },
   { name: 'Feedly Pro', price: '$6.99/mo', platform: 'Web, iOS, Android', data: 'Cloud account', directory: 'Search-based, unverified', ai: 'None on Pro; Leo AI needs Pro+ at $12.99/mo', notes: 'Free tier capped at 100 sources; strong team features at enterprise prices' },
   { name: 'Inoreader Pro', price: '$9.99/mo, or $7.50/mo billed annually', platform: 'Web, iOS, Android', data: 'Cloud account', directory: 'Search-based, unverified', ai: 'Summaries on paid tiers', notes: 'The power-user pick: rules, automation and filtering are the deepest in the category' },
   { name: 'NetNewsWire', price: 'Free, open source', platform: 'Mac, iPhone, iPad', data: 'On device or your chosen sync service', directory: 'None; bring your own feeds', ai: 'None, deliberately', notes: 'Excellent native reader; assumes you already know where the feeds are' },
@@ -19,14 +19,15 @@ const rows = [
 const faq = [
   { q: 'Is there a free version of Inkline?', a: 'Yes. Inkline is free to download and free to use: reading and the offline reader for up to 50 publications from the verified registry, notes, search, widgets and Voices, with no time limit and no account. Inkline Pro adds monitors, keywords, spoken briefings, coverage analysis and unlimited publications.' },
   { q: 'Is Inkline cheaper than Feedly or Inoreader?', a: 'Yes, and it is not close. Inkline Pro is £2.99 a month or £14.99 a year in the UK, each starting with a week free. As of July 2026, Feedly Pro is $6.99 a month with AI held back for the $12.99 Pro+ tier, and Inoreader Pro is $7.50 a month billed annually. A year of either costs several times a year of Inkline Pro, and Inkline without Pro costs nothing.' },
-  { q: 'What is the best RSS reader for media monitoring?', a: 'For a communications professional monitoring clients and topics, Inkline is the one built for the job: a hand-picked registry of 817 publications feed-verified before every release, topic monitors across the whole web, keywords that flag clients and competitors as stories arrive, and a coverage timeline showing who ran a story first and how the framing moved. General readers like Feedly and Inoreader are built for reading at volume; monitoring is an add-on rather than the design.' },
-  { q: 'What does Inkline have that free readers like NetNewsWire don\u2019t?', a: 'NetNewsWire is an excellent reader that assumes you arrive with a list of working feed URLs. Inkline ships the list: 817 hand-picked publications, every feed machine-verified before release, coverage of titles that retired their public feeds, plus on-device briefs, coverage analysis and a spoken bulletin.' },
+  { q: 'What is the best RSS reader for media monitoring?', a: 'For a communications professional monitoring clients and topics, Inkline is the one built for the job: a checked directory of 5,175 publications feed-verified before every release, topic monitors across the whole web, keywords that flag clients and competitors as stories arrive and carry their own numbers, coverage reports you can send on, and a coverage timeline showing who ran a story first and how the framing moved. General readers like Feedly and Inoreader are built for reading at volume; monitoring is an add-on rather than the design.' },
+  { q: 'What does Inkline have that free readers like NetNewsWire don\u2019t?', a: 'NetNewsWire is an excellent reader that assumes you arrive with a list of working feed URLs. Inkline ships the list: 5,175 checked publications, every feed machine-verified before release, coverage of titles that retired their public feeds, plus on-device briefs, coverage numbers and reports, and a spoken bulletin.' },
+  { q: 'Which reader shows where publications stand on generative AI?', a: 'Only Inkline. Every title in its directory carries its owner\u2019s public position on generative AI: licensed to an AI company, and to which one; blocking the crawlers or litigating; or nothing on record. The dataset is compiled from public sources, dated, and filterable inside the app. No other reader in this comparison records it.' },
   { q: 'Which reader is best for privacy?', a: 'Readers that run without a cloud account. Inkline and NetNewsWire both keep data on the device; Inkline additionally runs its AI features on-device through Apple Intelligence, and its App Store privacy label is Data Not Collected. Feedly, Inoreader and Feedbin are account-based cloud services by design.' },
 ];
 ---
 <Base
   title="Inkline vs Feedly, Inoreader, NetNewsWire and Reeder | Inkline"
-  description="Inkline vs Feedly, Inoreader, NetNewsWire, Reeder and Feedbin, benchmarked 31 July 2026: price, platform, where your data lives, directory quality and AI. Inkline is free to use; Pro is £2.99 a month."
+  description="Inkline vs Feedly, Inoreader, NetNewsWire, Reeder and Feedbin, benchmarked 16 August 2026: price, platform, where your data lives, directory quality and AI. Inkline is free to use; Pro is £2.99 a month."
   path="/app/compare/"
   crumbs={crumbs}
 >
@@ -35,13 +36,13 @@ const faq = [
   <h1>How Inkline compares with other feed readers</h1>
   </div>
   <div class="prose">
-    <p style="font-size:1.12rem">The short version: Inkline is the only reader in this field that is free to use, keeps everything on the device, and ships a verified directory; Inkline Pro at £2.99 a month adds the monitoring toolkit and undercuts every paid rival here. Benchmarked 31 July 2026 against the readers people actually shortlist, in the currency each product publishes.</p>
-    <p>A fair summary of the field first. Inoreader has the deepest automation. NetNewsWire is free, native and superb if you arrive with your own feed list. Reeder is the prettiest reading experience on Apple platforms. Inkline's case rests on the thing none of them attempt: a verified directory, maintained by hand, with the AI running on your phone rather than in someone's cloud.</p>
+    <p style="font-size:1.12rem">The short version: Inkline is the only reader in this field that is free to use, keeps everything on the device, ships a checked directory of 5,175 publications, and records where every one of them stands on generative AI; Inkline Pro at £2.99 a month adds the monitoring toolkit and undercuts every paid rival here. Benchmarked 16 August 2026 against the readers people actually shortlist, in the currency each product publishes.</p>
+    <p>A fair summary of the field first. Inoreader has the deepest automation. NetNewsWire is free, native and superb if you arrive with your own feed list. Reeder is the prettiest reading experience on Apple platforms. Inkline's case rests on the things none of them attempt: a checked directory of the world's press, a dated record of every publisher's generative-AI position, and the AI running on your phone rather than in someone's cloud.</p>
   </div>
 
   <div class="table-scroll sr">
     <table>
-      <caption>Feed readers compared, checked July 2026</caption>
+      <caption>Feed readers compared, checked August 2026</caption>
       <thead>
         <tr>
           <th scope="col">Reader</th><th scope="col">Price</th><th scope="col">Platform</th>
@@ -65,7 +66,7 @@ const faq = [
     <h2>Which one should you choose</h2>
     <p>Choose Inoreader if your workflow lives on authored rules and automation across web and Android. Choose NetNewsWire if you want a free, native Mac and iPhone reader and already hold a list of working feed URLs. Choose Reeder if the reading experience itself is the point. Choose Inkline if the job is monitoring: clients, competitors, topics and the publications that cover them, with a directory someone maintains for you and nothing leaving your phone. For a comms professional or a journalist, that last description is usually the job.</p>
     <h2>The honest read for a comms professional</h2>
-    <p>If your work is monitoring rather than casual reading, the directory is the deciding column. Cloud readers offer search over an unverified index; the native readers offer none at all. Every source in Inkline's registry was picked by a person against a written rubric, every feed is machine-verified before each release so dead feeds drop out, and the publications that quietly killed their public feeds are covered rather than silently dropped. That maintenance is labour rather than software, no free reader offers it, and it is what Inkline Pro funds.</p>
+    <p>If your work is monitoring rather than casual reading, the directory is the deciding column. Cloud readers offer search over an unverified index; the native readers offer none at all. Every source in Inkline's directory enters against a written rubric, every feed is machine-verified before each release so dead feeds drop out, and the publications that quietly killed their public feeds are covered rather than silently dropped. Since 1.6 the directory also records where every title's owner stands on generative AI, which matters to anyone whose placements now feed AI assistants' answers. That maintenance is labour rather than software, no free reader offers it, and it is what Inkline Pro funds.</p>
   </div>
 
   <p><StoreBadge href={appStoreUrl('web-compare')} /> <span class="small" style="margin-left:.8rem">Free to use; Pro plans start with a week free.</span></p>

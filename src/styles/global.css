@@ -370,6 +370,12 @@ table caption { text-align: left; font-family: var(--sans); font-size: .68rem; l
 .pill-metered { border-color: var(--brass-deep); color: var(--brass-deep); }
 .pill-hard { border-color: var(--ink); color: var(--ink); }
 
+/* Gen-AI position pills: the app's Atlas dial vocabulary */
+.pill-ai-licensed { border-color: var(--brass-deep); color: var(--brass-deep); }
+.pill-ai-blocking { border-color: var(--ink); color: var(--ink); background: var(--paper); }
+.pill-ai-robots { border-color: var(--rule-strong); color: var(--ink); }
+.pill-ai-none { border-color: var(--rule); color: var(--graphite); }
+
 /* the end mark: a small drop closes long-form pages, like a printer's mark */
 .endmark { display: block; width: 14px; margin: 3rem auto 0; opacity: .75; }
 

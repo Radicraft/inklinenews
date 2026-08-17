@@ -4,5 +4,5 @@ const { date } = Astro.props as { date: string };
 ---
 <span class="stamp" data-stamp>
   <svg viewBox="0 0 20 20" aria-hidden="true"><path class="tick" d="M3.5 10.5l4.2 4.2L16.5 5.5"/></svg>
-  Verified by hand, {formatDate(date)}
+  Feed-verified, {formatDate(date)}
 </span>

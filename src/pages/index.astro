@@ -1,24 +1,24 @@
 ---
 import Base from '../layouts/Base.astro';
 import StoreBadge from '../components/StoreBadge.astro';
-import { getFeatured, accessLabel } from '../lib/registry';
+import { getFeatured, accessLabel, REGISTRY, REGISTRY_UPDATED, formatDate } from '../lib/registry';
 import { SITE, appStoreUrl } from '../lib/site';
 import { websiteLd, appLd } from '../lib/schema';
 import headlinesData from '../data/headlines.json';
 const featured = getFeatured(6);
 const headlines = headlinesData.items;
 const features = [
-  { href: '/app/features/daily-briefs/', name: 'The morning brief', shot: 'today', alt: 'The Today page with the Inkline Radio briefing card and lead stories', blurb: 'Written on your phone by Apple Intelligence from the publications you follow. Nothing you read leaves the device.' },
+  { href: '/app/features/the-atlas/', name: 'The Atlas', shot: 'atlas', alt: 'The Atlas: a globe of the world\u2019s press above a searchable list of publications', blurb: 'The world\u2019s press on one globe. Turn it, choose a market, and read a title\u2019s last ten stories before you follow it.' },
+  { href: '/app/features/coverage-numbers/', name: 'Numbers for every watched word', shot: 'watch-term', alt: 'A watched keyword\u2019s numbers: mentions by day, top publications and a surge flag', blurb: 'Volume over time, share of voice, the publications driving it, and a flag when the line jumps. Measured on your device.' },
+  { href: '/app/features/coverage-reports/', name: 'Coverage reports', shot: 'reports', alt: 'A coverage report: the summary of a watched word\u2019s week with the stories beneath', blurb: 'Turn a watched word into a document: what ran, where, how it compares with the period before, and room to write what it means.' },
   { href: '/app/features/topic-monitoring/', name: 'Monitors and keywords', shot: 'watch', alt: 'The Watch tab: journalists and tracked keywords in one place', blurb: 'Track topics across the whole web and flag clients, competitors and spokespeople as stories arrive.' },
-  { href: '/app/features/inkline-radio/', name: 'Inkline Radio', shot: 'radio', alt: 'The Inkline Radio player with a two-story bulletin and its running order', blurb: 'The brief as a short spoken bulletin in a natural British voice, generated on the phone.' },
-  { href: '/app/features/coverage-timeline/', name: 'The coverage timeline', shot: 'coverage', alt: 'The Coverage sheet showing a framing read and one story across seven publications', blurb: 'Who ran a story first, who followed and when, and whether the framing is actually moving.' },
-  { href: '/app/features/voices/', name: 'Voices', shot: 'search', alt: 'Search with Voices at the top and publication results below', blurb: 'The journalists behind your feeds, grouped by where they publish. Follow anyone in a tap.' },
-  { href: '/app/features/offline-reading/', name: 'The reader', shot: 'reader', alt: 'The reader showing full article text with bookmark, note, listen and type controls', blurb: 'Four typefaces including OpenDyslexic, full article text, and offline reading kept for the train.' },
+  { href: '/app/features/inkline-radio/', name: 'Inkline Radio', shot: 'radio', alt: 'The Inkline Radio player with a bulletin and its running order', blurb: 'The brief as a short spoken bulletin in a natural British voice, generated on the phone.' },
+  { href: '/app/features/offline-reading/', name: 'The reader', shot: 'reader', alt: 'The reader showing full article text with bookmark, note, listen and type controls', blurb: 'Four typefaces including OpenDyslexic, four contrast modes, full article text, and offline reading kept for the train.' },
 ];
 ---
 <Base
   title="Inkline: news and media monitoring for comms and newsrooms"
-  description="Track topics, publications and people. An RSS database of 817 hand-picked, feed-verified sources across 55 markets, private morning briefs written on your device, and a spoken bulletin. Built for comms and newsrooms."
+  description="Track topics, publications and people. An RSS database of 5,175 checked, feed-verified sources across 105 markets, coverage numbers and reports for every watched word, and a record of where every title stands on generative AI. Built for comms and newsrooms."
   path="/"
   jsonld={[websiteLd(), appLd()]}
   dark={true}
@@ -61,8 +61,8 @@ const features = [
   <section class="drained" id="database">
     <div class="dwrap">
       <p class="kick">The RSS database</p>
-      <h2>An RSS database of 817 publications, built by a person.</h2>
-      <p class="dbsub">Every source in Inkline was picked by a person against a written rubric, and every feed is machine-verified before each release, so dead feeds drop out before they reach you. The registry covers <b>55 markets</b> and <b>34 languages</b>, records the access status of every title (521 free, 227 metered, 69 paywalled), and still covers the 264 titles that publish no public feed at all. Version 1, updated <b>17 July 2026</b>.</p>
+      <h2>An RSS database of {REGISTRY.sources.toLocaleString('en-GB')} publications, kept honest.</h2>
+      <p class="dbsub">Every source in Inkline enters against a written rubric, and every feed is machine-verified before each release, so dead feeds drop out before they reach you. The directory covers <b>{REGISTRY.markets} markets</b> and <b>{REGISTRY.languages} languages</b>, records the access status of every title ({REGISTRY.paywallNone.toLocaleString('en-GB')} free, {REGISTRY.paywallMetered} metered, {REGISTRY.paywallHard} paywalled), and still covers the {REGISTRY.headlinesBacked.toLocaleString('en-GB')} titles that publish no public feed at all. New in 1.6: every title now carries its owner's public position on generative AI, licensed, blocking or litigating, or nothing on record, dated and filterable. Version 3, updated <b>{formatDate(REGISTRY_UPDATED)}</b>.</p>
       <div class="index">
         {featured.map((p, i) => (
           <a class="row sr" href={`/publications/${p.slug}/`}>
@@ -71,11 +71,11 @@ const features = [
               <img src={`/icons/${p.slug}.png`} alt="" width="28" height="28" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('mono');this.remove()" />
             </span>
             <span class="name">{p.name}</span>
-            <span class="meta">{p.topics.join(', ')} · {accessLabel(p.paywall)} · <b>in registry v1 · 17 Jul 2026</b></span>
+            <span class="meta">{p.topics.join(', ')} · {accessLabel(p.paywall)} · <b>in registry v3 · 11 Aug 2026</b></span>
           </a>
         ))}
       </div>
-      <a class="allpubs" href="/publications/">Browse all 817 publications <span class="ln"></span></a>
+      <a class="allpubs" href="/publications/">Browse all {REGISTRY.sources.toLocaleString('en-GB')} publications <span class="ln"></span></a>
     </div>
   </section>
 

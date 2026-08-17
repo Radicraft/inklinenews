@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import Faq from '../../components/Faq.astro';
 import { markets, pubsInMarket, proseForMarket, accessLabel, langName, REGISTRY_UPDATED, formatDate } from '../../lib/registry';
+import { REGISTRY } from '../../lib/registry';
 
 export function getStaticPaths() {
   return markets.map((m) => ({ params: { country: m.slug } }));
@@ -14,7 +15,7 @@ const free = pubs.filter((p) => p.paywall === 'none').length;
 const crumbs = [{ name: 'Home', url: '/' }, { name: 'Publications', url: '/publications/' }, { name: m.name, url: `/feeds/${m.slug}/` }];
 const faq = [
   { q: `How many ${m.name} publications does Inkline cover?`, a: `${pubs.length} at the registry pass of ${updated}, in ${m.languages.map(langName).join(', ')}. ${free} are free to read.` },
-  { q: `Are these feeds verified?`, a: `Yes. The registry is chosen by hand and every entry is feed-verified before each app release; entries that fail drop out. The pass shown here finished on ${updated}.` },
+  { q: `Are these feeds verified?`, a: `Yes. Every source enters the directory against a written rubric and every entry is feed-verified before each app release; entries that fail drop out. The pass shown here finished on ${updated}.` },
 ];
 ---
 <Base
@@ -46,5 +47,5 @@ const faq = [
   </table>
 
   <Faq items={faq} />
-  <p class="small"><a href="/publications/">All 817 publications</a></p>
+  <p class="small"><a href="/publications/">All {REGISTRY.sources.toLocaleString('en-GB')} publications</a></p>
 </Base>

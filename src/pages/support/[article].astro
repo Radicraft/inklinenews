@@ -4,8 +4,8 @@ import Base from '../../layouts/Base.astro';
 export function getStaticPaths() {
   const articles = [
     { slug: 'adding-sources', name: 'Adding sources', body: [
-      'Search by publication name and Inkline resolves the verified feeds for you; there are no URLs to find or paste. The registry covers 817 publications, and unified search also finds desks and journalists.',
-      'For a site outside the directory, use "capture any website" from the share sheet in Safari: Inkline detects available feeds on the page and, where a publication offers none, tells you so rather than silently failing. Starter collections add a whole verified pack in one tap.',
+      'Search by publication name and Inkline resolves the verified feeds for you; there are no URLs to find or paste. The directory covers 5,175 publications across 105 markets, unified search also finds desks and journalists, and the Atlas in Search lets you browse by market and read a title\u2019s last ten stories before you follow it.',
+      'For a site outside the directory, use "capture any website" from the share sheet in Safari: Inkline detects available feeds on the page and, where a publication offers none, tells you so rather than silently failing. Starter collections add a whole verified pack in one tap, and OPML works in both directions: import the list you keep, and export it again from Settings.',
     ]},
     { slug: 'daily-briefs', name: 'Daily briefs', body: [
       'Briefs are written by Apple Intelligence on your device from the sources you follow, grouped by the interests set during onboarding. They appear on the Front Page each morning and require a device that supports Apple Intelligence.',
@@ -25,8 +25,12 @@ export function getStaticPaths() {
     ] },
     { slug: 'keywords', name: 'Keywords and the Watch tab', body: [
       'A keyword flags arriving stories that mention a term you care about: a client, a competitor, a spokesperson. Add and manage keywords from the Watch tab; matched stories gather there and can send a notification.',
-      'Keywords check stories once, when they arrive, so a new keyword applies from now on rather than searching backwards. Whole-word matching is on by default to keep short terms from over-matching. Keywords are part of Inkline Pro, alongside monitors.',
+      'Keywords check stories once, when they arrive, so a new keyword applies from now on rather than searching backwards. Whole-word matching is on by default to keep short terms from over-matching. Each keyword carries its own numbers (volume, share of voice, top publications and a surge flag) and can be turned into a coverage report from Library, then Reports. Keywords are part of Inkline Pro, alongside monitors.',
     ] },
+    { slug: 'coverage-reports', name: 'Coverage reports', body: [
+      'A coverage report turns a watched word into a document: what ran, where, and how it compares with the period before, with room to write what it means. Create one from a keyword or find your saved reports under Library, then Reports.',
+      'Reports are frozen snapshots by design: whatever happens to the underlying stories later, the report keeps what it found, so it stays reliable as a record you sent on a given day. Coverage reports are part of Inkline Pro.',
+    ]},
     { slug: 'subscription-and-trial', name: 'Free tier, Pro and billing', body: [
       'Inkline is free to use: reading, the offline reader for up to 50 publications, notes, search, widgets and Voices, with no time limit. Inkline Pro adds monitors, keywords, spoken briefings, analysis and unlimited publications, at £2.99 a month or £14.99 a year in the UK, each starting with a week free through the App Store. Billing is handled entirely by Apple; Inkline never sees payment details.',
       'To cancel, open Settings on your iPhone, tap your name, then Subscriptions, then Inkline. Cancelling during the trial means you are not charged; cancelling later keeps access until the period ends.',

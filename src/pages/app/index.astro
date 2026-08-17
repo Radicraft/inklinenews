@@ -5,9 +5,13 @@ import { appLd } from '../../lib/schema';
 import { appStoreUrl, SITE } from '../../lib/site';
 const crumbs = [{ name: 'Home', url: '/' }, { name: 'The app', url: '/app/' }];
 const features = [
-  { slug: 'daily-briefs', name: 'Apple Intelligence daily briefs', line: 'A morning brief written from your own feeds, on the device.' },
-  { slug: 'verified-directory', name: 'The verified directory', line: '817 hand-picked publications across 55 markets, feed-verified before every release.' },
-  { slug: 'coverage-timeline', name: 'the coverage timeline', line: 'One story, every publication that ran it, side by side.' },
+  { slug: 'the-atlas', name: 'The Atlas', line: 'The world\u2019s press on one globe: 5,175 publications across 105 markets.' },
+  { slug: 'coverage-reports', name: 'Coverage reports', line: 'Turn a watched word into a document you can send on.' },
+  { slug: 'coverage-numbers', name: 'Numbers for every watched word', line: 'Volume, share of voice, top publications and a surge flag, on the device.' },
+  { slug: 'generative-ai-positions', name: 'Generative AI positions', line: 'Where every title\u2019s owner stands: licensed, blocking, or nothing on record.' },
+  { slug: 'daily-briefs', name: 'Apple Intelligence daily briefs', line: 'A morning brief written from your own publications, on the device.' },
+  { slug: 'verified-directory', name: 'The verified directory', line: '5,175 checked publications across 105 markets, feed-verified before every release.' },
+  { slug: 'coverage-timeline', name: 'The coverage timeline', line: 'One story, every publication that ran it, side by side.' },
   { slug: 'offline-reading', name: 'Offline reading', line: 'Full articles cached for the Tube, the flight, the dead spot.' },
   { slug: 'ipad-and-pencil', name: 'iPad and Apple Pencil', line: 'A landscape reading workspace with handwritten notes.' },
   { slug: 'voices', name: 'Voices', line: 'A newsroom directory. Follow individual journalists by name.' },
@@ -30,8 +34,8 @@ const features = [
     <p style="font-size:1.12rem">{SITE.boilerplate}</p>
 
   <figure class="appvid">
-    <video src="/media/app-preview.mp4" poster="/media/app-preview-poster.webp" muted loop playsinline autoplay controls preload="metadata" width="720" height="1560" aria-label="A 23-second preview of Inkline 1.4 in use on iPhone"></video>
-    <figcaption>Twenty-three seconds of Inkline 1.4, as recorded on an iPhone.</figcaption>
+    <video src="/media/app-preview.mp4" poster="/media/app-preview-poster.webp" muted loop playsinline autoplay controls preload="metadata" width="720" height="960" aria-label="A 26-second preview of Inkline 1.6 in use on iPad"></video>
+    <figcaption>Twenty-six seconds of Inkline 1.6, as recorded on an iPad.</figcaption>
   </figure>
 
   <script is:inline>
@@ -45,7 +49,7 @@ const features = [
 
   <div class="gallery" aria-label="Screenshots of Inkline on iPhone">
     <figure><img src="/screens/today.webp" alt="The Today page with the morning briefing card and lead stories" width="720" height="1564" loading="lazy" decoding="async" /><figcaption>Today</figcaption></figure>
-    <figure><img src="/screens/feed.webp" alt="The Front Page with Watching and Trending rows" width="720" height="1564" loading="lazy" decoding="async" /><figcaption>The Front Page</figcaption></figure>
+    <figure><img src="/screens/atlas.webp" alt="The Atlas: a globe of the world\u2019s press above a searchable list of publications" width="720" height="1564" loading="lazy" decoding="async" /><figcaption>The Atlas</figcaption></figure>
     <figure><img src="/screens/watch.webp" alt="The Watch tab gathering stories flagged by a keyword" width="720" height="1564" loading="lazy" decoding="async" /><figcaption>Watch</figcaption></figure>
   </div>
     <p>The difference is the directory. Feed readers assume you already know where the good feeds are; Inkline ships the answer, checked by a person, dated, and kept current when publishers quietly move or retire their feeds. Everything else in the app is built to make professional monitoring faster: briefs before your commute, comparison across publications, notes in the margin.</p>
@@ -60,7 +64,7 @@ const features = [
     <li>Monitor any topic across the whole web, not just your subscriptions, with alerts when new coverage appears.</li>
       <li>A typography-first reader: four typefaces including OpenDyslexic, with light, sepia, dark and high-contrast modes.</li>
       <li>Home Screen and Lock Screen widgets (Latest, Coverage and Trending), Spotlight, Siri Shortcuts and a Safari share extension.</li>
-      <li>Import your feeds from another reader with OPML.</li>
+      <li>Import your publications from another reader with OPML, and export them the same way.</li>
     </ul>
 
   <div class="prose sr">
@@ -76,7 +80,7 @@ const features = [
   @media (max-width: 680px) { .gallery { grid-template-columns: 1fr; max-width: 320px; margin-inline: auto; } }
   .gallery img { width: 100%; height: auto; border-radius: 20px; border: 1px solid var(--rule); box-shadow: 0 18px 44px rgba(19, 31, 59, 0.16); }
   .gallery figcaption { font-family: var(--sans); font-size: .74rem; color: var(--graphite); text-align: center; margin-top: .6rem; }
-  .appvid { margin: 2.6rem auto; max-width: 340px; }
+  .appvid { margin: 2.6rem auto; max-width: 480px; }
   .appvid video { width: 100%; height: auto; border-radius: 24px; border: 1px solid var(--rule); box-shadow: 0 24px 60px rgba(19, 31, 59, 0.18); display: block; background: var(--ink-deep); }
   .appvid figcaption { font-family: var(--sans); font-size: .74rem; color: var(--graphite); text-align: center; margin-top: .7rem; }
 </style>

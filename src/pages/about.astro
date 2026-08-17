@@ -6,7 +6,7 @@ const crumbs = [{ name: 'Home', url: '/' }, { name: 'About', url: '/about/' }];
 ---
 <Base
   title="About Inkline and how the directory is verified | Inkline"
-  description="Who makes Inkline, how the 817-source registry is built and verified, and how corrections are handled."
+  description="Who makes Inkline, how the 5,175-source directory is built and verified, and how corrections are handled."
   path="/about/"
   crumbs={crumbs}
   jsonld={[personLd()]}
@@ -22,10 +22,12 @@ const crumbs = [{ name: 'Home', url: '/' }, { name: 'About', url: '/about/' }];
     <p>Inkline is built by {SITE.author.name}, {SITE.author.title}, where he co-leads an intelligence function building media monitoring for corporate clients. He is a longtime Wikipedia editor and writes about communications, AI and corporate reputation. Inkline is the tool he wanted to exist for the job he actually does; the directory is maintained with the same discipline as client monitoring, because it started as exactly that.</p>
 
     <h2>How verification works</h2>
-    <p>Every source enters the registry by hand, against a written rubric that admits only publications whose facts can be established from public record. Before each app release the whole registry is machine-verified: every feed is fetched and parsed, and sources that fail drop out, so only working feeds ship. Where a publisher offers no public feed, the registry records that too, and the app covers the title through open-web headline queries instead.</p>
-    <p>"Verified" therefore means two things, and the site claims both precisely: a person chose the source, and a machine confirmed the feed worked at the dated pass shown on every page. Publishers change things without notice, which is exactly why the pass is repeated before every release.</p>
+    <p>Every source enters the directory against a written rubric that admits only publications whose facts can be established from public record. Before each app release the whole directory is machine-verified: every feed is fetched and parsed, and sources that fail drop out, so only working feeds ship. Where a publisher offers no public feed, the directory records that too, and the app covers the title through open-web headline queries instead.</p>
+    <p>"Verified" therefore means two things, and the site claims both precisely: the source was admitted against the rubric, and a machine confirmed the feed worked at the dated pass shown on every page. Publishers change things without notice, which is exactly why the pass is repeated before every release.</p>
+    <h2>The generative-AI dataset</h2>
+    <p>Since 1.6, every title also carries its owner's public position on generative AI: licensed to an AI company, and to which one; blocking the crawlers or litigating; or nothing on record. Positions are recorded at ownership-group level, because that is where the deals and the lawsuits actually happen, and every line carries its date. The record is compiled from public sources: licensing announcements, court filings, publishers' own robots.txt files and Press Gazette's tracker of publisher AI deals. Where a publisher has said nothing publicly, the dataset says exactly that.</p>
 
     <h2>Corrections</h2>
-    <p>A registry of 817 publications will contain errors, and pretending otherwise would undermine the claim the site makes. When an error is found or reported, the page is corrected, the verification date updated, and material corrections noted on the page itself. Reports are welcome via the <a href="/support/">support contact route</a> and move a title to the front of the re-verification queue.</p>
+    <p>A directory of 5,175 publications will contain errors, and pretending otherwise would undermine the claim the site makes. When an error is found or reported, the page is corrected, the verification date updated, and material corrections noted on the page itself. Reports are welcome via the <a href="/support/">support contact route</a> and move a title to the front of the re-verification queue.</p>
   </div>
 </Base>

@@ -6,3 +6,25 @@
 /support.html     /support/   301
 /press-kit        /press/     301
 /app/features/watchwords/ /app/features/keywords/ 301
+
+# Registry v3 (Aug 2026): section feeds cut from the directory; pages retired.
+/publications/interia-film/ /feeds/poland/ 301
+/publications/interia-gry/ /feeds/poland/ 301
+/publications/interia-kobieta/ /feeds/poland/ 301
+/publications/interia-mam-dziecko/ /feeds/poland/ 301
+/publications/interia-motoryzacja/ /feeds/poland/ 301
+/publications/interia-nieruchomosci/ /feeds/poland/ 301
+/publications/interia-pogoda/ /feeds/poland/ 301
+/publications/interia-porady/ /feeds/poland/ 301
+/publications/interia-sport/ /feeds/poland/ 301
+/publications/interia-styl/ /feeds/poland/ 301
+/publications/magazyn-auto/ /feeds/poland/ 301
+/publications/menway/ /feeds/poland/ 301
+/publications/onet-podroze/ /feeds/poland/ 301
+/publications/swiat-seriali/ /feeds/poland/ 301
+/publications/wp-gwiazdy/ /feeds/poland/ 301
+/publications/wp-kobieta/ /feeds/poland/ 301
+/publications/wp-moto/ /feeds/poland/ 301
+/publications/wp-turystyka/ /feeds/poland/ 301
+/publications/zielona-interia/ /feeds/poland/ 301
+/publications/corriere-della-sera-corriere/ /publications/corriere-della-sera/ 301

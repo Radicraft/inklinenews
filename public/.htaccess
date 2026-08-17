@@ -32,3 +32,24 @@ Redirect 301 /app/features/watchwords /app/features/keywords/
 
 AddType font/woff2 .woff2
 ErrorDocument 404 /404.html
+# Registry v3 (Aug 2026): retired publication pages
+Redirect 301 /publications/interia-film/ /feeds/poland/
+Redirect 301 /publications/interia-gry/ /feeds/poland/
+Redirect 301 /publications/interia-kobieta/ /feeds/poland/
+Redirect 301 /publications/interia-mam-dziecko/ /feeds/poland/
+Redirect 301 /publications/interia-motoryzacja/ /feeds/poland/
+Redirect 301 /publications/interia-nieruchomosci/ /feeds/poland/
+Redirect 301 /publications/interia-pogoda/ /feeds/poland/
+Redirect 301 /publications/interia-porady/ /feeds/poland/
+Redirect 301 /publications/interia-sport/ /feeds/poland/
+Redirect 301 /publications/interia-styl/ /feeds/poland/
+Redirect 301 /publications/magazyn-auto/ /feeds/poland/
+Redirect 301 /publications/menway/ /feeds/poland/
+Redirect 301 /publications/onet-podroze/ /feeds/poland/
+Redirect 301 /publications/swiat-seriali/ /feeds/poland/
+Redirect 301 /publications/wp-gwiazdy/ /feeds/poland/
+Redirect 301 /publications/wp-kobieta/ /feeds/poland/
+Redirect 301 /publications/wp-moto/ /feeds/poland/
+Redirect 301 /publications/wp-turystyka/ /feeds/poland/
+Redirect 301 /publications/zielona-interia/ /feeds/poland/
+Redirect 301 /publications/corriere-della-sera-corriere/ /publications/corriere-della-sera/

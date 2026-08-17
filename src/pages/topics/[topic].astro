@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { topics, pubsInTopic, proseForTopic, accessLabel, REGISTRY_UPDATED, formatDate } from '../../lib/registry';
+import { REGISTRY } from '../../lib/registry';
 
 export function getStaticPaths() {
   return topics.map((t) => ({ params: { topic: t.slug } }));
@@ -37,5 +38,5 @@ const crumbs = [{ name: 'Home', url: '/' }, { name: 'Publications', url: '/publi
       ))}
     </tbody>
   </table>
-  <p class="small"><a href="/publications/">All 817 publications</a></p>
+  <p class="small"><a href="/publications/">All {REGISTRY.sources.toLocaleString('en-GB')} publications</a></p>
 </Base>

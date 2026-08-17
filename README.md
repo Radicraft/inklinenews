@@ -101,13 +101,20 @@ src/data/registry/publications-full.json is the app's actual registry
 global flags. editorial.json holds the 11 written detail pages; detail pages
 generate only for slugs present there (no thin pages exist to noindex). Index,
 market and topic pages render all 817 from metadata. Tier is deliberately not
-displayed, matching the app. 264 sources are headlines-backed in the app; the
+displayed, matching the app. 1,986 sources are headlines-backed in the app; the
 site states this only as an aggregate fact.
 
-The site describes 1.4 and launches alongside it: freemium (free tier, 50
-publications; Pro monthly £2.99 / annual £14.99 UK, week-free intro offer),
-Inkline Radio, watchwords and the Watch tab. Launch-day dependency, Michael's
-side: the monthly product must exist in App Store Connect before 1.4 submits.
+The site describes 1.6 (registry v3, 5,175 sources / 105 markets / 72
+languages, updated 11 Aug 2026; Gen-AI position dataset dated 16 Aug 2026):
+freemium unchanged (free tier, 50 publications; Pro monthly £2.99 / annual
+£14.99 UK, week-free intro offer on both), coverage reports, the Atlas,
+per-keyword numbers, the rewritten Today, OPML export and the Gen-AI dataset.
+Registry ingest: `Inkline-Publications.xlsx` -> `src/data/registry/*` with
+feed URLs stripped at ingest (they never enter this repo); slugs are
+preserved across registry versions by domain-and-name matching so publication
+URLs stay stable. KNOWN GAP: the public changelog jumps 1.4 -> 1.6 because
+1.5's release notes were never supplied; add the 1.5 entry when Michael
+provides it.
 
 ## News section (Substack-fed)
 

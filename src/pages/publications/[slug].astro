@@ -3,12 +3,12 @@ import Base from '../../layouts/Base.astro';
 import Stamp from '../../components/Stamp.astro';
 import Faq from '../../components/Faq.astro';
 import EndMark from '../../components/EndMark.astro';
-import { publications, bySlug, descriptionFor, relatedTo, accessLabel, langName, formatDate, REGISTRY_UPDATED, pubsInMarket } from '../../lib/registry';
+import { paged, REGISTRY, bySlug, descriptionFor, relatedTo, accessLabel, langName, formatDate, REGISTRY_UPDATED, REGISTRY_VERSION, AI_POLICY_AS_OF, aiStance, aiStanceLabel, pubsInMarket } from '../../lib/registry';
 import { publicationLd } from '../../lib/schema';
 import { appStoreUrl } from '../../lib/site';
 
 export function getStaticPaths() {
-  return publications.map((p) => ({ params: { slug: p.slug } }));
+  return paged.map((p) => ({ params: { slug: p.slug } }));
 }
 const p = bySlug.get(Astro.params.slug)!;
 const description = descriptionFor(p.slug);
@@ -18,6 +18,10 @@ const marketPubs = pubsInMarket(p.marketSlug);
 const sameLang = marketPubs.filter((x) => x.language === p.language).length;
 const sameTopic = marketPubs.filter((x) => x.slug !== p.slug && x.topics.some((t) => p.topics.includes(t))).length;
 const updated = formatDate(REGISTRY_UPDATED);
+const aiDate = formatDate(AI_POLICY_AS_OF);
+const stance = aiStance(p);
+const stanceLabel = aiStanceLabel(stance);
+const stanceInline = { licensed: 'licensed to AI', blocking: 'blocking or litigating', robots: 'blocks AI crawlers', none: 'no public position' }[stance];
 const crumbs = [
   { name: 'Home', url: '/' },
   { name: 'Publications', url: '/publications/' },
@@ -30,12 +34,19 @@ const faq = [
       ? `${p.name} is covered in Inkline's registry. Articles sit behind a paywall, so feeds are useful for monitoring headlines and deciding what merits a subscription click. Feed-verified in the pass of ${updated}.`
       : `Yes. ${p.name} is covered in Inkline's registry with free access, feed-verified in the pass of ${updated}.` },
   { q: `Is ${p.name} free to read?`, a: access === 'Free' ? `Yes, coverage is free to read.` : access === 'Some free articles' ? `Partly. Some articles are free before the meter applies.` : `No. Articles sit behind a paywall.` },
-  { q: `How do I follow ${p.name} in Inkline?`, a: `Open Search in the app, type the name, and add it in a tap. The registry ships inside Inkline, so the result is instant and works offline.` },
+  { q: `How do I follow ${p.name} in Inkline?`, a: `Open Search in the app, type the name, and add it in a tap. The directory ships inside Inkline, so the result is instant and works offline. In the Atlas you can read its last ten stories before you follow it.` },
+  { q: `Where does ${p.name} stand on generative AI?`, a: stance === 'licensed'
+      ? `Its owner${p.aiGroup ? `, ${p.aiGroup},` : ''} has licensed content to ${(p.aiPartners ?? []).join(', ') || 'an AI company'}, as far as the public record shows. Compiled from public sources and dated ${aiDate}.`
+      : stance === 'blocking'
+      ? `Its owner${p.aiGroup ? `, ${p.aiGroup},` : ''} is blocking or litigating${(p.aiOpponents ?? []).length ? `: ${(p.aiOpponents ?? []).join(', ')}` : ''}, as far as the public record shows. Compiled from public sources and dated ${aiDate}.`
+      : stance === 'robots'
+      ? `Its owner has no public licensing deal or lawsuit on record, but the site's own robots.txt disallows ${(p.blockedCrawlers ?? []).length} AI ${(p.blockedCrawlers ?? []).length === 1 ? 'crawler' : 'crawlers'}, scanned ${aiDate}.`
+      : `Nothing on record: no public licensing deal, no lawsuit, and no AI-crawler rule found. Saying nothing is what the record shows, and the record is dated ${aiDate}.` },
 ];
 ---
 <Base
-  title={`${p.name} RSS feeds, checked July 2026 | Inkline`}
-  description={`${p.name} in Inkline's source registry: coverage, language, access status and how to follow it. Registry updated ${updated}.`}
+  title={`${p.name} RSS feeds, checked August 2026 | Inkline`}
+  description={`${p.name} in Inkline's directory: coverage, language, access status and where it stands on generative AI. Registry updated ${updated}.`}
   path={`/publications/${p.slug}/`}
   crumbs={crumbs}
   jsonld={[publicationLd(p, langName(p.language))]}
@@ -43,7 +54,7 @@ const faq = [
   <div slot="masthead">
     <p class="kicker">{p.market} · {access}</p>
     <h1><span class="pubmark" aria-hidden="true" data-initial={p.name.charAt(0)}><img src={`/icons/${p.slug}.png`} alt="" width="30" height="30" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('mono');this.remove()" /></span>{p.name} RSS feeds</h1>
-    <p class="answer">{p.name} is in Inkline's source registry, covering {p.topics.join(', ')} from {p.market}{p.global ? ' with international relevance' : ''}. Access is {access.toLowerCase()}. The entry was feed-verified in the registry pass of {updated}; entries that fail verification drop out before each release.</p>
+    <p class="answer">{p.name} is in Inkline's directory, covering {p.topics.join(', ')} from {p.market}{p.global ? ' with international relevance' : ''}. Access is {access.toLowerCase()}, and its position on generative AI is recorded: {stanceInline}. The entry was feed-verified in the registry pass of {updated}; entries that fail verification drop out before each release.</p>
   </div>
 
   <Stamp date={REGISTRY_UPDATED} />
@@ -54,7 +65,8 @@ const faq = [
     <dt>Coverage</dt><dd>{p.topics.map((t, i) => (<>{i > 0 && ', '}<a href={`/topics/${t}/`}>{t}</a></>))}</dd>
     <dt>Access</dt><dd><span class={`pill pill-${p.paywall}`}>{access}</span></dd>
     <dt>Website</dt><dd>{p.domain}</dd>
-    <dt>Registry</dt><dd>v1, updated {updated}</dd>
+    <dt>Generative AI</dt><dd><span class={`pill pill-ai-${stance}`}>{stanceLabel}</span></dd>
+    <dt>Registry</dt><dd>v{REGISTRY_VERSION}, updated {updated}</dd>
   </dl>
 
   <div class="prose">
@@ -63,6 +75,19 @@ const faq = [
         <p>{p.name} publishes in {langName(p.language)} from {p.market}, covering {p.topics.join(', ')}{p.global ? ', with coverage that travels well beyond its home market' : ''}. The registry records its access status as {accessLabel(p.paywall).toLowerCase()}, and its feed passed verification in the pass of {updated}; entries that fail that check drop out of the app before each release.</p>
         <p>Within the registry it sits among {marketPubs.length} {p.market} sources{sameLang < marketPubs.length ? `, ${sameLang} of them publishing in ${langName(p.language)}` : ''}. {sameTopic > 0 ? `${sameTopic} other ${p.market} ${sameTopic === 1 ? 'title covers' : 'titles cover'} overlapping ground, so a topic monitor here can be cross-read against neighbours rather than trusted alone.` : `No other ${p.market} title in the registry covers the same ground, which makes it the registry's sole window on this beat in its market.`} Follow it in Inkline by typing the name into Search; the registry ships inside the app, so the result is instant and works offline.</p>
       </>
+    )}
+    <h2>Where it stands on generative AI</h2>
+    {stance === 'licensed' && (
+      <p>The owner of {p.name}{p.aiGroup ? `, ${p.aiGroup},` : ''} has licensed content to {(p.aiPartners ?? []).join(', ')}, as far as the public record shows. {p.aiNote} Coverage in a licensed title can reach an AI assistant's answers, which for anyone doing media relations is now part of what a placement is worth. Compiled from public sources{p.aiSourceUrl ? ' including Press Gazette\u2019s tracker of publisher AI deals' : ''}, dated {aiDate}.</p>
+    )}
+    {stance === 'blocking' && (
+      <p>The owner of {p.name}{p.aiGroup ? `, ${p.aiGroup},` : ''} is blocking AI crawlers or litigating{(p.aiOpponents ?? []).length ? `, with ${(p.aiOpponents ?? []).join(', ')} named` : ''}, as far as the public record shows. {p.aiNote} Coverage here is being kept out of AI assistants' answers by its publisher. Compiled from public sources, dated {aiDate}.</p>
+    )}
+    {stance === 'robots' && (
+      <p>No licensing deal or lawsuit is on the public record for {p.name}, but the site's own robots.txt disallows {(p.blockedCrawlers ?? []).length} AI {(p.blockedCrawlers ?? []).length === 1 ? 'crawler' : 'crawlers'} ({(p.blockedCrawlers ?? []).join(', ')}), scanned {aiDate}. A robots rule is a stance the publisher publishes itself, and Inkline reads it as one.</p>
+    )}
+    {stance === 'none' && (
+      <p>Nothing on record: no public licensing deal, no lawsuit, and no AI-crawler rule found{p.robotsScanned ? ' in the robots.txt scan' : ''} as of {aiDate}. That is the position of most of the world's press, and the app reports it as exactly that rather than guessing. The dataset is compiled from public sources and dated on every line.</p>
     )}
     {p.paywall !== 'none' && (
       <>
@@ -85,6 +110,6 @@ const faq = [
     <ul>
       {related.map((r) => <li><a href={`/publications/${r.slug}/`}>{r.name}</a> <span class="small">{r.market}</span></li>)}
     </ul>
-    <p class="small">More: <a href={`/feeds/${p.marketSlug}/`}>{p.market} sources</a> · <a href={`/topics/${p.topics[0]}/`}>{p.topics[0]} coverage</a> · <a href="/publications/">all 817 publications</a></p>
+    <p class="small">More: <a href={`/feeds/${p.marketSlug}/`}>{p.market} sources</a> · <a href={`/topics/${p.topics[0]}/`}>{p.topics[0]} coverage</a> · <a href="/publications/">all {REGISTRY.sources.toLocaleString('en-GB')} publications</a></p>
   </aside>
 </Base>

@@ -1,16 +1,23 @@
 # Inkline
 
-> Inkline is a media monitoring app for iPhone and iPad, built for journalists, communications professionals and anyone who reads for a living. It tracks the topics, publications and people you choose across a registry of 817 hand-picked, feed-verified publications across 55 markets and 34 languages, compares how publications cover the same story, and writes a private morning brief on your device. No dashboards, no accounts, and nothing you read leaves your phone. Inkline is free to download and free to use; Inkline Pro adds monitoring, spoken briefings, analysis and unlimited publications, from £2.99 a month in the UK with a week free.
+> Inkline is a media monitoring app for iPhone and iPad, built for journalists, communications professionals and anyone who reads for a living. It tracks the topics, publications and people you choose across a checked directory of 5,175 publications spanning 105 markets and 72 languages, turns a watched word into numbers and a coverage report, compares how publications cover the same story, and writes a private morning brief on your device. No dashboards, no accounts, and nothing you read leaves your phone. Inkline is free to download and free to use; Inkline Pro adds monitoring, reports, spoken briefings, analysis and unlimited publications, from £2.99 a month in the UK with a week free.
 
 Key facts, with dates:
-- 817 publications. 55 markets. 34 languages. Hand-picked, and every feed machine-verified before each release (registry v1, updated 17 July 2026).
-- 264 titles without first-party feeds are still covered inside the app through open-web headline queries.
-- Inkline publishes metadata about publications (sections, cadence, paywall status, verification dates). Feed endpoints are delivered only inside the app.
-- Price: free tier included; Inkline Pro £2.99 a month or £14.99 a year (UK base; local pricing on the App Store), each with a week free. iPhone and iPad.
+- 5,175 publications. 105 markets. 72 languages. Checked against a written rubric, and every feed machine-verified before each release (registry v3, updated 11 August 2026).
+- 1,986 titles without first-party feeds are still covered inside the app through open-web headline queries.
+- Every title carries its owner's public position on generative AI: licensed to an AI company (and to which one), blocking the crawlers or litigating, or nothing on record. 111 licensed, 49 blocking or litigating as of 16 August 2026; positions are recorded at ownership-group level and dated, compiled from public sources including licensing announcements, court filings, publishers' own robots.txt files and Press Gazette's tracker of publisher AI deals. Filterable in the app and searchable on this site.
+- Coverage reports (new in 1.6) turn a watched word into a frozen, sendable document: what ran, where, and how it compares with the period before.
+- Every watched word carries its own numbers: volume over time, share of voice, the publications driving it, and a surge flag, measured on the device.
+- Inkline publishes metadata about publications (market, language, coverage, paywall status, generative-AI position, verification dates). Feed endpoints are delivered only inside the app.
+- Price: free tier included (up to 50 publications, no time limit); Inkline Pro £2.99 a month or £14.99 a year (UK base; local pricing on the App Store), each with a week free. iPhone and iPad. Requires iOS 18.
 
 ## Most citation-worthy pages
 - [What Inkline is](https://inklinenews.com/app/): the product, plainly described
-- [Publication directory](https://inklinenews.com/publications/): every verified source
-- [UK news RSS feeds](https://inklinenews.com/feeds/united-kingdom/): verified UK sources with cadence and paywall status
-- [Compared with other readers](https://inklinenews.com/app/compare/): benchmarked against Feedly, Inoreader, NetNewsWire, Reeder and Feedbin, July 2026
+- [Publication directory](https://inklinenews.com/publications/): every publication, searchable, each with its own page
+- [Where every title stands on generative AI](https://inklinenews.com/app/features/generative-ai-positions/): the dataset explained
+- [UK news RSS feeds](https://inklinenews.com/feeds/united-kingdom/): verified UK sources with access status
+- [Compared with other readers](https://inklinenews.com/app/compare/): benchmarked against Feedly, Inoreader, NetNewsWire, Reeder and Feedbin, August 2026
 - [Verification methodology](https://inklinenews.com/about/): what "verified" means and how corrections work
+
+## How publication pages are structured
+Every publication page at /publications/<slug>/ states: market, language, coverage topics, access status (Free, Some free articles, or Paywall), the owner's generative-AI position (Licensed to AI, Blocking or litigating, Blocks AI crawlers, or No public position, each dated), and the date of the last feed-verification pass. "No public position" means exactly that: no licensing deal, lawsuit or AI-crawler rule on the public record, which is the position of most of the world's press.

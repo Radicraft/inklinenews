@@ -5,6 +5,34 @@ import { appStoreUrl } from '../../../lib/site';
 export function getStaticPaths() {
   const features = [
     {
+      slug: 'the-atlas',
+      shot: 'atlas', shotAlt: 'The Atlas: a globe of the world\u2019s press above a searchable list of publications with access labels',
+      name: 'The Atlas',
+      answer: 'The Atlas puts the world\u2019s press on one globe: 5,175 publications across 105 markets and 72 languages. Turn it, choose a market, narrow by subject and by kind, and tap any title to read its last ten stories before you decide to follow it.',
+      body: ['Finding good sources is the unglamorous half of monitoring, and directories usually make it worse: flat lists, no sense of place, and no way to judge a title before committing. The Atlas is built the way a person actually thinks about the press, by geography first. Every market shows its national, local and trade titles, each with its access status and, new in 1.6, its owner\u2019s public position on generative AI.','The ten-story preview is the part that changes behaviour. Instead of following a title and unfollowing it a week later, you read what it actually published before it ever enters your feed. Browsing the Atlas is free; the free tier follows up to 50 publications from it.'],
+    },
+    {
+      slug: 'coverage-reports',
+      shot: 'reports', shotAlt: 'A coverage report: the written summary of a watched word\u2019s week with the stories beneath it',
+      name: 'Coverage reports',
+      answer: 'A coverage report turns a word you are watching into a document: what ran, where, and how it compares with the period before, with room to write what it means. It is a snapshot, so whatever happens to those stories later, the report keeps what it found.',
+      body: ['The last step of monitoring is always a document. Somebody senior asks what the coverage looked like, and the answer has to travel: a summary, the numbers, the stories, and a line of judgement from the person who watched it happen. Inkline now writes the first three and leaves the fourth to you, in a report generated from a watched word\u2019s coverage and saved under Library, then Reports.','Reports are frozen on purpose. A live dashboard changes under you; a report is evidence of what the coverage was on the day you sent it. Coverage reports are part of Inkline Pro.'],
+    },
+    {
+      slug: 'coverage-numbers',
+      shot: 'watch-term', shotAlt: 'A watched keyword\u2019s numbers: mentions by day, top publications and a surge flag',
+      name: 'Numbers for every watched word',
+      answer: 'Every watched word now carries its own numbers: volume over time, share of voice, the publications driving it, and a flag when the line jumps. Measured on your device, from coverage you already have.',
+      body: ['A count is the difference between a feeling and a finding. Twenty-six mentions across eight publications this week, against nothing the week before, is a sentence you can put in front of a client; a busy-looking feed is not. Inkline computes these figures on the device from the stories your monitors and publications have already gathered, so there is no analytics service and nothing to configure.','The surge flag is deliberately blunt: it fires when today\u2019s pace runs well above the period\u2019s, which is exactly the moment a comms person wants a nudge rather than a chart. The full numbers sit one tap behind it. Part of Inkline Pro.'],
+    },
+    {
+      slug: 'generative-ai-positions',
+      shot: 'genai', shotAlt: 'The Atlas filtered to titles whose owners have licensed content to AI companies',
+      name: 'Where every title stands on generative AI',
+      answer: 'Every publication in Inkline\u2019s directory carries its owner\u2019s public position on generative AI: licensed to an AI company, and to which one; blocking the crawlers or litigating; or nothing on record. Filter the whole directory by it. Compiled from public sources and dated 16 August 2026.',
+      body: ['Generative assistants answer questions about your clients, and which titles sit inside the licensing deals decides which coverage can reach those answers. Coverage in a licensed title can surface in an assistant\u2019s reply; coverage in a blocking title is being kept out of them by its publisher. That is a media-relations consideration now, and until this dataset nobody could see the map in one place.','The data is stated carefully because it has to be. Positions belong to ownership groups rather than mastheads, so the record is kept at group level. Where a publisher has said nothing publicly, the app says exactly that, and by far the largest group has said nothing. Every line carries its date, because a fact about a market that moves monthly is only a fact with a date on it. Sources include licensing announcements, court filings, publishers\u2019 own robots.txt files and Press Gazette\u2019s tracker of publisher AI deals.'],
+    },
+    {
       slug: 'inkline-radio',
       shot: 'radio', shotAlt: 'The Inkline Radio player: a two-story morning bulletin with its running order',
       name: 'Inkline Radio',
@@ -20,7 +48,6 @@ export function getStaticPaths() {
     },
     {
       slug: 'topic-monitoring',
-      shot: 'feed', shotAlt: 'The Front Page with Watching and Trending rows above the lead story',
       name: 'Topic monitoring',
       answer: 'Inkline monitors any topic across the whole web, not just your subscriptions, and alerts you when new coverage appears. Type a company, a name or an issue once, and every fresh story lands in your feed with the rest of your morning.',
       body: ['Monitoring is the difference between a reader and a tool you can do the job with. A feed list shows you what your publications published; a monitor shows you what the web published about the things you answer for. Inkline runs both in the same place, so a client mention from a title you have never heard of arrives beside the front pages you check every day.','Alerts are optional per topic and arrive as notifications. Everything is processed for you on the device: there is no server reading your monitor list, which is also why it never appears in anyone else\u2019s analytics.'],
@@ -36,15 +63,14 @@ export function getStaticPaths() {
     },
     {
       slug: 'verified-directory', name: 'The verified directory',
-      answer: 'Inkline ships a registry of 817 publications across 55 markets and 34 languages, hand-picked against a written rubric and feed-verified before every release. Access status is recorded for every title, and sources that fail verification drop out.',
+      answer: 'Inkline ships a checked directory of 5,175 publications across 105 markets and 72 languages, admitted against a written rubric and feed-verified before every release. Access status is recorded for every title, and sources that fail verification drop out.',
       body: [
-        'Feed directories rot. Publishers move endpoints, retire desks and redesign sites without announcing it, and the free directories that dominate search results largely stopped being maintained years ago. Inkline treats the directory as the product: every source is checked on a quarterly pass, and every publication page on this site carries the date of its last check.',
+        'Feed directories rot. Publishers move endpoints, retire desks and redesign sites without announcing it, and the free directories that dominate search results largely stopped being maintained years ago. Inkline treats the directory as the product: every feed is machine-verified before each release, and every publication page on this site carries the date of its last check.',
         'The directory also maps sections that are not publicly listed, and holds workarounds for publications that have withdrawn public feeds altogether. That work lives inside the app, which is why this site publishes section names and never endpoints.',
       ],
     },
     {
       slug: 'coverage-timeline', name: 'The coverage timeline',
-      shot: 'coverage', shotAlt: 'The Coverage sheet: a framing read and the trajectory of one story across seven publications',
       answer: 'For any story, Inkline shows which other publications covered it and lines the headlines up side by side, so you can see the framing spread rather than a single telling.',
       body: [
         'Coverage analysis starts with a deceptively hard question: who else ran this? Inkline answers it inline. Under a story, "the coverage timeline" lists the other publications in your feeds that published on the same subject, with their headlines, so the difference in framing is visible at a glance.',
@@ -70,7 +96,6 @@ export function getStaticPaths() {
     },
     {
       slug: 'voices', name: 'Voices',
-      shot: 'search', shotAlt: 'Search: Voices at the top, with publication results and access labels below',
       answer: 'Voices is Inkline\u2019s newsroom directory: follow individual journalists and desks rather than whole mastheads, and see who actually writes the coverage you monitor.',
       body: [
         'Media monitoring is ultimately about people. The byline that matters to your sector is a specific correspondent, not a publication, and Voices makes journalists first-class citizens: browse a newsroom, follow the bylines you care about, and read their work across everything they write.',
@@ -107,7 +132,7 @@ const crumbs = [
     {f.body.map((para) => <p>{para}</p>)}
   </div>
   <p style="margin-top:2rem"><a class="btn" href={appStoreUrl(`web-feature-${f.slug}`)}>Open in Inkline</a></p>
-  <p class="small">Screenshot of this feature to be placed here from the §11.1 asset handover; every image on this site is a real Inkline screenshot.</p>
+  <p class="small">Every image on this site is a real Inkline screenshot.</p>
 </Base>
 
 <style>

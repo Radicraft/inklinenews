@@ -41,7 +41,7 @@ export function publicationLd(p: { name: string; slug: string; topics: string[];
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     url: `${SITE.domain}/publications/${p.slug}/`,
-    dateModified: '2026-07-17',
+    dateModified: '2026-08-11',
     mainEntity: {
       '@type': 'NewsMediaOrganization',
       name: p.name,
@@ -60,13 +60,13 @@ export function registryDatasetLd(totals: { sources: number; markets: number; la
     '@context': 'https://schema.org',
     '@type': 'Dataset',
     name: "Inkline source registry",
-    description: `A hand-picked, feed-verified registry of ${totals.sources} news publications across ${totals.markets} markets and ${totals.languages} languages, maintained for the Inkline app. Every entry records market, language, coverage topics and access status, and every feed is machine-verified before each app release.`,
+    description: `The checked directory of ${totals.sources} news publications across ${totals.markets} markets and ${totals.languages} languages that ships inside the Inkline app. Every entry records market, language, coverage topics and access status, and every feed is machine-verified before each app release. Every title also carries its owner's public position on generative AI (licensed, blocking or litigating, or nothing on record), compiled from public sources and dated 16 August 2026.`,
     url: `${SITE.domain}/publications/`,
     version: '1',
-    dateModified: '2026-07-17',
+    dateModified: '2026-08-11',
     creator: { '@type': 'Person', name: 'Michael White', url: 'https://www.whitewiki.org' },
     isAccessibleForFree: true,
-    keywords: ['RSS feeds', 'news publications', 'media monitoring', 'feed directory'],
+    keywords: ['RSS feeds', 'news publications', 'media monitoring', 'feed directory', 'generative AI licensing', 'AI crawler blocking'],
   };
 }
 
@@ -75,7 +75,7 @@ export function appLd() {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: 'Inkline', operatingSystem: 'iOS', applicationCategory: 'NewsApplication',
-    offers: { '@type': 'Offer', price: '14.99', priceCurrency: 'GBP' },
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'GBP' },
     // aggregateRating intentionally omitted until pulled from real App Store values (§8).
   };
 }
